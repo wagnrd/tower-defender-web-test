@@ -1,21 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat:wght@400;500;900&display=swap');
 
 :root {
-    font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 
-    font-family: Montserrat, sans-serif;
-    font-size: 21px;
-    font-weight: 400;
-    color: var(--text-color);
-
+    /* Colors */
     --base-color: #1F1930;
     --highlight-color: #28203D;
     --contrast-color: #69C6E8;
     --text-color: #F2F2F2;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    /* Font sizes */
+    --headline-font-size: 2.22rem;
+    --subheadline-font-size: 1.38rem;
+    --body-font-size: 1rem;
+
+    /* Font families */
+    --brand-font-family: Megrim, Montserrat, sans-serif;
+    --headline-font-familiy: "Montserrat Black", sans-serif;
+    --subheadline-font-family: "Montserrat Medium", sans-serif;
+    --body-font-family: Montserrat, sans-serif;
+
+    font-family: Montserrat, sans-serif;
+    color: var(--text-color);
+    font-size: 45px;
+}
+
+@media screen and (max-width: 2600px) {
+    :root {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    :root {
+        font-size: 21px;
+    }
 }
 
 body {
