@@ -8,8 +8,7 @@
 <style>
     .heading {
         height: 100vh;
-        font-family: var(--headline-font-familiy);
-        font-size: var(--headline-font-size);
+        font: var(--headline-font);
         display: flex;
         justify-content: center;
         align-items: center;

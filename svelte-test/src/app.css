@@ -20,9 +20,14 @@
 
     /* Font families */
     --brand-font-family: Megrim, Montserrat, sans-serif;
-    --headline-font-familiy: "Montserrat Black", sans-serif;
+    --headline-font-family: "Montserrat Black", sans-serif;
     --subheadline-font-family: "Montserrat Medium", sans-serif;
     --body-font-family: Montserrat, sans-serif;
+
+    /* Fonts */
+    --headline-font: var(--headline-font-size) var(--headline-font-family);
+    --subheadline-font: var(--subheadline-font-size) var(--subheadline-font-family);
+    --body-font: var(--body-font-size) var(--body-font-family);
 
     font-family: Montserrat, sans-serif;
     color: var(--text-color);
