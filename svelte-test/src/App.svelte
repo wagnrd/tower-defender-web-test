@@ -1,24 +1,19 @@
 <script lang="ts">
     import {Route, Router} from "svelte-routing";
 
-    import background from "./assets/background.jpg";
-
+    import background from "./assets/background.jpg"
     import NavBar from "./components/NavBar.svelte";
     import NavBarButton from "./components/NavBarButton.svelte";
-    import Home from "./pages/Home.svelte";
-    import News from "./pages/News.svelte";
-    import Game from "./pages/Game.svelte";
-    import Download from "./pages/Download.svelte";
     import NotFound from "./pages/NotFound.svelte";
 
     const homeRoute = "/";
     const newsRoute = "news";
     const gameRoute = "game";
     const downloadRoute = "download";
-
 </script>
 
 <main>
+    <div class="background-fallback"></div>
     <img src={background} class="background-image"/>
 
     <NavBar>
@@ -29,16 +24,24 @@
 
     <Router>
         <Route path={homeRoute}>
-            <Home/>
+            {#await import("./pages/Home.svelte") then value}
+                <svelte:component this={value.default}/>
+            {/await}
         </Route>
         <Route path={newsRoute}>
-            <News/>
+            {#await import("./pages/News.svelte") then value}
+                <svelte:component this={value.default}/>
+            {/await}
         </Route>
         <Route path={gameRoute}>
-            <Game/>
+            {#await import("./pages/Game.svelte") then value}
+                <svelte:component this={value.default}/>
+            {/await}
         </Route>
         <Route path={downloadRoute}>
-            <Download/>
+            {#await import("./pages/Download.svelte") then value}
+                <svelte:component this={value.default}/>
+            {/await}
         </Route>
         <Route path="*">
             <NotFound/>
@@ -47,6 +50,14 @@
 </main>
 
 <style>
+    .background-fallback {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background-color: var(--base-color);
+        z-index: -1;
+    }
+
     .background-image {
         width: 100%;
         position: absolute;
