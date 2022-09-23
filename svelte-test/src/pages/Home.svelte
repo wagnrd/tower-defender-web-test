@@ -1,9 +1,7 @@
 <script lang="ts">
 </script>
 
-<div>
-    <div class="heading">Home</div>
-</div>
+<div class="heading">Home</div>
 
 <style>
     .heading {

@@ -2,11 +2,9 @@
     import {navigate} from "svelte-routing";
 
     export let route = "";
-
-    let navigateToLink = () => navigate(route);
 </script>
 
-<div on:click={navigateToLink} class="button">
+<div on:click={() => navigate(route)} class="button">
     <slot></slot>
 </div>
 

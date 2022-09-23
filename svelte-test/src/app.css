@@ -34,24 +34,25 @@
     font-size: 45px;
 }
 
-@media screen and (max-device-width: 2600px) {
+@media screen and (max-device-width: 2560px) {
     :root {
         font-size: 28px;
     }
 }
 
-@media screen and (max-device-width: 2000px) {
+@media screen and (max-device-width: 1920px) {
     :root {
         font-size: 21px;
     }
 }
 
-@media screen and (max-device-width: 1400px) {
+@media screen and (max-device-width: 1366px) {
     :root {
-        font-size: 13px;
+        font-size: 15px;
     }
 }
 
 body {
     margin: 0;
+    background: var(--base-color) url("./assets/background.jpg") no-repeat scroll center -84rem;
 }
