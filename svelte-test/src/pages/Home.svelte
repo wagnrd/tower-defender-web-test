@@ -1,14 +1,19 @@
 <script lang="ts">
+    import Section from "../components/Section.svelte";
+    import armouredTruckImage from "../assets/armoured-truck.png";
+    import bigGun2Image from "../assets/big-gun-2.png";
 </script>
 
-<div class="heading">Home</div>
+<div class="page">
+    <Section heading="LATEST NEWS" image={armouredTruckImage} right>
+    </Section>
+
+    <Section heading="KEY FEATURES" image={bigGun2Image}>
+    </Section>
+</div>
 
 <style>
-    .heading {
-        height: 100vh;
-        font: var(--headline-font);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .page {
+        margin-top: 10.4rem;
     }
 </style>

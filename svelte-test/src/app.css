@@ -14,8 +14,8 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
 
     /* Font sizes */
-    --headline-font-size: 2.22rem;
-    --subheadline-font-size: 1.38rem;
+    --headline-font-size: 2.3rem;
+    --subheadline-font-size: 1.3rem;
     --body-font-size: 1rem;
 
     /* Font families */
@@ -31,28 +31,44 @@
 
     font-family: Montserrat, sans-serif;
     color: var(--text-color);
-    font-size: 45px;
+    font-size: 43px;
 }
 
 @media screen and (max-device-width: 2560px) {
     :root {
-        font-size: 28px;
+        font-size: 27px;
     }
 }
 
 @media screen and (max-device-width: 1920px) {
     :root {
-        font-size: 21px;
+        font-size: 20px;
     }
 }
 
 @media screen and (max-device-width: 1366px) {
     :root {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
 body {
     margin: 0;
     background: var(--base-color) url("./assets/background.jpg") center -78rem/100% no-repeat scroll;
+}
+
+h1 {
+    text-align: center;
+    font: var(--headline-font);
+    position: relative;
+}
+
+h2 {
+    font: var(--subheadline-font);
+    position: relative;
+}
+
+p {
+    font: var(--body-font);
+    position: relative;
 }
