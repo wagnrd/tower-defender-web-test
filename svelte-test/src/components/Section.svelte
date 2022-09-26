@@ -1,7 +1,6 @@
 <script lang="ts">
     export let right = false;
-    export let image: any;
-    export let heading: string;
+    export let heading = "";
 
     const alignment = right ? "right" : "left";
 </script>
@@ -9,9 +8,6 @@
 <div class="section {alignment}">
     <div class="background">
         <div class="ornament"></div>
-    </div>
-    <div class="image">
-        <img src={image}/>
     </div>
     <div>
         <h1>{heading}</h1>
@@ -61,25 +57,5 @@
                 0% 0%,
                 100% 100%
         );
-    }
-
-    .right .image {
-        display: flex;
-        justify-content: end;
-    }
-
-    img {
-        width: 33rem;
-        object-fit: contain;
-        margin-top: 4.4rem;
-        z-index: -1;
-    }
-
-    .right img {
-        margin-right: 1rem;
-    }
-
-    .left img {
-        margin-left: 1rem;
     }
 </style>

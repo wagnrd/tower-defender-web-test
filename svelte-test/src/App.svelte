@@ -3,7 +3,7 @@
     import NavBar from "./components/NavBar.svelte";
     import NavBarButton from "./components/NavBarButton.svelte";
     import NotFound from "./pages/NotFound.svelte";
-    import Home from "./pages/Home.svelte";
+    import Home from "./pages/Home/Home.svelte";
     import News from "./pages/News.svelte";
     import Game from "./pages/Game.svelte";
     import Download from "./pages/Download.svelte";
