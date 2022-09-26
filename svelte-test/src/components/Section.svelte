@@ -11,7 +11,9 @@
     </div>
     <div>
         <h1>{heading}</h1>
-        <slot></slot>
+        <div class="content">
+            <slot></slot>
+        </div>
     </div>
 </div>
 
@@ -57,5 +59,13 @@
                 0% 0%,
                 100% 100%
         );
+    }
+
+    .content {
+        display: flex;
+    }
+
+    .right .content {
+        justify-content: end;
     }
 </style>
