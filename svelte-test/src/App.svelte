@@ -9,10 +9,10 @@
     import Download from "./pages/Download.svelte";
 
     const homeRoute = "/";
-    const newsRoute = "news";
-    const gameRoute = "game";
-    const downloadRoute = "download";
-    const forumsRoute = "forums/";
+    const newsRoute = "/news";
+    const gameRoute = "/game";
+    const downloadRoute = "/download";
+    const forumsRoute = window.location.host + "/forums/";
 </script>
 <main>
     <NavBar homeRoute={homeRoute}>
