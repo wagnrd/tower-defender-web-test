@@ -5,7 +5,7 @@ on:
     paths:
       - './svelte-test/**'
 
-name: Build and deploy
+name: Build and deploy Svelte
 jobs:
   build-deploy:
     name: Build and deploy
