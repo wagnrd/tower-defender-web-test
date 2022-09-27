@@ -12,11 +12,13 @@
     const newsRoute = "news";
     const gameRoute = "game";
     const downloadRoute = "download";
+    const forumsRoute = "forums";
 </script>
 <main>
     <NavBar homeRoute={homeRoute}>
         <NavBarButton route={newsRoute}>NEWS</NavBarButton>
         <NavBarButton route={gameRoute}>GAME</NavBarButton>
+        <NavBarButton route={forumsRoute}>FORUMS</NavBarButton>
         <NavBarButton route={downloadRoute}>DOWNLOAD</NavBarButton>
     </NavBar>
 

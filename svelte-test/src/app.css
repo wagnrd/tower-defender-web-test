@@ -54,7 +54,7 @@
 
 body {
     margin: 0;
-    background: var(--base-color) url("./assets/background.jpg") center -78rem/100% no-repeat scroll;
+    background: var(--base-color) url("./assets/background.jpg") center -85rem/200vh no-repeat scroll;
 }
 
 h1 {

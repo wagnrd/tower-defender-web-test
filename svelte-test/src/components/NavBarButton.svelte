@@ -10,7 +10,7 @@
 
 <style>
     .button {
-        padding: 0.1rem 2.3rem 0 2.4rem;
+        padding: 0.1rem 1.7rem 0 1.7rem;
         font: 1.19rem var(--subheadline-font-family);
         display: flex;
         justify-content: center;
