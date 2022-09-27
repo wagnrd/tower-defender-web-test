@@ -2,9 +2,10 @@
     import {navigate} from "svelte-routing";
 
     export let route = "";
+    export let onClick = () => navigate(route);
 </script>
 
-<div on:click={() => navigate(route)} class="button">
+<div on:click={onClick} class="button">
     <slot></slot>
 </div>
 
@@ -17,6 +18,8 @@
         align-items: center;
         cursor: pointer;
         transition: background-color 200ms;
+        -webkit-user-select: none; /* Safari */
+        user-select: none;
     }
 
     .button:hover {

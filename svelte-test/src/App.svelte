@@ -12,13 +12,14 @@
     const newsRoute = "/news";
     const gameRoute = "/game";
     const downloadRoute = "/download";
-    const forumsRoute = "https://" + window.location.host + "/forums/";
+
+    const openForumsTab = () => window.open("https://" + window.location.host + "/forums/");
 </script>
 <main>
     <NavBar homeRoute={homeRoute}>
         <NavBarButton route={newsRoute}>NEWS</NavBarButton>
         <NavBarButton route={gameRoute}>GAME</NavBarButton>
-        <NavBarButton route={forumsRoute}>FORUMS</NavBarButton>
+        <NavBarButton onClick={() => openForumsTab()}>FORUMS</NavBarButton>
         <NavBarButton route={downloadRoute}>DOWNLOAD</NavBarButton>
     </NavBar>
 
