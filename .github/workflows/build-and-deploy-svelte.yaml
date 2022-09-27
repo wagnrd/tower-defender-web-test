@@ -21,8 +21,8 @@ jobs:
           node-version: '16'
 
       - name: Build
+        working-directory: svelte-test
         run: |
-          cd svelte-test
           npm install
           npm run build
 
@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           protocol: ftps
-          local-dir: ./dist/
+          local-dir: ./svelte-test/dist/
           server-dir: ./yatd/
           exclude: ./forums/**
           dry-run: true
