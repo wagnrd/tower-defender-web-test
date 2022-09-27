@@ -10,6 +10,6 @@
 
 <style>
     .page {
-        margin-top: 10.4rem;
+        margin-top: 10rem;
     }
 </style>
