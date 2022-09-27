@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - './svelte-test/**'
+      - '**/svelte-test/**'
 
 name: Build and deploy Svelte
 jobs:
