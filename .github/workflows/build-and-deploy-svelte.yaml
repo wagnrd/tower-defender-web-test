@@ -35,5 +35,5 @@ jobs:
           protocol: ftps
           local-dir: ./svelte-test/dist/
           server-dir: ./yatd/
-          exclude: ./forums/**
+          exclude: '**/forums/**'
           dry-run: true
