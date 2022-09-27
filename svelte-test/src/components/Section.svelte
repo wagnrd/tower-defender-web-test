@@ -19,6 +19,7 @@
 
 <style>
     .section {
+        width: 100%;
         margin-bottom: 11rem;
         display: grid;
         grid-template-areas: "stack";
@@ -40,8 +41,8 @@
     }
 
     .ornament {
-        width: 70rem;
-        height: 30.7rem;
+        width: 73%;
+        height: 33rem;
         background-color: var(--base-color);
     }
 
