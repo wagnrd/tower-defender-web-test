@@ -12,7 +12,7 @@
     const newsRoute = "/news";
     const gameRoute = "/game";
     const downloadRoute = "/download";
-    const forumsRoute = window.location.host + "/forums/";
+    const forumsRoute = "https://" + window.location.host + "/forums/";
 </script>
 <main>
     <NavBar homeRoute={homeRoute}>
