@@ -31,25 +31,7 @@
 
     font-family: Montserrat, sans-serif;
     color: var(--text-color);
-    font-size: 43px;
-}
-
-@media screen and (max-device-width: 2560px) {
-    :root {
-        font-size: 27px;
-    }
-}
-
-@media screen and (max-device-width: 1920px) {
-    :root {
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-device-width: 1366px) {
-    :root {
-        font-size: 14px;
-    }
+    font-size: 1vw;
 }
 
 body {
