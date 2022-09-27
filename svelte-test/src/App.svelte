@@ -12,7 +12,7 @@
     const newsRoute = "news";
     const gameRoute = "game";
     const downloadRoute = "download";
-    const forumsRoute = "forums";
+    const forumsRoute = "forums/";
 </script>
 <main>
     <NavBar homeRoute={homeRoute}>
