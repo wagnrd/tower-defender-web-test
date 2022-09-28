@@ -33,13 +33,39 @@
         image: newsPictureThumbnailImage
     }]
 
-    const showPreviousArticle = () => currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
-    const showNextArticle = () => currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
-    const showArticle = (index: number) => currentArticleIndex = index;
+    const showPreviousArticle = () => {
+        resetPageChangeTimer();
+        currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
+    }
+    const showNextArticle = () => {
+        resetPageChangeTimer();
+        currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
+    }
+    const showArticle = (index: number) => {
+        resetPageChangeTimer();
+        currentArticleIndex = index;
+    }
+
     $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-visible" : "article-hidden";
     $: pageIndicatorButtonClass = (buttonIndex: number): string => buttonIndex == currentArticleIndex ? "active" : "inactive";
     $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
     $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
+
+    const defaultPageChangeDelayMs = 5000;
+    const interrupedPageChangeDelayMs = 15000;
+    let pageChangeTimer: NodeJS.Timer;
+    const resetPageChangeTimer = () => {
+        clearTimeout(pageChangeTimer);
+        startpageChangeTimer(interrupedPageChangeDelayMs);
+    }
+    const startpageChangeTimer = (ms: number) => {
+        pageChangeTimer = setTimeout(() => {
+            currentArticleIndex = (currentArticleIndex + 1) % articles.length;
+            startpageChangeTimer(defaultPageChangeDelayMs);
+            console.log(currentArticleIndex);
+        }, ms);
+    }
+    startpageChangeTimer(defaultPageChangeDelayMs);
 </script>
 
 <Section heading="LATEST NEWS" right>
@@ -56,9 +82,9 @@
             <img src={article.image} class="carousel-image {articleClass(i)}"/>
             <div class="description {articleClass(i)}">{article.description}</div>
         {/each}
-        <div class="page-indicators">
+        <div class="pagination-indicators">
             {#each articles as _, i}
-                <div class="page-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
+                <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
                     <div class="triangle"></div>
                 </div>
             {/each}
@@ -191,7 +217,7 @@
         }
     }
 
-    .page-indicators {
+    .pagination-indicators {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -202,7 +228,7 @@
         grid-column: 2 / 4;
     }
 
-    .page-indicator-button {
+    .pagination-indicator-button {
         width: 1.8rem;
         height: 0.9rem;
         cursor: pointer;
