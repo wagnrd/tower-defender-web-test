@@ -5,12 +5,12 @@
     export let onClick = () => navigate(route);
 </script>
 
-<div on:click={onClick} class="button">
+<div on:click={onClick} class="pagination-button">
     <slot></slot>
 </div>
 
 <style>
-    .button {
+    .pagination-button {
         padding: 0.1rem 1.7rem 0 1.7rem;
         font: 1.19rem var(--subheadline-font-family);
         display: flex;
@@ -22,7 +22,7 @@
         user-select: none;
     }
 
-    .button:hover {
+    .pagination-button:hover {
         background-color: var(--highlight-color);
     }
 </style>

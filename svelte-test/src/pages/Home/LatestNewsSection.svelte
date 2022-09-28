@@ -35,14 +35,19 @@
 
     const showPreviousArticle = () => currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
     const showNextArticle = () => currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
-    $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-show" : "article-hide";
-    $: showPreviousButtonClass = currentArticleIndex == 0 ? "hide" : "show";
-    $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hide" : "show";
+    const showArticle = (index: number) => currentArticleIndex = index;
+    $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-visible" : "article-hidden";
+    $: pageIndicatorButtonClass = (buttonIndex: number): string => buttonIndex == currentArticleIndex ? "active" : "inactive";
+    $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
+    $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
 </script>
 
 <Section heading="LATEST NEWS" right>
     <div class="carousel">
-        <div class="button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
+        <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
+            <div class="arrow"></div>
+        </div>
+        <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
             <div class="arrow"></div>
         </div>
         {#each articles as article, i}
@@ -51,8 +56,12 @@
             <img src={article.image} class="carousel-image {articleClass(i)}"/>
             <div class="description {articleClass(i)}">{article.description}</div>
         {/each}
-        <div class="button right {showNextButtonClass}" on:click={showNextArticle}>
-            <div class="arrow"></div>
+        <div class="page-indicators">
+            {#each articles as _, i}
+                <div class="page-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
+                    <div class="triangle"></div>
+                </div>
+            {/each}
         </div>
     </div>
     <img src={armouredTruckImage} class="section-image"/>
@@ -76,13 +85,13 @@
 
     .headline {
         grid-row: 1;
-        grid-column: 2 / 3;
+        grid-column: 2 / 4;
     }
 
     .date {
         margin: 0.2rem 0 1rem;
         grid-row: 2;
-        grid-column: 2;
+        grid-column: 2 / 4;
     }
 
     .carousel-image {
@@ -97,17 +106,17 @@
         grid-column: 3;
     }
 
-    .button {
+    .pagination-button {
         width: 1.3rem;
         height: 2.6rem;
         cursor: pointer;
-        transition: background-color 200ms;
     }
 
     .arrow {
         width: 100%;
         height: 100%;
         background-color: var(--text-color);
+        transition: background-color 300ms;
         clip-path: polygon(
                 100% 0%,
                 0% 50%,
@@ -118,31 +127,31 @@
         );
     }
 
-    .button:hover > .arrow {
+    .pagination-button:hover > .arrow {
         background-color: var(--contrast-color);
     }
 
-    .button.left {
+    .pagination-button.left {
         grid-row: 3;
         grid-column: 1;
         margin-right: 1.6rem;
     }
 
-    .button.right {
+    .pagination-button.right {
         grid-row: 3;
         grid-column: 4;
         transform: scaleX(-1);
         margin-left: 1.3rem;
     }
 
-    .button.hide {
+    .pagination-button.hidden {
         animation-name: hide;
         animation-duration: 300ms;
         animation-fill-mode: both;
         cursor: auto;
     }
 
-    .button.show {
+    .pagination-button.visible {
         animation-name: show;
         animation-duration: 300ms;
         animation-delay: 200ms;
@@ -150,13 +159,13 @@
         animation-fill-mode: both;
     }
 
-    .article-hide {
+    .article-hidden {
         animation-name: hide;
         animation-duration: 300ms;
         animation-fill-mode: both;
     }
 
-    .article-show {
+    .article-visible {
         animation-name: show;
         animation-duration: 300ms;
         animation-delay: 200ms;
@@ -182,4 +191,56 @@
         }
     }
 
+    .page-indicators {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        width: 100%;
+        margin-top: 1.5rem;
+        grid-row: 4;
+        grid-column: 2 / 4;
+    }
+
+    .page-indicator-button {
+        width: 1.8rem;
+        height: 0.9rem;
+        cursor: pointer;
+    }
+
+    .triangle {
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                50% 100%
+        );
+    }
+
+    .active .triangle {
+        animation: paint-activated 300ms 200ms both;
+    }
+
+    .inactive .triangle {
+        animation: paint-deactivated 300ms both;
+    }
+
+    @keyframes paint-activated {
+        from {
+            background-color: var(--text-color);
+        }
+        to {
+            background-color: var(--contrast-color);
+        }
+    }
+
+    @keyframes paint-deactivated {
+        from {
+            background-color: var(--contrast-color);
+        }
+        to {
+            background-color: var(--text-color);
+        }
+    }
 </style>
