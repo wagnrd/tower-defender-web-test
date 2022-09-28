@@ -33,20 +33,23 @@
     }]
 
     let currentNewsIndex = 0;
-    const showNextNews = () => currentNewsIndex = Math.min(currentNewsIndex + 1, news.length - 1);
     const showPreviousNews = () => currentNewsIndex = Math.max(currentNewsIndex - 1, 0);
+    const showNextNews = () => currentNewsIndex = Math.min(currentNewsIndex + 1, news.length - 1);
+
+    $: showNextButtonClass = currentNewsIndex == news.length - 1 ? "hide" : "show";
+    $: showPreviousButtonClass = currentNewsIndex == 0 ? "hide" : "show";
 </script>
 
 <Section heading="LATEST NEWS" right>
     <div class="carousel">
-        <div class="button left" on:click={showPreviousNews}>
+        <div class="button left {showPreviousButtonClass}" on:click={showPreviousNews}>
             <div class="arrow"></div>
         </div>
         <h2 class="headline">{news[currentNewsIndex].headline}</h2>
         <h3 class="date">{news[currentNewsIndex].date}</h3>
         <img src={news[currentNewsIndex].image} class="carousel-image"/>
         <div class="description">{news[currentNewsIndex].description}</div>
-        <div class="button right" on:click={showNextNews}>
+        <div class="button right {showNextButtonClass}" on:click={showNextNews}>
             <div class="arrow"></div>
         </div>
     </div>
@@ -128,5 +131,36 @@
         grid-column: 4;
         transform: scaleX(-1);
         margin-left: 1.3rem;
+    }
+
+    .button.hide {
+        animation-name: hide;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        cursor: auto;
+    }
+
+    .button.show {
+        animation-name: show;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes hide {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes show {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 </style>
