@@ -1,6 +1,4 @@
 <script lang="ts">
-    import Section from "../../components/Section.svelte";
-    import armouredTruckImage from "../../assets/armoured-truck.png";
     import newsPictureThumbnailImage from "../../assets/news-picture-thumbnail.jpg";
 
     interface Article {
@@ -34,15 +32,15 @@
     }]
 
     const showPreviousArticle = () => {
-        resetPageChangeTimer();
+        resetArticleAutoChangeTimer();
         currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
     }
     const showNextArticle = () => {
-        resetPageChangeTimer();
+        resetArticleAutoChangeTimer();
         currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
     }
     const showArticle = (index: number) => {
-        resetPageChangeTimer();
+        resetArticleAutoChangeTimer();
         currentArticleIndex = index;
     }
 
@@ -51,59 +49,48 @@
     $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
     $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
 
-    const defaultPageChangeDelayMs = 5000;
-    const interrupedPageChangeDelayMs = 15000;
-    let pageChangeTimer: NodeJS.Timer;
-    const resetPageChangeTimer = () => {
-        clearTimeout(pageChangeTimer);
-        startpageChangeTimer(interrupedPageChangeDelayMs);
+    const defaultArticleAutoChangeDelayMs = 5000;
+    const interruptedPageAutoChangeDelayMs = 15000;
+    let articleChangeTimer: NodeJS.Timer;
+    const resetArticleAutoChangeTimer = () => {
+        clearTimeout(articleChangeTimer);
+        startArticleAutoChangeTimer(interruptedPageAutoChangeDelayMs);
     }
-    const startpageChangeTimer = (ms: number) => {
-        pageChangeTimer = setTimeout(() => {
+    const startArticleAutoChangeTimer = (ms: number) => {
+        articleChangeTimer = setTimeout(() => {
             currentArticleIndex = (currentArticleIndex + 1) % articles.length;
-            startpageChangeTimer(defaultPageChangeDelayMs);
-            console.log(currentArticleIndex);
+            startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
         }, ms);
     }
-    startpageChangeTimer(defaultPageChangeDelayMs);
+    startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
 </script>
 
-<Section heading="LATEST NEWS" right>
-    <div class="carousel">
-        <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
-            <div class="arrow"></div>
-        </div>
-        <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
-            <div class="arrow"></div>
-        </div>
-        {#each articles as article, i}
-            <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-            <h3 class="date {articleClass(i)}">{article.date}</h3>
-            <img src={article.image} class="carousel-image {articleClass(i)}"/>
-            <div class="description {articleClass(i)}">{article.description}</div>
-        {/each}
-        <div class="pagination-indicators">
-            {#each articles as _, i}
-                <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
-                    <div class="triangle"></div>
-                </div>
-            {/each}
-        </div>
+<div id="carousel">
+    <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
+        <div class="arrow"></div>
     </div>
-    <img src={armouredTruckImage} class="section-image"/>
-</Section>
+    <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
+        <div class="arrow"></div>
+    </div>
+    {#each articles as article, i}
+        <h2 class="headline {articleClass(i)}">{article.headline}</h2>
+        <h3 class="date {articleClass(i)}">{article.date}</h3>
+        <img src={article.image} class="carousel-image {articleClass(i)}"/>
+        <div class="description {articleClass(i)}">{article.description}</div>
+    {/each}
+    <div id="pagination-indicators">
+        {#each articles as _, i}
+            <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
+                <div class="triangle"></div>
+            </div>
+        {/each}
+    </div>
+</div>
 
 <style>
-    .section-image {
-        width: 33rem;
-        object-fit: contain;
-        margin-right: 3rem;
-    }
-
-    .carousel {
+    #carousel {
         width: 49rem;
         height: min-content;
-        margin: 6rem 1.5rem 0 0;
         display: grid;
         grid-column-gap: 1.6rem;
         align-items: center;
@@ -217,7 +204,7 @@
         }
     }
 
-    .pagination-indicators {
+    #pagination-indicators {
         display: flex;
         justify-content: center;
         align-items: center;
