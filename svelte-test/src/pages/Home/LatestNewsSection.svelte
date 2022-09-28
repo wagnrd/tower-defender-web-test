@@ -3,14 +3,15 @@
     import armouredTruckImage from "../../assets/armoured-truck.png";
     import newsPictureThumbnailImage from "../../assets/news-picture-thumbnail.jpg";
 
-    interface ShortNews {
+    interface Article {
         headline: string;
         description: string;
         date: string;
         image?: ImageData;
     }
 
-    const news: ShortNews[] = [{
+    let currentArticleIndex = 0;
+    const articles: Article[] = [{
         headline: "Early sneak peak!",
         description: "A new concept scene of the game has been revealed! See pictures and videos of how the game might look like in the future.",
         date: "27.09.2022",
@@ -32,24 +33,25 @@
         image: newsPictureThumbnailImage
     }]
 
-    let currentNewsIndex = 0;
-    const showPreviousNews = () => currentNewsIndex = Math.max(currentNewsIndex - 1, 0);
-    const showNextNews = () => currentNewsIndex = Math.min(currentNewsIndex + 1, news.length - 1);
-
-    $: showNextButtonClass = currentNewsIndex == news.length - 1 ? "hide" : "show";
-    $: showPreviousButtonClass = currentNewsIndex == 0 ? "hide" : "show";
+    const showPreviousArticle = () => currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
+    const showNextArticle = () => currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
+    $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-show" : "article-hide";
+    $: showPreviousButtonClass = currentArticleIndex == 0 ? "hide" : "show";
+    $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hide" : "show";
 </script>
 
 <Section heading="LATEST NEWS" right>
     <div class="carousel">
-        <div class="button left {showPreviousButtonClass}" on:click={showPreviousNews}>
+        <div class="button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
             <div class="arrow"></div>
         </div>
-        <h2 class="headline">{news[currentNewsIndex].headline}</h2>
-        <h3 class="date">{news[currentNewsIndex].date}</h3>
-        <img src={news[currentNewsIndex].image} class="carousel-image"/>
-        <div class="description">{news[currentNewsIndex].description}</div>
-        <div class="button right {showNextButtonClass}" on:click={showNextNews}>
+        {#each articles as article, i}
+            <h2 class="headline {articleClass(i)}">{article.headline}</h2>
+            <h3 class="date {articleClass(i)}">{article.date}</h3>
+            <img src={article.image} class="carousel-image {articleClass(i)}"/>
+            <div class="description {articleClass(i)}">{article.description}</div>
+        {/each}
+        <div class="button right {showNextButtonClass}" on:click={showNextArticle}>
             <div class="arrow"></div>
         </div>
     </div>
@@ -135,15 +137,31 @@
 
     .button.hide {
         animation-name: hide;
-        animation-duration: 200ms;
-        animation-fill-mode: forwards;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
         cursor: auto;
     }
 
     .button.show {
         animation-name: show;
-        animation-duration: 200ms;
-        animation-fill-mode: forwards;
+        animation-duration: 300ms;
+        animation-delay: 200ms;
+        animation-direction: reverse;
+        animation-fill-mode: both;
+    }
+
+    .article-hide {
+        animation-name: hide;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+    }
+
+    .article-show {
+        animation-name: show;
+        animation-duration: 300ms;
+        animation-delay: 200ms;
+        animation-fill-mode: both;
+        animation-direction: reverse;
     }
 
     @keyframes hide {
@@ -157,10 +175,11 @@
 
     @keyframes show {
         from {
-            opacity: 0;
-        }
-        to {
             opacity: 1;
         }
+        to {
+            opacity: 0;
+        }
     }
+
 </style>

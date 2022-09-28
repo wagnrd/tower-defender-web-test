@@ -17,7 +17,7 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        transition: background-color 200ms;
+        transition: background-color 300ms;
         -webkit-user-select: none; /* Safari */
         user-select: none;
     }
