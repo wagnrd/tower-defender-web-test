@@ -2,7 +2,7 @@
     import Section from "../../components/Section.svelte";
     import armouredTruckImage from "../../assets/armoured-truck.png";
     import bigGun2Image from "../../assets/big-gun-2.png";
-    import NewsCarousel from "./NewsCarousel.svelte";
+    import NewsCarousel from "./NewsCarousel/NewsCarousel.svelte";
 </script>
 
 <div class="page">

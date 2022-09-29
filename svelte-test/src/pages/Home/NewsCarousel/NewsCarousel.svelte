@@ -1,44 +1,27 @@
 <script lang="ts">
-    import newsPictureThumbnailImage from "../../assets/news-picture-thumbnail.jpg";
-
-    interface Article {
-        headline: string;
-        description: string;
-        date: string;
-        image?: ImageData;
-    }
+    import {fetchLatestNewsArticles} from "./NewsArticles";
+    import type {ShortArticle} from "./NewsArticles";
+    import logoDarkImage from "../../../assets/logo-dark.svg";
 
     let currentArticleIndex = 0;
-    const articles: Article[] = [{
-        headline: "Early sneak peak!",
-        description: "A new concept scene of the game has been revealed! See pictures and videos of how the game might look like in the future.",
-        date: "27.09.2022",
-        image: newsPictureThumbnailImage
-    }, {
-        headline: "Some other news!",
-        date: "26.09.2022",
-        description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. At vero eos et accusam et justo duo dolores et ea rebum.",
-        image: newsPictureThumbnailImage
-    }, {
-        headline: "Again other news!",
-        date: "25.09.2022",
-        description: "It is quite the same but... you know... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
-        image: newsPictureThumbnailImage
-    }, {
-        headline: "Even more news!",
-        date: "24.09.2022",
-        description: "Wow! Damn! Such awesome! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.",
-        image: newsPictureThumbnailImage
-    }]
+    let articles: ShortArticle[] = [];
+
+    fetchLatestNewsArticles().then(result => {
+        articles = result;
+        console.log(articles);
+        startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
+    });
 
     const showPreviousArticle = () => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
     }
+
     const showNextArticle = () => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
     }
+
     const showArticle = (index: number) => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = index;
@@ -49,51 +32,66 @@
     $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
     $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
 
-    const defaultArticleAutoChangeDelayMs = 5000;
+    const defaultArticleAutoChangeDelayMs = 7000;
     const interruptedPageAutoChangeDelayMs = 15000;
     let articleChangeTimer: NodeJS.Timer;
+
     const resetArticleAutoChangeTimer = () => {
         clearTimeout(articleChangeTimer);
         startArticleAutoChangeTimer(interruptedPageAutoChangeDelayMs);
     }
+
     const startArticleAutoChangeTimer = (ms: number) => {
         articleChangeTimer = setTimeout(() => {
             currentArticleIndex = (currentArticleIndex + 1) % articles.length;
             startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
         }, ms);
     }
-    startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
 </script>
 
 <div id="carousel">
-    <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
-        <div class="arrow"></div>
-    </div>
-    <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
-        <div class="arrow"></div>
-    </div>
-    {#each articles as article, i}
-        <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-        <h3 class="date {articleClass(i)}">{article.date}</h3>
-        <img src={article.image} class="carousel-image {articleClass(i)}"/>
-        <div class="description {articleClass(i)}">{article.description}</div>
-    {/each}
-    <div id="pagination-indicators">
-        {#each articles as _, i}
-            <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}" on:click={() => showArticle(i)}>
-                <div class="triangle"></div>
+    {#if articles.length > 0}
+        <div id="content">
+            <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
+                <div class="arrow"></div>
             </div>
-        {/each}
-    </div>
+            <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
+                <div class="arrow"></div>
+            </div>
+            {#each articles as article, i}
+                <h2 class="headline {articleClass(i)}">{article.headline}</h2>
+                <h3 class="date {articleClass(i)}">{article.date}</h3>
+                <img src={article.imageUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"/>
+                <div class="description {articleClass(i)}">{article.description}</div>
+            {/each}
+            <div id="pagination-indicators">
+                {#each articles as _, i}
+                    <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}"
+                         on:click={() => showArticle(i)}>
+                        <div class="triangle"></div>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    {:else}
+        <h2 class="visible">News loading...</h2>
+    {/if}
 </div>
 
 <style>
     #carousel {
         width: 49rem;
-        height: min-content;
+        height: 17rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #content {
         display: grid;
         grid-column-gap: 1.6rem;
         align-items: center;
+        animation: show 300ms 300ms both;
     }
 
     .headline {
@@ -158,17 +156,19 @@
     }
 
     .pagination-button.hidden {
-        animation-name: hide;
-        animation-duration: 300ms;
-        animation-fill-mode: both;
         cursor: auto;
     }
 
-    .pagination-button.visible {
+    .hidden {
+        animation-name: hide;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+    }
+
+    .visible {
         animation-name: show;
         animation-duration: 300ms;
         animation-delay: 200ms;
-        animation-direction: reverse;
         animation-fill-mode: both;
     }
 
@@ -183,7 +183,6 @@
         animation-duration: 300ms;
         animation-delay: 200ms;
         animation-fill-mode: both;
-        animation-direction: reverse;
     }
 
     @keyframes hide {
@@ -197,10 +196,10 @@
 
     @keyframes show {
         from {
-            opacity: 1;
+            opacity: 0;
         }
         to {
-            opacity: 0;
+            opacity: 1;
         }
     }
 
