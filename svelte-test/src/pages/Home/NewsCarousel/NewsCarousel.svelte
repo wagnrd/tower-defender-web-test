@@ -6,9 +6,10 @@
     const maxArticles = 4;
     let currentArticleIndex = 0;
     let articles: ArticlePreview[] = [];
-    let loadingState: "loading" | "error" = "loading";
+    let loadingState: "loading" | "error" | "done" = "loading";
 
     fetchArticlePreviews(maxArticles).then(result => {
+        loadingState = "done";
         articles = result;
         startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
     }).catch(error => {
@@ -51,7 +52,7 @@
         }, ms);
     }
 
-    const formatDate = (date: Date): string => new Date().toLocaleDateString();
+    const formatDate = (date: number): string => new Date(date).toLocaleDateString();
 </script>
 
 <div id="carousel">
@@ -80,8 +81,10 @@
         </div>
     {:else if loadingState === "loading"}
         <h2 class="visible">News loading...</h2>
-    {:else}
+    {:else if loadingState === "error"}
         <h2 class="visible">Error loading news :(</h2>
+    {:else}
+        <h2 class="visible">No news</h2>
     {/if}
 </div>
 
