@@ -5,7 +5,7 @@ interface Config {
 }
 
 const config: Config = {
-    newsApiBaseUrl: configFile.newsApiBaseUrl
+    newsApiBaseUrl: "http://localhost:3000"//configFile.newsApiBaseUrl
 };
 
 export {config};

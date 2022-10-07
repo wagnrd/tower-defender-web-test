@@ -4,7 +4,7 @@ interface ArticlePreview {
     id: number;
     headline: string;
     description: string;
-    date: Date;
+    timestamp: number;
     thumbnailUrl?: string;
 }
 

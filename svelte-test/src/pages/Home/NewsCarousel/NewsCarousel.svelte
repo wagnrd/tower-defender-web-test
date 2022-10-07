@@ -52,7 +52,7 @@
         }, ms);
     }
 
-    const formatDate = (date: number): string => new Date(date).toLocaleDateString();
+    const formatDate = (timestamp: number): string => new Date(timestamp).toLocaleDateString();
 </script>
 
 <div id="carousel">
@@ -66,7 +66,7 @@
             </div>
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-                <h3 class="date {articleClass(i)}">{formatDate(article.date)}</h3>
+                <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
                 <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"/>
                 <div class="description {articleClass(i)}">{article.description}</div>
             {/each}
