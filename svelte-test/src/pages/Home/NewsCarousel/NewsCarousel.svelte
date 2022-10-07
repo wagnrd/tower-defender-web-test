@@ -1,15 +1,18 @@
 <script lang="ts">
-    import {fetchLatestNewsArticles} from "./NewsArticles";
-    import type {ShortArticle} from "./NewsArticles";
+    import {fetchArticlePreviews} from "./news-articles";
+    import type {ArticlePreview} from "./news-articles";
     import logoDarkImage from "../../../assets/logo-dark.svg";
 
+    const maxArticles = 4;
     let currentArticleIndex = 0;
-    let articles: ShortArticle[] = [];
+    let articles: ArticlePreview[] = [];
+    let loadingState: "loading" | "error" = "loading";
 
-    fetchLatestNewsArticles().then(result => {
+    fetchArticlePreviews(maxArticles).then(result => {
         articles = result;
-        console.log(articles);
         startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
+    }).catch(error => {
+        loadingState = "error";
     });
 
     const showPreviousArticle = () => {
@@ -47,6 +50,8 @@
             startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
         }, ms);
     }
+
+    const formatDate = (date: Date): string => new Date().toLocaleDateString();
 </script>
 
 <div id="carousel">
@@ -60,8 +65,8 @@
             </div>
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-                <h3 class="date {articleClass(i)}">{article.date}</h3>
-                <img src={article.imageUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"/>
+                <h3 class="date {articleClass(i)}">{formatDate(article.date)}</h3>
+                <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"/>
                 <div class="description {articleClass(i)}">{article.description}</div>
             {/each}
             <div id="pagination-indicators">
@@ -73,8 +78,10 @@
                 {/each}
             </div>
         </div>
-    {:else}
+    {:else if loadingState === "loading"}
         <h2 class="visible">News loading...</h2>
+    {:else}
+        <h2 class="visible">Error loading news :(</h2>
     {/if}
 </div>
 
