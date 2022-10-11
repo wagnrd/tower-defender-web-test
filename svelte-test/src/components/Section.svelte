@@ -1,16 +1,14 @@
 <script lang="ts">
     export let right = false;
-    export let heading = "";
-
-    const alignment = right ? "right" : "left";
+    export let title = "";
 </script>
 
-<div class="section {alignment}">
+<div class="section" class:right={right} class:left={!right}>
     <div class="background">
         <div class="ornament"></div>
     </div>
     <div>
-        <h1>{heading}</h1>
+        <h1>{title}</h1>
         <div class="content">
             <slot></slot>
         </div>
@@ -64,6 +62,7 @@
 
     .content {
         display: flex;
+        align-items: start;
     }
 
     .right .content {
