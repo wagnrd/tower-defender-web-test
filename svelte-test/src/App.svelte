@@ -14,7 +14,7 @@
     const newsRoute = "/news";
     const gameRoute = "/game";
     const downloadRoute = "/download";
-    const aboutRoute = "/about";
+    const aboutRoute = "https://wagnrd.de";
     const impressumRoute = "/impressum";
     const privacyPolicyRoute = "/privacy";
 
