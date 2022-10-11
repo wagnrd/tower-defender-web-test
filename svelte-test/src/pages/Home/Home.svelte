@@ -10,11 +10,11 @@
         <div id="carousel">
             <NewsCarousel/>
         </div>
-        <img src={armouredTruckImage} class="latest-news-section-image"/>
+        <img src={armouredTruckImage} class="latest-news-section-image" alt="Armoured truck"/>
     </Section>
 
     <Section heading="KEY FEATURES">
-        <img src={bigGun2Image} class="key-features-section-image"/>
+        <img src={bigGun2Image} class="key-features-section-image" alt="big gun"/>
     </Section>
 </div>
 

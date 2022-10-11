@@ -67,7 +67,7 @@
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
                 <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
-                <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"/>
+                <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}" alt="{article.headline} image"/>
                 <div class="description {articleClass(i)}">{article.description}</div>
             {/each}
             <div id="pagination-indicators">
