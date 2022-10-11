@@ -8,7 +8,7 @@
 <div class="nav-bar">
     <div class="content">
         <div class="brand" on:click={() => navigate(homeRoute)}>
-            <img src={logoDarkSmall} class="logo"/>
+            <img src={logoDarkSmall} class="logo" alt="Brand logo"/>
             <div class="name">
                 Y.A.T.D.
             </div>
