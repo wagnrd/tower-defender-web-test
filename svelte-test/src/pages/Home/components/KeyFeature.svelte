@@ -2,9 +2,10 @@
     import BulletPoint from "../../../components/BulletPoint.svelte";
 
     export let title: string;
+    export let last = false;
 </script>
 
-<div id="key-feature">
+<div class:key-feature={!last}>
     <BulletPoint headline>{title}</BulletPoint>
     <div id="body">
         <slot></slot>
@@ -12,7 +13,7 @@
 </div>
 
 <style>
-    #key-feature {
+    .key-feature {
         margin-bottom: 4rem;
     }
 
