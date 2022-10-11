@@ -137,6 +137,8 @@
         width: 1.3rem;
         height: 2.6rem;
         cursor: pointer;
+        -webkit-user-select: none; /* Safari */
+        user-select: none;
     }
 
     .arrow {
@@ -238,6 +240,8 @@
         width: 1.8rem;
         height: 0.9rem;
         cursor: pointer;
+        -webkit-user-select: none; /* Safari */
+        user-select: none;
     }
 
     .triangle {

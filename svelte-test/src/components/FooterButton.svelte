@@ -11,18 +11,10 @@
 
 <style>
     .button {
-        padding: 0.1rem 1.7rem 0 1.7rem;
-        font: 1.19rem var(--subheadline-font-family);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font: var(--body-font-size) var(--subheadline-font-family);
+        margin: 0 1.5rem 0 1.5rem;
         cursor: pointer;
-        transition: background-color 300ms;
         -webkit-user-select: none; /* Safari */
         user-select: none;
-    }
-
-    .button:hover {
-        background-color: var(--highlight-color);
     }
 </style>
