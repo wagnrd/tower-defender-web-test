@@ -1,4 +1,5 @@
 <script lang="ts">
+    import {Link} from "svelte-routing";
     import {fetchArticlePreviews} from "./news-articles";
     import type {ArticlePreview} from "./news-articles";
     import logoDarkImage from "../../../assets/logo-dark.svg";
@@ -67,8 +68,13 @@
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
                 <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
-                <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}" alt="{article.headline} image"/>
-                <div class="description {articleClass(i)}">{article.description}</div>
+                <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"
+                     alt="{article.headline} image"/>
+                <div class="description {articleClass(i)}">
+                    {article.description}<br/>
+                    <br/>
+                    <Link to="/news/{article.id}">Read news</Link>
+                </div>
             {/each}
             <div id="pagination-indicators">
                 {#each articles as _, i}
@@ -198,18 +204,22 @@
     @keyframes hide {
         from {
             opacity: 1;
+            visibility: visible;
         }
         to {
             opacity: 0;
+            visibility: hidden;
         }
     }
 
     @keyframes show {
         from {
             opacity: 0;
+            visibility: hidden;
         }
         to {
             opacity: 1;
+            visibility: visible;
         }
     }
 

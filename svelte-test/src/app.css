@@ -66,3 +66,16 @@ h3 {
     position: relative;
     margin: 0;
 }
+
+a {
+    font: var(--body-font-size) var(--subheadline-font-family);
+    color: var(--contrast-color);
+    text-decoration: none;
+    position: relative;
+    margin: 0;
+    transition: text-decoration;
+}
+
+a:hover {
+    text-decoration: underline;
+}
