@@ -1,14 +1,14 @@
 <script lang="ts">
     import {Link, Route, Router} from "svelte-routing";
-    import NavBar from "./components/NavBar.svelte";
-    import NavBarButton from "./components/NavBarButton.svelte";
+    import NavBar from "./components/NavBar/NavBar.svelte";
+    import NavBarButton from "./components/NavBar/NavBarButton.svelte";
     import NotFound from "./pages/NotFound.svelte";
     import Home from "./pages/Home/Home.svelte";
     import News from "./pages/News.svelte";
     import Game from "./pages/Game.svelte";
     import Download from "./pages/Download.svelte";
-    import Footer from "./components/Footer.svelte";
-    import FooterButton from "./components/FooterButton.svelte";
+    import Footer from "./components/Footer/Footer.svelte";
+    import FooterButton from "./components/Footer/FooterButton.svelte";
 
     const homeRoute = "/";
     const newsRoute = "/news";

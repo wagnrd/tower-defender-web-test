@@ -1,11 +1,16 @@
 <script lang="ts">
-    import logoDarkSmall from "../assets/logo-dark-small.svg";
     import {navigate} from "svelte-routing";
+    import logoDarkSmall from "../../assets/logo-dark-small.svg";
+    import {navBarHidden} from "./components/nav-bar-store";
 
     export let homeRoute = "/";
+
+    let isNavBarHidden = false;
+    navBarHidden.set(isNavBarHidden);
+    navBarHidden.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
 </script>
 
-<div class="nav-bar">
+<div class="nav-bar" class:hidden="{isNavBarHidden}">
     <div class="content">
         <div class="brand" on:click={() => navigate(homeRoute)}>
             <img src={logoDarkSmall} class="logo" alt="Brand logo"/>
@@ -27,6 +32,11 @@
         position: fixed;
         display: flex;
         filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
+        transition: top 300ms;
+    }
+
+    .nav-bar.hidden {
+        top: -3.8rem;
     }
 
     .content {

@@ -2,13 +2,15 @@
     import bigGun1Image from "../../../assets/big-gun-1.png";
     import spaceFighterImage from "../../../assets/space-fighter.png";
     import logoImage from "../../../assets/logo-dark.svg";
+    import {navBarHidden} from "../../../components/NavBar/components/nav-bar-store";
+
+    navBarHidden.update(() => true);
 
     const percentageScrolledFadeThreshold = 0.1;
     const fadeMultiplier = 1.5;
     let y = 0;
 
     const updateSplash = (newY: number) => {
-        console.log(newY);
         const elem = document.getElementById("splash");
 
         if (!elem)
@@ -18,41 +20,44 @@
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
         const opacity = 1 - (scrollValue * fadeMultiplier);
         const blur = scrollValue * 20;
-        console.log(newY, blur, opacity);
-
         elem.style.opacity = opacity.toString(10);
         elem.style.filter = `blur(${blur}px)`;
+
+        if (percentageScrolled >= percentageScrolledFadeThreshold)
+            navBarHidden.update(() => false);
+        else
+            navBarHidden.update(() => true);
     }
     $: updateSplash(y);
 </script>
 
 <svelte:window bind:scrollY={y}/>
 <div id="splash">
-    <div id="big-gun-container">
-        <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
+    <div id="splash-image">
+        <div id="big-gun-container">
+            <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
+        </div>
+        <div id="space-fighter-container">
+            <img src={spaceFighterImage} id="space-fighter" alt="Space fighter"/>
+        </div>
+        <div id="logo-container">
+            <img src={logoImage} id="logo" alt="Space fighter"/>
+        </div>
+        <div id="sub-title-container">
+            <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
+        </div>
     </div>
-    <div id="space-fighter-container">
-        <img src={spaceFighterImage} id="space-fighter" alt="Space fighter"/>
-    </div>
-    <div id="logo-container">
-        <img src={logoImage} id="logo" alt="Space fighter"/>
-    </div>
-    <div id="sub-title-container">
-        <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
-    </div>
+    <div id="bottom-gradient"></div>
 </div>
 
 <style>
-    #splash {
+    #splash-image {
         width: calc(100vm - (100vm - 100%));
         height: 100vh;
-        z-index: 101;
         background: url("./src/assets/splash-background.jpg") top center/cover no-repeat;
-        overflow: clip;
-        /*
-        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0.5)));
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-         */
+        position: relative;
+        z-index: 101;
+        overflow: hidden;
     }
 
     #big-gun-container {
@@ -96,7 +101,7 @@
     #logo {
         width: 48rem;
         object-fit: contain;
-        margin-top: -6rem;
+        margin-bottom: 6rem;
     }
 
     #sub-title-container {
@@ -111,5 +116,14 @@
     #sub-title {
         font: var(--headline-font-size) var(--headline-font-family);
         margin-bottom: 5rem
+    }
+
+    #bottom-gradient {
+        position: relative;
+        height: 6rem;
+        width: 100%;
+        z-index: 102;
+        margin-top: -2.5rem;
+        background-image: linear-gradient(to bottom, transparent, #8f4c3c 25%, #8f4c3c 50%, transparent);
     }
 </style>
