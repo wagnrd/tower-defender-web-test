@@ -153,7 +153,7 @@
     }
 
     #sub-title {
-        font: var(--headline-font-size) var(--headline-font-family);
+        font: 2.2rem var(--sub-brand-font-family);
         margin-bottom: 5rem;
         animation-name: sub-title-appear;
         animation-duration: 3000ms;

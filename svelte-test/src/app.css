@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: "Montserrat SemiBold";
+    src: url("./assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+}
+
+@font-face {
     font-family: "Montserrat Black";
     src: url("./assets/fonts/Montserrat/Montserrat-Black.ttf");
 }
@@ -41,6 +46,7 @@
     --brand-font-family: Megrim, Montserrat, sans-serif;
     --headline-font-family: "Montserrat Black", sans-serif;
     --subheadline-font-family: "Montserrat Medium", sans-serif;
+    --sub-brand-font-family: "Montserrat SemiBold", sans-serif;
     --body-font-family: Montserrat, sans-serif;
 
     /* Fonts */
