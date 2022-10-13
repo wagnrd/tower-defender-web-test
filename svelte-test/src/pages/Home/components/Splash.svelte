@@ -51,7 +51,7 @@
     #splash {
         width: calc(100vm - (100vm - 100%));
         height: calc(100vh + 5rem);
-        background: url("./src/assets/splash-background.jpg") top center/cover no-repeat;
+        background: url("../../../assets/splash-background.jpg") top center/cover no-repeat;
         position: relative;
         overflow: hidden;
         -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(90%, black), to(transparent));
