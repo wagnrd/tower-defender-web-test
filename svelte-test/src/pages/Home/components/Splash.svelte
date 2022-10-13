@@ -33,35 +33,34 @@
 
 <svelte:window bind:scrollY={y}/>
 <div id="splash">
-    <div id="splash-image">
-        <div id="big-gun-container">
-            <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
-        </div>
-        <div id="space-fighter-container">
-            <img src={spaceFighterImage} id="space-fighter" alt="Space fighter"/>
-        </div>
-        <div id="logo-container">
-            <img src={logoImage} id="logo" alt="Space fighter"/>
-        </div>
-        <div id="sub-title-container">
-            <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
-        </div>
+    <div id="big-gun-container">
+        <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
     </div>
-    <div id="bottom-gradient"></div>
+    <div id="space-fighter-container">
+        <img src={spaceFighterImage} id="space-fighter" alt="Space fighter"/>
+    </div>
+    <div id="logo-container">
+        <img src={logoImage} id="logo" alt="Space fighter"/>
+    </div>
+    <div id="sub-title-container">
+        <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
+    </div>
 </div>
 
 <style>
-    #splash-image {
+    #splash {
         width: calc(100vm - (100vm - 100%));
-        height: 100vh;
+        height: calc(100vh + 5rem);
         background: url("./src/assets/splash-background.jpg") top center/cover no-repeat;
         position: relative;
         z-index: 101;
         overflow: hidden;
+        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(90%, black), to(transparent));
+        mask-image: linear-gradient(to bottom, black, black 90%, transparent);
     }
 
     #big-gun-container {
-        height: 100%;
+        height: 100vh;
         position: absolute;
         display: flex;
         justify-content: start;
@@ -71,12 +70,30 @@
     #big-gun {
         width: 33.2rem;
         object-fit: contain;
-        margin: 0 0 0.2rem -2.7rem;
+        margin: 0 0 -1rem -2.7rem;
+        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(93%, black), color-stop(98%, transparent), to(transparent));
+        mask-image: linear-gradient(to bottom, black, black 93%, transparent 98%, transparent);
+        animation-name: big-gun-appear;
+        animation-duration: 700ms;
+        animation-delay: 1500ms;
+        animation-timing-function: ease-in;
+        animation-fill-mode: both;
+    }
+
+    @keyframes big-gun-appear {
+        0% {
+            margin-bottom: 100vh;
+        }
+        90% {
+            margin-bottom: -1rem;
+        }
+        95% {
+            margin-bottom: -0.5rem;
+        }
     }
 
     #space-fighter-container {
         width: 100%;
-        height: 100%;
         position: absolute;
         display: flex;
         justify-content: end;
@@ -87,11 +104,24 @@
         width: 40rem;
         object-fit: contain;
         margin: 3.5rem -3.1rem 0 0;
+        animation-name: space-fighter-appear;
+        animation-duration: 1000ms;
+        animation-delay: 800ms;
+        animation-fill-mode: both;
+    }
+
+    @keyframes space-fighter-appear {
+        from {
+            margin-right: -20rem;
+            margin-top: 10rem;
+            width: 20rem;
+            transform: rotate(10deg);
+        }
     }
 
     #logo-container {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         position: absolute;
         display: flex;
         justify-content: center;
@@ -102,10 +132,20 @@
         width: 48rem;
         object-fit: contain;
         margin-bottom: 6rem;
+        animation-name: logo-appear;
+        animation-duration: 3000ms;
+        animation-delay: 2300ms;
+        animation-fill-mode: both;
+    }
+
+    @keyframes logo-appear {
+        from {
+            opacity: 0;
+        }
     }
 
     #sub-title-container {
-        height: 100%;
+        height: 100vh;
         width: 100%;
         position: absolute;
         display: flex;
@@ -115,15 +155,16 @@
 
     #sub-title {
         font: var(--headline-font-size) var(--headline-font-family);
-        margin-bottom: 5rem
+        margin-bottom: 5rem;
+        animation-name: sub-title-appear;
+        animation-duration: 3000ms;
+        animation-delay: 2300ms;
+        animation-fill-mode: both;
     }
 
-    #bottom-gradient {
-        position: relative;
-        height: 6rem;
-        width: 100%;
-        z-index: 102;
-        margin-top: -2.5rem;
-        background-image: linear-gradient(to bottom, transparent, #8f4c3c 25%, #8f4c3c 50%, transparent);
+    @keyframes sub-title-appear {
+        from {
+            opacity: 0;
+        }
     }
 </style>
