@@ -6,9 +6,11 @@
 
     navBarHidden.update(() => true);
 
-    const percentageScrolledFadeThreshold = 0.2;
+    const percentageScrolledFadeThreshold = 0.3;
+    const percentageScrolledSpaceShipAnimationThreshold = 0.1;
     const fadeMultiplier = 1.5;
     let y = 0;
+    let isSpaceFighterVisible = true;
 
     const updateSplash = (newY: number) => {
         const elem = document.getElementById("splash");
@@ -23,10 +25,8 @@
         elem.style.opacity = opacity.toString(10);
         elem.style.filter = `blur(${blur}px)`;
 
-        if (percentageScrolled >= percentageScrolledFadeThreshold)
-            navBarHidden.update(() => false);
-        else
-            navBarHidden.update(() => true);
+        navBarHidden.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
+        isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     }
     $: updateSplash(y);
 </script>
@@ -37,7 +37,8 @@
         <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
     </div>
     <div id="space-fighter-container">
-        <img src={spaceFighterImage} id="space-fighter" alt="Space fighter"/>
+        <img src={spaceFighterImage} id="space-fighter" class:visible={isSpaceFighterVisible}
+             class:hidden={!isSpaceFighterVisible} alt="Space fighter"/>
     </div>
     <div id="logo-container">
         <img src={logoImage} id="logo" alt="Space fighter"/>
@@ -94,6 +95,7 @@
     #space-fighter-container {
         width: 100%;
         position: absolute;
+        z-index: 1;
         display: flex;
         justify-content: end;
         align-items: start;
@@ -103,9 +105,19 @@
         width: 40rem;
         object-fit: contain;
         margin: 3.5rem -3.1rem 0 0;
+    }
+
+    #space-fighter.visible {
         animation-name: space-fighter-appear;
         animation-duration: 1000ms;
         animation-delay: 800ms;
+        animation-fill-mode: both;
+    }
+
+    #space-fighter.hidden {
+        animation-name: space-fighter-disappear;
+        animation-duration: 1000ms;
+        animation-timing-function: ease-in;
         animation-fill-mode: both;
     }
 
@@ -115,6 +127,14 @@
             margin-top: 10rem;
             width: 20rem;
             transform: rotate(10deg);
+        }
+    }
+
+    @keyframes space-fighter-disappear {
+        to {
+            margin-right: 100vw;
+            margin-top: 30rem;
+            transform: rotate(-20deg);
         }
     }
 
@@ -133,7 +153,7 @@
         margin-bottom: 6rem;
         animation-name: logo-appear;
         animation-duration: 3000ms;
-        animation-delay: 2300ms;
+        animation-delay: 2100ms;
         animation-fill-mode: both;
     }
 
@@ -157,7 +177,7 @@
         margin-bottom: 5rem;
         animation-name: sub-title-appear;
         animation-duration: 3000ms;
-        animation-delay: 2300ms;
+        animation-delay: 2100ms;
         animation-fill-mode: both;
     }
 
