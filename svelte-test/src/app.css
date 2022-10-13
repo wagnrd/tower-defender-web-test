@@ -62,7 +62,7 @@
 
 body {
     margin: 0;
-    background: var(--base-color) url("src/assets/images/background.jpg") center/cover no-repeat scroll;
+    background: var(--base-color) url("./assets/images/background.jpg") center/cover no-repeat scroll;
 }
 
 h1 {
