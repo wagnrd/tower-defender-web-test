@@ -6,7 +6,7 @@
 
     navBarHidden.update(() => true);
 
-    const percentageScrolledFadeThreshold = 0.1;
+    const percentageScrolledFadeThreshold = 0.2;
     const fadeMultiplier = 1.5;
     let y = 0;
 
@@ -53,7 +53,6 @@
         height: calc(100vh + 5rem);
         background: url("./src/assets/splash-background.jpg") top center/cover no-repeat;
         position: relative;
-        z-index: 101;
         overflow: hidden;
         -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(90%, black), to(transparent));
         mask-image: linear-gradient(to bottom, black, black 90%, transparent);
