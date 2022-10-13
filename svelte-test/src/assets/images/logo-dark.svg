@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="Logo dark.svg"
+   sodipodi:docname="logo-dark.svg"
    inkscape:export-filename="logo-dark.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -28,8 +28,8 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="0.25"
-     inkscape:cx="1270"
-     inkscape:cy="886"
+     inkscape:cx="1272"
+     inkscape:cy="890"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
      inkscape:window-x="1920"
@@ -344,18 +344,44 @@
        d="M 2313.5622,761.06814 2763.566,311.06428 h -450.0071 z"
        id="path1738-3-6-7-5"
        mask="none" />
-    <text
-       xml:space="preserve"
-       style="font-size:466.667px;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';fill:#e3e3e3;fill-opacity:1;paint-order:stroke markers fill"
-       x="829.79797"
-       y="720.88971"
+    <g
+       aria-label="Y.A.T.D."
        id="text843"
-       mask="none"><tspan
-         sodipodi:role="line"
-         id="tspan841"
-         x="829.79797"
-         y="720.88971"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:466.667px;font-family:Megrim;-inkscape-font-specification:Megrim;fill:#e3e3e3;fill-opacity:1">Y.A.T.D.</tspan></text>
+       mask="none"
+       style="font-size:466.667px;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';fill:#e3e3e3;paint-order:stroke markers fill">
+      <path
+         d="m 891.86468,394.22281 h 189.00012 l -116.66673,186.6668 v 140.0001 H 950.19806 V 580.88961 L 833.53131,394.22281 h 16.33334 L 957.19806,565.4896 1055.6648,408.22282 H 891.86468 Z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path343" />
+      <path
+         d="m 1121.4646,693.82302 h 30.8 v 27.06669 h -30.8 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path345" />
+      <path
+         d="m 1243.7318,706.8897 h 171.7335 l -98.9334,-272.06686 -104.0668,286.06687 h -14.9333 l 119.0001,-327.13356 119,327.13356 h -191.8001 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path347" />
+      <path
+         d="m 1480.7985,693.82302 h 30.8 v 27.06669 h -30.8 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path349" />
+      <path
+         d="m 1788.7991,394.22281 v 14.00001 h -109.6668 v 312.66689 h -14 V 408.22282 h -109.6667 v -14.00001 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path351" />
+      <path
+         d="m 1832.6661,693.82302 h 30.8001 v 27.06669 h -30.8001 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path353" />
+      <path
+         d="m 1991.3333,720.88971 h -44.8 v -326.6669 h 44.8 q 67.2001,0 113.8668,49.46671 46.6667,49.4667 46.6667,113.86674 0,64.40005 -46.6667,113.86675 -46.6667,49.4667 -113.8668,49.4667 z m 0,-14.00001 q 61.1334,0 103.6001,-44.80003 42.9334,-45.2667 42.9334,-104.53341 0,-59.26671 -42.9334,-104.06674 -42.4667,-45.2667 -103.6001,-45.2667 h -30.8 V 706.8897 Z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path355" />
+      <path
+         d="m 2213.9337,693.82302 h 30.8 v 27.06669 h -30.8 z"
+         style="font-family:Megrim;-inkscape-font-specification:Megrim"
+         id="path357" />
+    </g>
     <path
        style="fill:none;fill-opacity:1;stroke:#e4e4e4;stroke-width:11;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
        d="M 1700.0958,1725.1943 624.91298,650.04163 3249.9992,650.00083"
