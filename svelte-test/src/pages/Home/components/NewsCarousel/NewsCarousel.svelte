@@ -2,7 +2,7 @@
     import {Link} from "svelte-routing";
     import {fetchArticlePreviews} from "./news-articles";
     import type {ArticlePreview} from "./news-articles";
-    import logoDarkImage from "../../../../assets/logo-dark.svg";
+    import logoDarkImage from "../../../../assets/images/logo-dark.svg";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;

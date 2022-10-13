@@ -1,6 +1,6 @@
 <script lang="ts">
-    import armouredTruckImage from "../../assets/armoured-truck.png";
-    import bigGun2Image from "../../assets/big-gun-2.png";
+    import armouredTruckImage from "../../assets/images/armoured-truck.png";
+    import bigGun2Image from "../../assets/images/big-gun-2.png";
     import Section from "../../components/Section.svelte";
     import NewsCarousel from "./components/NewsCarousel/NewsCarousel.svelte";
     import KeyFeature from "./components/KeyFeature.svelte";

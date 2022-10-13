@@ -1,6 +1,6 @@
 <script lang="ts">
     import {navigate} from "svelte-routing";
-    import logoDarkSmall from "../../assets/logo-dark-small.svg";
+    import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
     import {navBarHidden} from "./components/nav-bar-store";
 
     export let homeRoute = "/";

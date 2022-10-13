@@ -1,3 +1,23 @@
+@font-face {
+    font-family: Megrim;
+    src: url("./assets/fonts/Megrim/Megrim-Regular.ttf");
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url("./assets/fonts/Montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat Medium";
+    src: url("./assets/fonts/Montserrat/Montserrat-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat Black";
+    src: url("./assets/fonts/Montserrat/Montserrat-Black.ttf");
+}
+
 :root {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -36,7 +56,7 @@
 
 body {
     margin: 0;
-    background: var(--base-color) url("./assets/background.jpg") center/cover no-repeat scroll;
+    background: var(--base-color) url("src/assets/images/background.jpg") center/cover no-repeat scroll;
 }
 
 h1 {

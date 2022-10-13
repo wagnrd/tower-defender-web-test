@@ -1,7 +1,7 @@
 <script lang="ts">
-    import bigGun1Image from "../../../assets/big-gun-1.png";
-    import spaceFighterImage from "../../../assets/space-fighter.png";
-    import logoImage from "../../../assets/logo-dark.svg";
+    import bigGun1Image from "../../../assets/images/big-gun-1.png";
+    import spaceFighterImage from "../../../assets/images/space-fighter.png";
+    import logoImage from "../../../assets/images/logo-dark.svg";
     import {navBarHidden} from "../../../components/NavBar/components/nav-bar-store";
 
     navBarHidden.update(() => true);
@@ -51,7 +51,7 @@
     #splash {
         width: calc(100vm - (100vm - 100%));
         height: calc(100vh + 5rem);
-        background: url("../../../assets/splash-background.jpg") top center/cover no-repeat;
+        background: url("../../../assets/images/splash-background.jpg") top center/cover no-repeat;
         position: relative;
         overflow: hidden;
         -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(90%, black), to(transparent));
