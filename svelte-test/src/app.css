@@ -107,6 +107,25 @@
     }
 }
 
+/* Mobile */
+@media screen and (max-device-width: 500px) and (orientation: portrait) {
+    :root {
+        font-size: 15px;
+    }
+
+    .mobile-hidden {
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .mobile-visible {
+        visibility: visible !important;
+    }
+}
+
 body {
     margin: 0;
     background: var(--base-color) url("./assets/images/background.jpg") center/cover no-repeat scroll;

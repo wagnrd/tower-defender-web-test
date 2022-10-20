@@ -45,7 +45,7 @@
 
 <style>
     #nav-bar {
-        width: 100%;
+        width: 100vw;
         height: 3.8rem;
         top: 0;
         z-index: 100;
