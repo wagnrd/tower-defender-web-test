@@ -20,7 +20,7 @@
         <Section title="KEY FEATURES">
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
             <div id="key-features">
-                <KeyFeature title="Campaign">
+                <KeyFeature title="CAMPAIGN">
                     Play a campaign with dozens of exciting scenarios. The further you progress through the campaign
                     the
                     harder the challenges will get!<br/>
@@ -28,14 +28,14 @@
                     destroy your nexus. Set your personal best times and compete against others on a global
                     leaderboard.
                 </KeyFeature>
-                <KeyFeature title="Endless Mode">
+                <KeyFeature title="ENDLESS MODE">
                     No story, no limitations, just pure tower defense!<br/>
                     If you really want to push your boundaries you can set your own scenario and go as long as you
                     can
                     last.<br/>
                     With personal best times and global leaderboards to open the competition!
                 </KeyFeature>
-                <KeyFeature title="Mazing">
+                <KeyFeature title="MAZING">
                     You can position your turrets where you want! Employ your own building style with turret mazes
                     for
                     the
@@ -44,7 +44,7 @@
                     through a
                     jungle of walls, turrets and mines to keep them from your base as long as possible!
                 </KeyFeature>
-                <KeyFeature title="Map Editor & Sharing Platform" last>
+                <KeyFeature title="MAP EDITOR & SHARING PLATFORM" last>
                     Tired of the standard campaign maps? Just create your own and share it with others!<br/>
                     Or download some awesome custom maps from other players on the game internal sharing platform.
                 </KeyFeature>
