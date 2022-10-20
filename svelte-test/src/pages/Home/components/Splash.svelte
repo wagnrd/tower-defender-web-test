@@ -141,6 +141,7 @@
         to {
             margin-right: 100vw;
             margin-top: 30rem;
+            width: 60rem;
             transform: rotate(-20deg);
         }
     }
