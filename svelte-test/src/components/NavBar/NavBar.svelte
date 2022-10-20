@@ -32,11 +32,12 @@
         position: fixed;
         display: flex;
         filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
-        transition: top 300ms;
+        transition: all 300ms;
     }
 
     .nav-bar.hidden {
         top: -3.8rem;
+        filter: none;
     }
 
     .content {
