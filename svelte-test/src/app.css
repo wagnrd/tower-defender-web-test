@@ -57,7 +57,30 @@
 
     font-family: Montserrat, sans-serif;
     color: var(--text-color);
-    font-size: 19px;
+
+    /* UHD+ (3840px and higher)*/
+    font-size: 38px;
+}
+
+/* QHD, WQHD */
+@media screen and (max-device-width: 3839px) {
+    :root {
+        font-size: 25px;
+    }
+}
+
+/* FHD, WFHD */
+@media screen and (max-device-width: 2559px) {
+    :root {
+        font-size: 19px;
+    }
+}
+
+/* HD */
+@media screen and (max-device-width: 1919px) {
+    :root {
+        font-size: 13px;
+    }
 }
 
 body {
