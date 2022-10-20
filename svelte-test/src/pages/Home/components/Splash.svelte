@@ -6,9 +6,9 @@
 
     navBarHidden.update(() => true);
 
-    const percentageScrolledFadeThreshold = 0.3;
+    const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
-    const fadeMultiplier = 1.5;
+    const fadeMultiplier = 1.3;
     let y = 0;
     let isSpaceFighterVisible = true;
 
@@ -21,12 +21,19 @@
         const percentageScrolled = 1 / window.innerHeight.valueOf() * newY;
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
         const opacity = 1 - (scrollValue * fadeMultiplier);
-        const blur = scrollValue * 20;
+        const blur = Math.max(scrollValue * 20, 0);
         elem.style.opacity = opacity.toString(10);
         elem.style.filter = `blur(${blur}px)`;
 
         navBarHidden.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
+
+        console.log("--------------------------------");
+        console.log("opacity: ", opacity);
+        console.log("blur: ", blur);
+        console.log("percentageScrolled: ", percentageScrolled);
+        console.log("scrollValue: ", scrollValue);
+        console.log("y: ", newY);
     }
     $: updateSplash(y);
 </script>
