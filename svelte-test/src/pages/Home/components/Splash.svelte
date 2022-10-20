@@ -27,13 +27,6 @@
 
         navBarHidden.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
-
-        console.log("--------------------------------");
-        console.log("opacity: ", opacity);
-        console.log("blur: ", blur);
-        console.log("percentageScrolled: ", percentageScrolled);
-        console.log("scrollValue: ", scrollValue);
-        console.log("y: ", newY);
     }
     $: updateSplash(y);
 </script>
