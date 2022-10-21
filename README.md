@@ -5,11 +5,11 @@ To do this I build the same website with all frameworks and see which one works 
 
 ## Frameworks
 
-- [Svelte](./svelte-test/README.md) 🚧
-- [SvelteKit](README.md) 🕓
-- [Astro with Svelte](README.md) 🕓
-- [React](README.md) 🕓
-- [Next.js](README.md) 🕓
+- [Svelte](./svelte-test) 🚧
+- [SvelteKit](.) 🕓
+- [Astro with Svelte](.) 🕓
+- [React](.) 🕓
+- [Next.js](.) 🕓
 
 ✅ Done   
 🚧 W.I.P.  

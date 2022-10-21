@@ -6,9 +6,12 @@
 
     export let homeRoute = "";
 
+    let isHamburgerMenuHidden = true;
     let isNavBarHidden = false;
     navBarHidden.set(isNavBarHidden);
     navBarHidden.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
+
+    const toggleMobileMenu = () => isHamburgerMenuHidden = !isHamburgerMenuHidden;
 </script>
 
 <div id="nav-bar" class:hidden="{isNavBarHidden}">
@@ -24,15 +27,16 @@
     </div>
     <div id="bar-ornament"></div>
     <div id="contrast-ornament">
-        <div class="mobile-visible">
-            <Hamburger/>
-        </div>
+        <Hamburger active={!isHamburgerMenuHidden} on:click={toggleMobileMenu}/>
+    </div>
+    <div id="hamburger-menu" class="mobile-visible" class:hidden={isHamburgerMenuHidden}>
+        <slot></slot>
     </div>
 </div>
 
 <style>
     #nav-bar {
-        width: 100vw;
+        width: calc(100vw - (100vw - 100%));
         height: 3.8rem;
         top: 0;
         z-index: 100;
@@ -100,5 +104,21 @@
                 100% 0%,
                 50% 100%
         );
+    }
+
+    #hamburger-menu {
+        height: 100vh;
+        width: 16rem;
+        position: absolute;
+        right: 0;
+        padding-top: 5rem;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        transition: right 300ms;
+    }
+
+    #hamburger-menu.hidden {
+        right: -16rem;
     }
 </style>

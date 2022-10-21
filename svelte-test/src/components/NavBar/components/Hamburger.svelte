@@ -1,18 +1,12 @@
-<div id="hamburger">
-    <div class="hamburger-bar">
-        <div class="triangle left"></div>
-        <div class="bar nr1"></div>
-        <div class="triangle right"></div>
-    </div>
-    <div class="hamburger-bar">
-        <div class="triangle left"></div>
-        <div class="bar nr2"></div>
-        <div class="triangle right"></div>
-    </div>
-    <div class="hamburger-bar">
-        <div class="triangle left"></div>
-        <div class="bar nr3"></div>
-        <div class="triangle right"></div>
+<script lang="ts">
+    export let active = false;
+</script>
+
+<div id="hamburger" class="mobile-visible">
+    <div id="bars" class:active={active} on:click>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 </div>
 
@@ -21,51 +15,43 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 0.3rem;
+        padding-top: 0.6rem;
     }
 
-    .hamburger-bar {
-        display: flex;
-        margin-top: 0.3rem;
-    }
-
-    .triangle {
-        background-color: var(--text-color);
-        width: 0.3rem;
-        height: 0.3rem;
-    }
-
-    .triangle.left {
+    #bars {
+        height: 2rem;
+        width: 4rem;
+        cursor: pointer;
         clip-path: polygon(
                 0% 0%,
                 100% 0%,
-                100% 100%
+                50% 100%
         );
+        transition: all 300ms;
     }
 
     .bar {
-        background-color: var(--text-color);
+        width: 100%;
         height: 0.3rem;
-        margin: 0 -1px 0 -1px;
+        margin-bottom: 0.3rem;
+        background-color: var(--text-color);
+        transition: all 300ms;
     }
 
-    .bar.nr1 {
-        width: 3.7rem;
+    #bars.active {
+        width: 2rem;
+        clip-path: none;
     }
 
-    .bar.nr2 {
-        width: 2.5rem;
+    #bars.active > .bar:nth-of-type(2) {
+        opacity: 0;
     }
 
-    .bar.nr3 {
-        width: 1.2rem;
+    #bars.active > .bar:nth-of-type(1) {
+        transform: rotate(45deg) translate(0.35rem, 0.4rem);
     }
 
-    .triangle.right {
-        clip-path: polygon(
-                0% 0%,
-                100% 0%,
-                0% 100%
-        );
+    #bars.active > .bar:nth-of-type(3) {
+        transform: rotate(-45deg) translate(0.45rem, -0.5rem);
     }
 </style>

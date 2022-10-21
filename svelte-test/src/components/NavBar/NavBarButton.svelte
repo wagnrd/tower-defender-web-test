@@ -11,6 +11,7 @@
 
 <style>
     .button {
+        height: 3.6rem;
         padding: 0.1rem 1.7rem 0 1.7rem;
         font: 1.19rem var(--subheadline-font-family);
         display: flex;
