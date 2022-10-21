@@ -169,3 +169,8 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+img {
+    -webkit-user-select: none; /* Safari */
+    user-select: none;
+}
