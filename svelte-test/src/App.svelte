@@ -1,14 +1,15 @@
 <script lang="ts">
-    import {Link, Route, Router} from "svelte-routing";
-    import NavBar from "./components/NavBar/NavBar.svelte";
-    import NavBarButton from "./components/NavBar/NavBarButton.svelte";
+    import {Route, Router} from "svelte-routing";
+    import NavBar from "./lib/NavBar/NavBar.svelte";
+    import NavBarButton from "./lib/NavBar/NavBarButton.svelte";
     import NotFound from "./pages/NotFound.svelte";
     import Home from "./pages/Home/Home.svelte";
     import News from "./pages/News.svelte";
     import Game from "./pages/Game.svelte";
     import Download from "./pages/Download.svelte";
-    import Footer from "./components/Footer/Footer.svelte";
-    import FooterButton from "./components/Footer/FooterButton.svelte";
+    import Footer from "./lib/Footer/Footer.svelte";
+    import FooterButton from "./lib/Footer/FooterButton.svelte";
+    import {isMobileState} from "./lib/screen-store";
 
     const homeRoute = "/";
     const newsRoute = "/news";
@@ -20,7 +21,20 @@
 
     const openForumsTab = () => window.open("https://" + window.location.host + "/forums/");
     const openEmail = () => window.open("mailto:projects@wagnrd.de?subject=Y.A.T.D.%20support%20ticket");
+
+    let innerWidth = Number.MAX_SAFE_INTEGER;
+
+    const setMobileState = (pageSize: number) => {
+        if (pageSize <= screen.width / 100 * 60)
+            isMobileState.update(value => true);
+        else
+            isMobileState.update(value => false);
+    }
+
+    $: setMobileState(innerWidth);
 </script>
+
+<svelte:window bind:innerWidth={innerWidth}/>
 <main>
     <NavBar homeRoute={homeRoute}>
         <NavBarButton route={newsRoute}>NEWS</NavBarButton>

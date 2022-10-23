@@ -1,15 +1,15 @@
 <script lang="ts">
     import {navigate} from "svelte-routing";
     import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
-    import {navBarHidden} from "./components/nav-bar-store";
-    import Hamburger from "./components/Hamburger.svelte";
+    import {isNavBarHiddenState} from "./lib/nav-bar-store";
+    import Hamburger from "./lib/Hamburger.svelte";
 
     export let homeRoute = "";
 
     let isHamburgerMenuHidden = true;
     let isNavBarHidden = false;
-    navBarHidden.set(isNavBarHidden);
-    navBarHidden.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
+    isNavBarHiddenState.set(isNavBarHidden);
+    isNavBarHiddenState.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
 
     const toggleMobileMenu = () => isHamburgerMenuHidden = !isHamburgerMenuHidden;
 </script>

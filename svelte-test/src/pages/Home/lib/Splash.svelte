@@ -2,9 +2,9 @@
     import bigGun1Image from "../../../assets/images/big-gun-1.png";
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
-    import {navBarHidden} from "../../../components/NavBar/components/nav-bar-store";
+    import {isNavBarHiddenState} from "../../../lib/NavBar/lib/nav-bar-store";
 
-    navBarHidden.update(() => true);
+    isNavBarHiddenState.update(() => true);
 
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
@@ -25,7 +25,7 @@
         elem.style.opacity = opacity.toString(10);
         elem.style.filter = `blur(${blur}px)`;
 
-        navBarHidden.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
+        isNavBarHiddenState.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     }
     $: updateSplash(y);

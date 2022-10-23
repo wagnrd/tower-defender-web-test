@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BulletPoint from "../../../components/BulletPoint.svelte";
+    import BulletPoint from "../../../lib/BulletPoint.svelte";
 
     export let title: string;
     export let last = false;

@@ -1,10 +1,10 @@
 <script lang="ts">
     import armouredTruckImage from "../../assets/images/armoured-truck.png";
     import bigGun2Image from "../../assets/images/big-gun-2.png";
-    import Section from "../../components/Section.svelte";
-    import NewsCarousel from "./components/NewsCarousel/NewsCarousel.svelte";
-    import KeyFeature from "./components/KeyFeature.svelte";
-    import Splash from "./components/Splash.svelte";
+    import Section from "../../lib/Section.svelte";
+    import NewsCarousel from "./lib/NewsCarousel/NewsCarousel.svelte";
+    import KeyFeature from "./lib/KeyFeature.svelte";
+    import Splash from "./lib/Splash.svelte";
 </script>
 
 <Splash/>
