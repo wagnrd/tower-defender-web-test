@@ -3,8 +3,7 @@
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
     import {isNavBarHiddenState} from "../../../lib/NavBar/lib/nav-bar-store";
-
-    isNavBarHiddenState.update(() => true);
+    import {isMobileState} from "../../../lib/screen-store";
 
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
@@ -29,22 +28,27 @@
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     }
     $: updateSplash(y);
+
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <svelte:window bind:scrollY={y}/>
 <div id="splash">
-    <div id="big-gun-container">
-        <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
-    </div>
-    <div id="space-fighter-container">
-        <img src={spaceFighterImage} id="space-fighter" class:visible={isSpaceFighterVisible}
-             class:hidden={!isSpaceFighterVisible} alt="Space fighter"/>
-    </div>
+    {#if !isMobile}
+        <div id="big-gun-container">
+            <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
+        </div>
+        <div id="space-fighter-container">
+            <img src={spaceFighterImage} id="space-fighter" class:visible={isSpaceFighterVisible}
+                 class:hidden={!isSpaceFighterVisible} alt="Space fighter"/>
+        </div>
+    {/if}
     <div id="logo-container">
-        <img src={logoImage} id="logo" alt="Space fighter"/>
+        <img src={logoImage} id="logo" class:mobile={isMobile} alt="Space fighter"/>
     </div>
     <div id="sub-title-container">
-        <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
+        <div id="sub-title" class:mobile={isMobile}>YET ANOTHER TOWER DEFENDER</div>
     </div>
 </div>
 
@@ -95,7 +99,6 @@
     #space-fighter-container {
         width: 100%;
         position: absolute;
-        z-index: 1;
         display: flex;
         justify-content: end;
         align-items: start;
@@ -149,13 +152,18 @@
     }
 
     #logo {
-        width: 48rem;
+        max-width: 48rem;
         object-fit: contain;
         margin-bottom: 6rem;
         animation-name: logo-appear;
         animation-duration: 3000ms;
         animation-delay: 2100ms;
         animation-fill-mode: both;
+    }
+
+    #logo.mobile {
+        width: 100%;
+        animation-delay: 800ms;
     }
 
     @keyframes logo-appear {
@@ -174,12 +182,19 @@
     }
 
     #sub-title {
+        width: 100%;
         font: 2.2rem var(--sub-brand-font-family);
+        text-align: center;
         margin-bottom: 5rem;
         animation-name: sub-title-appear;
         animation-duration: 3000ms;
         animation-delay: 2100ms;
         animation-fill-mode: both;
+    }
+
+    #sub-title.mobile {
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
+        animation-delay: 800ms;
     }
 
     @keyframes sub-title-appear {
