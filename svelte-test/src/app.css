@@ -90,6 +90,12 @@
     }
 }
 
+@media screen and (max-device-width: 300px) and (orientation: portrait) {
+    :root {
+        font-size: 13px;
+    }
+}
+
 body {
     margin: 0;
     background: var(--base-color) url("./assets/images/background.jpg") center/cover no-repeat scroll;

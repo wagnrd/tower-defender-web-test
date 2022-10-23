@@ -29,7 +29,8 @@
         const pixelRatio = screen.width / screen.height;
         const mobileThreshold = 1 - (0.4 / defaultPixelRatio * pixelRatio);
 
-        if (pageSize <= screen.width * mobileThreshold)
+        if (pageSize <= screen.width * mobileThreshold ||
+            window.matchMedia("screen and (orientation: portrait) and (max-device-width: 500px)"))
             isMobileState.update(value => true);
         else
             isMobileState.update(value => false);

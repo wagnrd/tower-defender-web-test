@@ -5,6 +5,8 @@
     import {isNavBarHiddenState} from "../../../lib/NavBar/lib/nav-bar-store";
     import {isMobileState} from "../../../lib/screen-store";
 
+    isNavBarHiddenState.update(() => true);
+
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
     const fadeMultiplier = 1.3;
