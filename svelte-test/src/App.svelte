@@ -23,9 +23,13 @@
     const openEmail = () => window.open("mailto:projects@wagnrd.de?subject=Y.A.T.D.%20support%20ticket");
 
     let innerWidth = Number.MAX_SAFE_INTEGER;
+    const defaultPixelRatio = 16 / 9;
 
     const setMobileState = (pageSize: number) => {
-        if (pageSize <= screen.width / 100 * 60)
+        const pixelRatio = screen.width / screen.height;
+        const mobileThreshold = 1 - (0.4 / defaultPixelRatio * pixelRatio);
+
+        if (pageSize <= screen.width * mobileThreshold)
             isMobileState.update(value => true);
         else
             isMobileState.update(value => false);
