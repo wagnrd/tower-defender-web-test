@@ -173,11 +173,11 @@
         margin-left: 1.3rem;
     }
 
-    .pagination-button.inactive {
+    .pagination-button.hidden {
         cursor: auto;
     }
 
-    .inactive {
+    .hidden {
         animation-name: hide;
         animation-duration: 300ms;
         animation-fill-mode: both;
