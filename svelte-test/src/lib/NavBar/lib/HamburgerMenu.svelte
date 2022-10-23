@@ -1,21 +1,35 @@
 <script lang="ts">
-    export let active = false;
+    export let hidden = false;
+
+    let isActive = false;
+    const toggleMobileMenu = () => isActive = !isActive;
 </script>
 
-<div id="hamburger" class="mobile-visible">
-    <div id="bars" class:active={active} on:click>
+<div id="hamburger">
+    <div id="bars" class:active={isActive} on:click={toggleMobileMenu}>
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
 </div>
+<div id="menu" class:inactive={!isActive | hidden}>
+    <slot/>
+</div>
 
 <style>
     #hamburger {
+        min-width: 7.4rem;
+        padding-top: 0.6rem;
+        margin-left: -2.75rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 0.6rem;
+        background-color: var(--contrast-color);
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                50% 100%
+        );
     }
 
     #bars {
@@ -53,5 +67,24 @@
 
     #bars.active > .bar:nth-of-type(3) {
         transform: rotate(-45deg) translate(0.45rem, -0.5rem);
+    }
+
+    #menu {
+        height: 100vh;
+        width: 16rem;
+        background-color: var(--base-color);
+        position: absolute;
+        right: 0;
+        padding-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        z-index: -1;
+        filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
+        transition: right 300ms;
+    }
+
+    #menu.inactive {
+        right: -16rem;
+        filter: none;
     }
 </style>

@@ -76,30 +76,6 @@
     }
 }
 
-@media screen and (min-width: 1001px) {
-    .mobile-visible {
-        visibility: hidden !important;
-        width: 0 !important;
-        height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .mobile-hidden {
-        visibility: hidden !important;
-        width: 0 !important;
-        height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .mobile-visible {
-        visibility: visible !important;
-    }
-}
-
 /* HD */
 @media screen and (max-device-width: 1919px) {
     :root {
@@ -111,18 +87,6 @@
 @media screen and (max-device-width: 500px) and (orientation: portrait) {
     :root {
         font-size: 15px;
-    }
-
-    .mobile-hidden {
-        visibility: hidden !important;
-        width: 0 !important;
-        height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .mobile-visible {
-        visibility: visible !important;
     }
 }
 

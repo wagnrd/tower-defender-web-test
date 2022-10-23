@@ -114,7 +114,7 @@
         animation-fill-mode: both;
     }
 
-    #space-fighter.hidden {
+    #space-fighter.inactive {
         animation-name: space-fighter-disappear;
         animation-duration: 1000ms;
         animation-timing-function: ease-in;

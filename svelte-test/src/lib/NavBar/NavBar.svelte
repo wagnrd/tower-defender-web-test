@@ -1,17 +1,18 @@
 <script lang="ts">
     import {navigate} from "svelte-routing";
     import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
+    import Hamburger from "./lib/HamburgerMenu.svelte";
     import {isNavBarHiddenState} from "./lib/nav-bar-store";
-    import Hamburger from "./lib/Hamburger.svelte";
+    import {isMobileState} from "../screen-store";
 
     export let homeRoute = "";
 
-    let isHamburgerMenuHidden = true;
     let isNavBarHidden = false;
     isNavBarHiddenState.set(isNavBarHidden);
     isNavBarHiddenState.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
 
-    const toggleMobileMenu = () => isHamburgerMenuHidden = !isHamburgerMenuHidden;
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <div id="nav-bar" class:hidden="{isNavBarHidden}">
@@ -21,17 +22,22 @@
             Y.A.T.D.
         </div>
     </div>
-    <div id="mobile-spacer" class="mobile-visible"></div>
-    <div id="buttons" class="mobile-hidden">
-        <slot></slot>
-    </div>
-    <div id="bar-ornament"></div>
-    <div id="contrast-ornament">
-        <Hamburger active={!isHamburgerMenuHidden} on:click={toggleMobileMenu}/>
-    </div>
-    <div id="hamburger-menu" class="mobile-visible" class:hidden={isHamburgerMenuHidden}>
-        <slot></slot>
-    </div>
+
+    {#if isMobile}
+        <div id="mobile-spacer"></div>
+        <!--suppress XmlDuplicatedId -->
+        <div id="bar-ornament"></div>
+        <Hamburger hidden={isNavBarHidden}>
+            <slot/>
+        </Hamburger>
+    {:else}
+        <div id="buttons">
+            <slot/>
+        </div>
+        <!--suppress XmlDuplicatedId -->
+        <div id="bar-ornament"></div>
+        <div id="contrast-ornament"></div>
+    {/if}
 </div>
 
 <style>
@@ -104,21 +110,5 @@
                 100% 0%,
                 50% 100%
         );
-    }
-
-    #hamburger-menu {
-        height: 100vh;
-        width: 16rem;
-        position: absolute;
-        right: 0;
-        padding-top: 5rem;
-        z-index: -1;
-        display: flex;
-        flex-direction: column;
-        transition: right 300ms;
-    }
-
-    #hamburger-menu.hidden {
-        right: -16rem;
     }
 </style>
