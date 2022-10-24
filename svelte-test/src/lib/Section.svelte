@@ -37,21 +37,20 @@
         z-index: -2;
     }
 
-    .right #background {
-        display: flex;
-        justify-content: end;
-        z-index: -2;
-    }
-
     #ornament {
         width: 73%;
         height: 33rem;
         background-color: var(--base-color);
     }
 
+    .right #ornament {
+        margin-left: 27%;
+    }
+
     .mobile #ornament {
-        width: 100%;
+        width: 100vw;
         height: 100%;
+        margin: 0;
     }
 
     .left #ornament {
@@ -72,6 +71,10 @@
 
     .mobile h1 {
         margin-left: -5vw;
+    }
+
+    .right.mobile h1 {
+        margin-right: -5vw;
     }
 
     #content {
