@@ -22,8 +22,8 @@
     const openForumsTab = () => window.open("https://" + window.location.host + "/forums/");
     const openEmail = () => window.open("mailto:projects@wagnrd.de?subject=Y.A.T.D.%20support%20ticket");
 
-    let innerWidth = Number.MAX_SAFE_INTEGER;
     const defaultPixelRatio = 16 / 9;
+    let innerWidth = Number.MAX_SAFE_INTEGER;
 
     const setMobileState = (pageSize: number) => {
         const pixelRatio = screen.width / screen.height;
@@ -37,10 +37,13 @@
     }
 
     $: setMobileState(innerWidth);
+
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <svelte:window bind:innerWidth={innerWidth}/>
-<main>
+<main class:mobile={isMobile}>
     <NavBar homeRoute={homeRoute}>
         <NavBarButton route={newsRoute}>NEWS</NavBarButton>
         <NavBarButton route={gameRoute}>GAME</NavBarButton>
@@ -65,7 +68,7 @@
 </main>
 
 <style>
-    main {
+    .mobile {
         overflow-x: hidden;
     }
 </style>

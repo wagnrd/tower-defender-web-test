@@ -90,12 +90,6 @@
     }
 }
 
-@media screen and (max-device-height: 1000px) and (orientation: landscape) {
-    :root {
-        font-size: 17px;
-    }
-}
-
 /* Mobile */
 @media screen and (max-device-width: 500px) and (orientation: portrait) {
     :root {
