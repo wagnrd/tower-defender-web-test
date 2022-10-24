@@ -71,7 +71,7 @@
     }
 
     .mobile #news-carousel {
-        margin-top: 2rem;
+        margin: 3rem 0 0 0;
     }
 
     #latest-news-section-image {
@@ -86,7 +86,7 @@
     }
 
     .mobile #key-features {
-        margin: 2rem 3rem 0 3rem;
+        margin: 3rem 3rem 0 3rem;
     }
 
     #key-features-section-image {
