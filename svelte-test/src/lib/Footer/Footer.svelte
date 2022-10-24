@@ -1,8 +1,12 @@
 <script lang="ts">
+    import {isMobileState} from "../screen-store";
+
     const year = new Date().getUTCFullYear();
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="footer">
+<div id="footer" class:mobile={isMobile}>
     <div id="background">
         <div id="buttons">
             <slot></slot>
@@ -18,7 +22,7 @@
 <style>
     #footer {
         width: 100%;
-        height: 12rem;
+        padding: 1.5rem 0 1.5rem 0;
         background-color: var(--base-color);
         display: flex;
         align-items: center;
@@ -32,6 +36,11 @@
         justify-content: center;
     }
 
+    .mobile #buttons {
+        flex-wrap: wrap;
+        row-gap: 1rem;
+    }
+
     #brand {
         font: var(--subheadline-font);
         margin: 1.5rem 0 1.5rem 0;
@@ -40,5 +49,6 @@
 
     #copyright {
         text-align: center;
+        padding: 0 1.5rem 0 1.5rem;
     }
 </style>
