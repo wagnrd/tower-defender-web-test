@@ -3,6 +3,7 @@
     import type {ArticlePreview} from "./news-articles";
     import {fetchArticlePreviews} from "./news-articles";
     import logoDarkImage from "../../../../assets/images/logo-dark.svg";
+    import {isMobileState} from "../../../../lib/screen-store";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;
@@ -54,9 +55,12 @@
     }
 
     const formatDate = (timestamp: number): string => new Date(timestamp).toLocaleDateString();
+
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="carousel">
+<div id="carousel" class:mobile={isMobile}>
     {#if articles.length > 0}
         <div id="content">
             <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
@@ -65,6 +69,7 @@
             <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
                 <div class="arrow"></div>
             </div>
+
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
                 <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
@@ -76,6 +81,7 @@
                     <Link to="/news/{article.id}">Read news</Link>
                 </div>
             {/each}
+
             <div id="pagination-indicators">
                 {#each articles as _, i}
                     <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}"
@@ -97,6 +103,7 @@
 <style>
     #carousel {
         width: 49rem;
+        max-width: 100vw;
         height: 17rem;
         display: flex;
         align-items: center;
@@ -110,15 +117,27 @@
         animation: show 300ms 300ms both;
     }
 
+    .mobile #content {
+        grid-column-gap: 0;
+    }
+
     .headline {
         grid-row: 1;
         grid-column: 2 / 4;
+    }
+
+    .mobile .headline {
+        grid-column: 2;
     }
 
     .date {
         margin: 0.2rem 0 1rem;
         grid-row: 2;
         grid-column: 2 / 4;
+    }
+
+    .mobile .date {
+        grid-column: 2;
     }
 
     .carousel-image {
@@ -128,9 +147,19 @@
         grid-column: 2;
     }
 
+    .mobile .carousel-image {
+        width: 100%;
+    }
+
     .description {
         grid-row: 3;
         grid-column: 3;
+    }
+
+    .mobile .description {
+        grid-row: 4;
+        grid-column: 2;
+        margin-top: 1rem;
     }
 
     .pagination-button {
@@ -166,11 +195,21 @@
         margin-right: 1.6rem;
     }
 
+    .mobile .pagination-button.left {
+        grid-row: 3 / 4;
+        margin: 0 1.4rem 0 1.1rem;
+    }
+
     .pagination-button.right {
         grid-row: 3;
         grid-column: 4;
         transform: scaleX(-1);
         margin-left: 1.3rem;
+    }
+
+    .mobile .pagination-button.right {
+        grid-row: 3 / 4;
+        margin: 0 1.1rem 0 1.4rem;
     }
 
     .pagination-button.hidden {
@@ -234,6 +273,11 @@
         margin-top: 1.5rem;
         grid-row: 4;
         grid-column: 2 / 4;
+    }
+
+    .mobile #pagination-indicators {
+        grid-row: 5;
+        grid-column: 2;
     }
 
     .pagination-indicator-button {
