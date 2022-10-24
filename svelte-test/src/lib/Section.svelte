@@ -85,4 +85,8 @@
     .right #content {
         justify-content: end;
     }
+
+    .mobile #content {
+        justify-content: center;
+    }
 </style>

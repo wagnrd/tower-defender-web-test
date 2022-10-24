@@ -110,6 +110,10 @@
         justify-content: center;
     }
 
+    .mobile#carousel {
+        height: min-content;
+    }
+
     #content {
         display: grid;
         grid-column-gap: 1.6rem;
@@ -196,7 +200,7 @@
     }
 
     .mobile .pagination-button.left {
-        grid-row: 3 / 4;
+        grid-row: 3 / 5;
         margin: 0 1.4rem 0 1.1rem;
     }
 
@@ -208,7 +212,7 @@
     }
 
     .mobile .pagination-button.right {
-        grid-row: 3 / 4;
+        grid-row: 3 / 5;
         margin: 0 1.1rem 0 1.4rem;
     }
 

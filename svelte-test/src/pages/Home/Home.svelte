@@ -70,6 +70,10 @@
         margin: 6rem 1.5rem 0 0;
     }
 
+    .mobile #news-carousel {
+        margin-top: 2rem;
+    }
+
     #latest-news-section-image {
         width: 33rem;
         object-fit: contain;
@@ -82,7 +86,7 @@
     }
 
     .mobile #key-features {
-        margin: 4rem 3rem 0 3rem;
+        margin: 2rem 3rem 0 3rem;
     }
 
     #key-features-section-image {
