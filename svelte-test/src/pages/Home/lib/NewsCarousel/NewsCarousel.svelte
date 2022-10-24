@@ -39,7 +39,7 @@
 
     const defaultArticleAutoChangeDelayMs = 7000;
     const interruptedPageAutoChangeDelayMs = 15000;
-    let articleChangeTimer: NodeJS.Timer;
+    let articleChangeTimer: number;
 
     const resetArticleAutoChangeTimer = () => {
         clearTimeout(articleChangeTimer);

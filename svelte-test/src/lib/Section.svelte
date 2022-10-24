@@ -1,16 +1,21 @@
 <script lang="ts">
+    import {isMobileState} from "./screen-store";
+
     export let right = false;
     export let title = "";
+
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="section" class:right={right} class:left={!right}>
+<div id="section" class:right={right} class:left={!right} class:mobile={isMobile}>
     <div id="background">
         <div id="ornament"></div>
     </div>
     <div>
         <h1>{title}</h1>
         <div id="content">
-            <slot></slot>
+            <slot/>
         </div>
     </div>
 </div>
@@ -44,6 +49,11 @@
         background-color: var(--base-color);
     }
 
+    .mobile #ornament {
+        width: 100%;
+        height: 100%;
+    }
+
     .left #ornament {
         clip-path: polygon(
                 0% 0%,
@@ -58,6 +68,10 @@
                 0% 0%,
                 100% 100%
         );
+    }
+
+    .mobile h1 {
+        margin-left: -5vw;
     }
 
     #content {

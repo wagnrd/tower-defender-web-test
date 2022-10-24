@@ -5,20 +5,28 @@
     import NewsCarousel from "./lib/NewsCarousel/NewsCarousel.svelte";
     import KeyFeature from "./lib/KeyFeature.svelte";
     import Splash from "./lib/Splash.svelte";
+    import {isMobileState} from "../../lib/screen-store";
+
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <Splash/>
-<div id="page">
+<div id="page" class:mobile={isMobile}>
     <div>
         <Section title="LATEST NEWS" right>
             <div id="news-carousel">
                 <NewsCarousel/>
             </div>
-            <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
+            {#if !isMobile}
+                <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
+            {/if}
         </Section>
 
         <Section title="KEY FEATURES">
-            <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
+            {#if !isMobile}
+                <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
+            {/if}
             <div id="key-features">
                 <KeyFeature title="CAMPAIGN">
                     Play a campaign with dozens of exciting scenarios. The further you progress through the campaign
@@ -71,6 +79,10 @@
     #key-features {
         max-width: 43rem;
         margin: 13rem 0 0 3rem;
+    }
+
+    .mobile #key-features {
+        margin: 4rem 3rem 0 3rem;
     }
 
     #key-features-section-image {

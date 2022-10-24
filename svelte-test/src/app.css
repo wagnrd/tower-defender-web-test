@@ -93,13 +93,13 @@
 /* Mobile */
 @media screen and (max-device-width: 500px) {
     :root {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
 @media screen and (max-device-width: 300px) {
     :root {
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 
