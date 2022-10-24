@@ -56,7 +56,7 @@
 
 <style>
     #splash {
-        width: calc(100vm - (100vm - 100%));
+        width: calc(100vw - (100vw - 100%));
         height: calc(100vh + 5rem);
         background: url("../../../assets/images/splash-background.jpg") top center/cover no-repeat;
         position: relative;
