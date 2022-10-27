@@ -19,5 +19,8 @@
     "tslib": "2.4.0",
     "typescript": "4.8.3",
     "vite": "3.1.2"
+  },
+  "dependencies": {
+    "svelte-gestures": "^1.4.1"
   }
 }

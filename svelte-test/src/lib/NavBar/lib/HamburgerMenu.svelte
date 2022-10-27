@@ -1,8 +1,20 @@
 <script lang="ts">
+    import {swipe} from "svelte-gestures";
+
     export let hidden = false;
 
     let isActive = false;
     const toggleMobileMenu = () => isActive = !isActive;
+
+    const swipeCloseMenu = (event: any) => {
+        if (event.detail.direction === "right")
+            isActive = false;
+    }
+
+    const clickCloseMenu = ({target: {id: targetId}}: PointerEvent) => {
+        if (targetId === "overlay")
+            isActive = false;
+    }
 </script>
 
 <div id="hamburger">
@@ -12,8 +24,11 @@
         <div class="bar"></div>
     </div>
 </div>
-<div id="menu" class:inactive={!isActive | hidden}>
-    <slot/>
+<div id="overlay" class:active={isActive && !hidden} on:click={clickCloseMenu}
+     use:swipe on:swipe={swipeCloseMenu}>
+    <div id="menu" class:inactive={!isActive || hidden}>
+        <slot/>
+    </div>
 </div>
 
 <style>
@@ -86,5 +101,20 @@
     #menu.inactive {
         right: -16rem;
         filter: none;
+    }
+
+    #overlay {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        background-color: transparent;
+        z-index: -1;
+        pointer-events: none;
+        transition: all 300ms;
+    }
+
+    #overlay.active {
+        background-color: rgba(0, 0, 0, 0.5);
+        pointer-events: all;
     }
 </style>
