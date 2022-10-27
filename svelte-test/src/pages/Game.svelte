@@ -1,9 +1,10 @@
 <script lang="ts">
+    import Page from "../lib/Page.svelte";
 </script>
 
-<div>
+<Page>
     <div class="heading">Game</div>
-</div>
+</Page>
 
 <style>
     .heading {

@@ -1,9 +1,10 @@
 <script lang="ts">
+    import Page from "../lib/Page.svelte";
 </script>
 
-<div>
+<Page>
     <div class="heading">404: I wish there were such a page... but sadly there isn't :(</div>
-</div>
+</Page>
 
 <style>
     .heading {

@@ -3,16 +3,21 @@
 
     export let hidden = false;
 
-    let isActive = false;
+    $: isActive = hidden;
     const toggleMobileMenu = () => isActive = !isActive;
 
-    const swipeCloseMenu = (event: any) => {
+    const onOverlaySwipe = (event: any) => {
         if (event.detail.direction === "right")
             isActive = false;
     }
 
-    const clickCloseMenu = ({target: {id: targetId}}: PointerEvent) => {
+    const onOverlayClick = ({target: {id: targetId}}: PointerEvent) => {
         if (targetId === "overlay")
+            isActive = false;
+    }
+
+    const onMenuItemClick = ({target: {id: targetId}}: PointerEvent) => {
+        if (targetId != "menu")
             isActive = false;
     }
 </script>
@@ -25,8 +30,8 @@
     </div>
 </div>
 <div id="overlay" class:active={isActive && !hidden}
-     on:click={clickCloseMenu} use:swipe on:swipe={swipeCloseMenu}>
-    <div id="menu" class:inactive={!isActive || hidden}>
+     on:click={onOverlayClick} use:swipe on:swipe={onOverlaySwipe}>
+    <div id="menu" class:inactive={!isActive || hidden} on:click={onMenuItemClick}>
         <slot/>
     </div>
 </div>
