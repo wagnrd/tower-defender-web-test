@@ -17,15 +17,15 @@
     }
 </script>
 
-<div id="hamburger">
-    <div id="bars" class:active={isActive} on:click={toggleMobileMenu}>
+<div id="hamburger" on:click={toggleMobileMenu}>
+    <div id="bars" class:active={isActive}>
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
 </div>
-<div id="overlay" class:active={isActive && !hidden} on:click={clickCloseMenu}
-     use:swipe on:swipe={swipeCloseMenu}>
+<div id="overlay" class:active={isActive && !hidden}
+     on:click={clickCloseMenu} use:swipe on:swipe={swipeCloseMenu}>
     <div id="menu" class:inactive={!isActive || hidden}>
         <slot/>
     </div>
