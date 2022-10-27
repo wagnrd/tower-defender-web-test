@@ -1,5 +1,6 @@
 <script lang="ts">
     import {Link} from "svelte-routing";
+    import {swipe} from "svelte-gestures";
     import type {ArticlePreview} from "./news-articles";
     import {fetchArticlePreviews} from "./news-articles";
     import logoDarkImage from "../../../../assets/images/logo-dark.svg";
@@ -21,17 +22,17 @@
     const showPreviousArticle = () => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
-    }
+    };
 
     const showNextArticle = () => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
-    }
+    };
 
     const showArticle = (index: number) => {
         resetArticleAutoChangeTimer();
         currentArticleIndex = index;
-    }
+    };
 
     $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-visible" : "article-hidden";
     $: pageIndicatorButtonClass = (buttonIndex: number): string => buttonIndex == currentArticleIndex ? "active" : "inactive";
@@ -45,22 +46,29 @@
     const resetArticleAutoChangeTimer = () => {
         clearTimeout(articleChangeTimer);
         startArticleAutoChangeTimer(interruptedPageAutoChangeDelayMs);
-    }
+    };
 
     const startArticleAutoChangeTimer = (ms: number) => {
         articleChangeTimer = setTimeout(() => {
             currentArticleIndex = (currentArticleIndex + 1) % articles.length;
             startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
         }, ms);
-    }
+    };
 
     const formatDate = (timestamp: number): string => new Date(timestamp).toLocaleDateString();
 
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
+
+    const onCarouselSwipe = (event: any) => {
+        if (event.detail.direction === "right")
+            showNextArticle();
+        else if (event.detail.direction === "left")
+            showPreviousArticle();
+    };
 </script>
 
-<div id="carousel" class:mobile={isMobile}>
+<div id="carousel" class:mobile={isMobile} use:swipe on:swipe={onCarouselSwipe}>
     {#if articles.length > 0}
         <div id="content">
             <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
