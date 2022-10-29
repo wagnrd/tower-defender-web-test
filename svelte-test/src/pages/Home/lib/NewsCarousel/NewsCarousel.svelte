@@ -61,14 +61,16 @@
     isMobileState.subscribe(value => isMobile = value);
 
     const onCarouselSwipe = (event: any) => {
+        console.log("lol");
         if (event.detail.direction === "right")
-            showNextArticle();
-        else if (event.detail.direction === "left")
             showPreviousArticle();
+        else if (event.detail.direction === "left")
+            showNextArticle();
     };
 </script>
 
-<div id="carousel" class:mobile={isMobile} use:swipe on:swipe={onCarouselSwipe}>
+<div id="carousel" class:mobile={isMobile} use:swipe={{timeframe: 300, minSwipeDistance: 60, touchAction: "pan-y"}}
+     on:swipe={onCarouselSwipe}>
     {#if articles.length > 0}
         <div id="content">
             <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
