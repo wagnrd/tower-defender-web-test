@@ -2,7 +2,7 @@
     import armouredTruckImage from "../../assets/images/armoured-truck.png";
     import bigGun2Image from "../../assets/images/big-gun-2.png";
     import Section from "../../lib/Section.svelte";
-    import NewsCarousel from "./lib/NewsCarousel/NewsCarousel.svelte";
+    import NewsCarousel from "./lib/NewsCarousel.svelte";
     import KeyFeature from "./lib/KeyFeature.svelte";
     import Splash from "./lib/Splash.svelte";
     import {isMobileState} from "../../lib/screen-store";
@@ -25,6 +25,7 @@
             <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
         {/if}
     </Section>
+
     <Section title="KEY FEATURES">
         {#if !isMobile}
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>

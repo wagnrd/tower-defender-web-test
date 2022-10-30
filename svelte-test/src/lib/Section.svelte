@@ -54,20 +54,17 @@
 
     .right #ornament {
         margin-left: 27%;
+        clip-path: polygon(
+                100% 0%,
+                0% 0%,
+                100% 100%
+        );
     }
 
     .mobile #ornament {
         width: 100vw;
         height: 100%;
         margin: 0;
-    }
-
-    .right #ornament {
-        clip-path: polygon(
-                100% 0%,
-                0% 0%,
-                100% 100%
-        );
     }
 
     .mobile h1 {

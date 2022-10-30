@@ -1,17 +1,15 @@
 <script lang="ts">
     import Page from "../lib/Page.svelte";
+    import Section from "../lib/Section.svelte";
+
+    const articleBatchSize = 10;
+
+    //const fetchArticlePreviews(articleBatchSize, 0);
 </script>
 
-<Page>
-    <div class="heading">News</div>
+<Page topGap>
+    <Section title="NEWS" right></Section>
 </Page>
 
 <style>
-    .heading {
-        height: 100vh;
-        font: var(--headline-font);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 </style>

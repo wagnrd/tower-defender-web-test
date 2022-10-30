@@ -1,10 +1,10 @@
 <script lang="ts">
     import {Link} from "svelte-routing";
     import {swipe} from "svelte-gestures";
-    import type {ArticlePreview} from "./news-articles";
-    import {fetchArticlePreviews} from "./news-articles";
-    import logoDarkImage from "../../../../assets/images/logo-dark.svg";
-    import {isMobileState} from "../../../../lib/screen-store";
+    import type {ArticlePreview} from "../../../lib/news-articles";
+    import {fetchArticlePreviews} from "../../../lib/news-articles";
+    import logoDarkImage from "../../../assets/images/logo-dark.svg";
+    import {isMobileState} from "../../../lib/screen-store";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;
