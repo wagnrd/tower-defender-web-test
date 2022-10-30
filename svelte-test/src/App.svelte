@@ -31,9 +31,9 @@
 
         if (pageSize <= screen.width * mobileThreshold ||
             window.matchMedia("screen and (max-device-width: 1000px)").matches)
-            isMobileState.update(value => true);
+            isMobileState.update(_ => true);
         else
-            isMobileState.update(value => false);
+            isMobileState.update(_ => false);
     }
 
     $: setMobileState(innerWidth);
