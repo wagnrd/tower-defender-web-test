@@ -3,7 +3,7 @@
 
     export let hidden = false;
 
-    $: isActive = hidden;
+    let isActive = hidden;
     const toggleMobileMenu = () => isActive = !isActive;
 
     const onOverlaySwipe = (event: any) => {
