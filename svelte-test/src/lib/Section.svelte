@@ -8,7 +8,7 @@
     isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="section" class:right={right} class:left={!right} class:mobile={isMobile}>
+<div id="section" class:right={right} class:mobile={isMobile}>
     <div id="background">
         <div id="ornament"></div>
     </div>
@@ -37,10 +37,19 @@
         z-index: -2;
     }
 
+    .right #background {
+        filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
+    }
+
     #ornament {
         width: 73%;
         height: 33rem;
         background-color: var(--base-color);
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                0% 100%
+        );
     }
 
     .right #ornament {
@@ -51,14 +60,6 @@
         width: 100vw;
         height: 100%;
         margin: 0;
-    }
-
-    .left #ornament {
-        clip-path: polygon(
-                0% 0%,
-                100% 0%,
-                0% 100%
-        );
     }
 
     .right #ornament {
