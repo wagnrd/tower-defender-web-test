@@ -59,20 +59,20 @@
     color: var(--text-color);
 
     /* UHD+ (3840px and higher)*/
-    font-size: 38px;
+    font-size: 33px;
 }
 
 /* QHD, WQHD */
 @media screen and (max-device-width: 3839px) {
     :root {
-        font-size: 25px;
+        font-size: 22px;
     }
 }
 
 /* FHD, WFHD */
 @media screen and (max-device-width: 2559px) {
     :root {
-        font-size: 19px;
+        font-size: 17px;
     }
 }
 
