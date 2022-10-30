@@ -72,9 +72,11 @@
 
     .mobile h1 {
         margin-left: -5vw;
+        margin-right: 0;
     }
 
-    .right.mobile h1 {
+    .mobile.right h1 {
+        margin-left: 0;
         margin-right: -5vw;
     }
 
