@@ -4,6 +4,7 @@
     import logoImage from "../../../assets/images/logo-dark.svg";
     import {isNavBarHiddenState} from "../../../lib/NavBar/lib/nav-bar-store";
     import {isMobileState} from "../../../lib/screen-store";
+    import {onDestroy} from "svelte";
 
     isNavBarHiddenState.update(() => true);
 
@@ -34,8 +35,10 @@
 
         isNavBarHiddenState.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
-    }
+    };
     $: updateSplash(y);
+
+    onDestroy(() => isNavBarHiddenState.update(() => false));
 </script>
 
 <svelte:window bind:scrollY={y}/>

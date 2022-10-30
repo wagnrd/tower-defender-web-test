@@ -12,8 +12,11 @@
     isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<Splash/>
-<Page topGap>
+<Page>
+    <div id="splash">
+        <Splash/>
+    </div>
+
     <Section title="LATEST NEWS" right>
         <div id="news-carousel" class:mobile={isMobile}>
             <NewsCarousel/>
@@ -22,7 +25,6 @@
             <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
         {/if}
     </Section>
-
     <Section title="KEY FEATURES">
         {#if !isMobile}
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
@@ -61,6 +63,10 @@
 </Page>
 
 <style>
+    #splash {
+        margin-bottom: 3rem;
+    }
+
     #news-carousel {
         margin: 6.5rem 7rem 0 3rem;
     }
@@ -77,7 +83,7 @@
 
     #key-features {
         max-width: 43rem;
-        margin: 13rem 0 0 3rem;
+        margin: 13rem 3rem 0 3rem;
         display: flex;
         flex-direction: column;
         row-gap: 4rem;

@@ -7,15 +7,19 @@
 
     export let homeRoute = "";
 
-    let isNavBarHidden = false;
-    isNavBarHiddenState.set(isNavBarHidden);
-    isNavBarHiddenState.subscribe((shouldHide: boolean) => isNavBarHidden = shouldHide);
+    let isAllowedToHide = true;
+    let isRequestedToHide = false;
+    $: isNavBarHidden = isAllowedToHide && isRequestedToHide;
+    isNavBarHiddenState.subscribe((shouldHide: boolean) => isRequestedToHide = shouldHide);
 
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
+
+    const forbidToHide = () => isAllowedToHide = false;
+    const allowToHide = () => isAllowedToHide = true;
 </script>
 
-<div id="nav-bar" class:hidden="{isNavBarHidden}">
+<div id="nav-bar" class:hidden="{isNavBarHidden}" on:mouseenter={forbidToHide} on:mouseleave={allowToHide}>
     <div id="brand" class="clickable" on:click={() => navigate(homeRoute)}>
         <img src={logoDarkSmall} id="logo" alt="Brand logo"/>
         <div id="name">
