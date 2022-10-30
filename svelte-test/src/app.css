@@ -97,7 +97,19 @@
     }
 }
 
+@media screen and (max-device-height: 500px) and (orientation: landscape) {
+    :root {
+        font-size: 14px;
+    }
+}
+
 @media screen and (max-device-width: 300px) and (orientation: portrait) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-device-height: 300px) and (orientation: landscape) {
     :root {
         font-size: 12px;
     }

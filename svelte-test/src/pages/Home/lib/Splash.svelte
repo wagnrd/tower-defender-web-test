@@ -39,7 +39,7 @@
 </script>
 
 <svelte:window bind:scrollY={y}/>
-<div id="splash">
+<div id="splash" class:mobile={isMobile}>
     {#if !isMobile}
         <div id="big-gun-container">
             <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
@@ -51,10 +51,10 @@
     {/if}
 
     <div id="logo-container">
-        <img src={logoImage} id="logo" class:mobile={isMobile} alt="Space fighter"/>
+        <img src={logoImage} id="logo" alt="Space fighter"/>
     </div>
     <div id="sub-title-container">
-        <div id="sub-title" class:mobile={isMobile}>YET ANOTHER TOWER DEFENDER</div>
+        <div id="sub-title">YET ANOTHER TOWER DEFENDER</div>
     </div>
 </div>
 
@@ -167,7 +167,7 @@
         animation-fill-mode: both;
     }
 
-    #logo.mobile {
+    .mobile #logo {
         width: 100%;
         animation-delay: 800ms;
     }
@@ -198,9 +198,10 @@
         animation-fill-mode: both;
     }
 
-    #sub-title.mobile {
+    .mobile #sub-title {
         font-size: clamp(1.5rem, 5vw, 2.2rem);
         animation-delay: 800ms;
+        margin-bottom: 8rem;
     }
 
     @keyframes sub-title-appear {
