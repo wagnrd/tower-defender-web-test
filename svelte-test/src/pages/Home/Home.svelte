@@ -62,7 +62,7 @@
 
 <style>
     #news-carousel {
-        margin: 6rem 1.5rem 0 0;
+        margin: 6.5rem 7rem 0 3rem;
     }
 
     #news-carousel.mobile {
