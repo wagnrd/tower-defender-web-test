@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {isMobileState} from "../screen-store";
+    import { isMobileState } from "../screen-store";
 
     const year = new Date().getUTCFullYear();
     let isMobile = false;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {navigate} from "svelte-routing";
+    import { navigate } from "svelte-routing";
 
     export let route = "";
     export let onClick = () => navigate(route);

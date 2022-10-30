@@ -2,9 +2,9 @@
     import bigGun1Image from "../../../assets/images/big-gun-1.png";
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
-    import {isNavBarHiddenState} from "../../../lib/NavBar/lib/nav-bar-store";
-    import {isMobileState} from "../../../lib/screen-store";
-    import {onDestroy} from "svelte";
+    import { isNavBarHiddenState } from "../../../lib/NavBar/lib/nav-bar-store";
+    import { isMobileState } from "../../../lib/screen-store";
+    import { onDestroy } from "svelte";
 
     isNavBarHiddenState.update(() => true);
 

@@ -1,5 +1,5 @@
-import {writable} from "svelte/store";
+import { writable } from "svelte/store";
 
 const isNavBarHiddenState = writable(false);
 
-export {isNavBarHiddenState}
+export { isNavBarHiddenState };

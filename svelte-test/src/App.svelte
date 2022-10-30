@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Route, Router} from "svelte-routing";
+    import { Route, Router } from "svelte-routing";
     import NavBar from "./lib/NavBar/NavBar.svelte";
     import NavBarButton from "./lib/NavBar/NavBarButton.svelte";
     import NotFound from "./pages/NotFound.svelte";
@@ -9,7 +9,7 @@
     import Download from "./pages/Download.svelte";
     import Footer from "./lib/Footer/Footer.svelte";
     import FooterButton from "./lib/Footer/FooterButton.svelte";
-    import {isMobileState} from "./lib/screen-store";
+    import { isMobileState } from "./lib/screen-store";
 
     const homeRoute = "/";
     const newsRoute = "/news";
@@ -34,7 +34,7 @@
             isMobileState.update(_ => true);
         else
             isMobileState.update(_ => false);
-    }
+    };
 
     $: setMobileState(innerWidth);
 

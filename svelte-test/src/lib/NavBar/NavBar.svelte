@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {navigate} from "svelte-routing";
+    import { navigate } from "svelte-routing";
     import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
     import Hamburger from "./lib/HamburgerMenu.svelte";
-    import {isNavBarHiddenState} from "./lib/nav-bar-store";
-    import {isMobileState} from "../screen-store";
+    import { isNavBarHiddenState } from "./lib/nav-bar-store";
+    import { isMobileState } from "../screen-store";
 
     export let homeRoute = "";
 

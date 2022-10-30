@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {swipe} from "svelte-gestures";
+    import { swipe } from "svelte-gestures";
 
     export let hidden = false;
 
@@ -9,17 +9,17 @@
     const onOverlaySwipe = (event: any) => {
         if (event.detail.direction === "right")
             isActive = false;
-    }
+    };
 
-    const onOverlayClick = ({target: {id: targetId}}: PointerEvent) => {
+    const onOverlayClick = ({ target: { id: targetId } }: PointerEvent) => {
         if (targetId === "overlay")
             isActive = false;
-    }
+    };
 
-    const onMenuItemClick = ({target: {id: targetId}}: PointerEvent) => {
+    const onMenuItemClick = ({ target: { id: targetId } }: PointerEvent) => {
         if (targetId != "menu")
             isActive = false;
-    }
+    };
 </script>
 
 <div id="hamburger" class="clickable" on:click={toggleMobileMenu}>

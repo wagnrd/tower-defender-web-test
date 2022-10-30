@@ -8,4 +8,4 @@ const config: Config = {
     newsApiBaseUrl: configFile.newsApiBaseUrl
 };
 
-export {config};
+export { config };

@@ -1,4 +1,4 @@
-import {config} from "../config";
+import { config } from "../config";
 
 interface ArticlePreview {
     id: number;
@@ -21,5 +21,5 @@ async function fetchArticlePreviews(count: number, offset = 0): Promise<ArticleP
     return result;
 }
 
-export {fetchArticlePreviews};
-export type {ArticlePreview};
+export { fetchArticlePreviews };
+export type { ArticlePreview };

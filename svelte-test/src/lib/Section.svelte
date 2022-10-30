@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {isMobileState} from "./screen-store";
+    import { isMobileState } from "./screen-store";
 
     export let right = false;
     export let title = "";
