@@ -5,7 +5,7 @@
     export let onClick = () => navigate(route);
 </script>
 
-<div on:click={onClick} class="button">
+<div on:click={onClick} class="button clickable">
     <slot></slot>
 </div>
 
@@ -13,8 +13,5 @@
     .button {
         font: var(--body-font-size) var(--subheadline-font-family);
         margin: 0 1.5rem 0 1.5rem;
-        cursor: pointer;
-        -webkit-user-select: none; /* Safari */
-        user-select: none;
     }
 </style>

@@ -72,10 +72,10 @@
      on:swipe={onCarouselSwipe}>
     {#if articles.length > 0}
         <div id="content">
-            <div class="pagination-button left {showPreviousButtonClass}" on:click={showPreviousArticle}>
+            <div class="pagination-button left clickable {showPreviousButtonClass}" on:click={showPreviousArticle}>
                 <div class="arrow"></div>
             </div>
-            <div class="pagination-button right {showNextButtonClass}" on:click={showNextArticle}>
+            <div class="pagination-button right clickable {showNextButtonClass}" on:click={showNextArticle}>
                 <div class="arrow"></div>
             </div>
 
@@ -97,7 +97,7 @@
 
             <div id="pagination-indicators">
                 {#each articles as _, i}
-                    <div class="pagination-indicator-button {pageIndicatorButtonClass(i)}"
+                    <div class="pagination-indicator-button clickable {pageIndicatorButtonClass(i)}"
                          on:click={() => showArticle(i)}>
                         <div class="triangle"></div>
                     </div>
@@ -182,9 +182,6 @@
     .pagination-button {
         width: 1.3rem;
         height: 2.6rem;
-        cursor: pointer;
-        -webkit-user-select: none; /* Safari */
-        user-select: none;
     }
 
     .arrow {
@@ -300,9 +297,6 @@
     .pagination-indicator-button {
         width: 1.8rem;
         height: 0.9rem;
-        cursor: pointer;
-        -webkit-user-select: none; /* Safari */
-        user-select: none;
     }
 
     .triangle {

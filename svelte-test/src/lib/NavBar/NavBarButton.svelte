@@ -5,7 +5,7 @@
     export let onClick = () => navigate(route);
 </script>
 
-<div on:click={onClick} class="button">
+<div on:click={onClick} class="button clickable">
     <slot></slot>
 </div>
 
@@ -17,10 +17,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
         transition: background-color 300ms;
-        -webkit-user-select: none; /* Safari */
-        user-select: none;
     }
 
     .button:hover {

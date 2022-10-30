@@ -16,7 +16,7 @@
 </script>
 
 <div id="nav-bar" class:hidden="{isNavBarHidden}">
-    <div id="brand" on:click={() => navigate(homeRoute)}>
+    <div id="brand" class="clickable" on:click={() => navigate(homeRoute)}>
         <img src={logoDarkSmall} id="logo" alt="Brand logo"/>
         <div id="name">
             Y.A.T.D.
@@ -67,7 +67,6 @@
         display: flex;
         align-items: center;
         overflow: clip;
-        cursor: pointer;
     }
 
     #logo {

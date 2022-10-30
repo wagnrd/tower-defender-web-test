@@ -22,7 +22,7 @@
     }
 </script>
 
-<div id="hamburger" on:click={toggleMobileMenu}>
+<div id="hamburger" class="clickable" on:click={toggleMobileMenu}>
     <div id="bars" class:active={isActive}>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -55,7 +55,6 @@
     #bars {
         height: 2rem;
         width: 4rem;
-        cursor: pointer;
         clip-path: polygon(
                 0% 0%,
                 100% 0%,

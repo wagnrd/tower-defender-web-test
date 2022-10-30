@@ -163,3 +163,14 @@ img {
     -webkit-user-select: none; /* Safari */
     user-select: none;
 }
+
+/* prohibit browser-default-highlighting when elements being clicked */
+.clickable {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
