@@ -41,7 +41,7 @@
 
     const defaultArticleAutoChangeDelayMs = 7000;
     const interruptedPageAutoChangeDelayMs = 15000;
-    let articleChangeTimer: number;
+    let articleChangeTimer: NodeJS.Timeout;
 
     const resetArticleAutoChangeTimer = () => {
         clearTimeout(articleChangeTimer);
@@ -82,7 +82,11 @@
 
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-                <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
+                {#if isMobile}
+                    <p class="date {articleClass(i)}">{formatDate(article.timestamp)}</p>
+                {:else}
+                    <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>
+                {/if}
                 <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image {articleClass(i)}"
                      alt="{article.headline} image"/>
                 <div class="description {articleClass(i)}">
