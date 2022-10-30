@@ -7,6 +7,9 @@
 
     isNavBarHiddenState.update(() => true);
 
+    let isMobile = false;
+    isMobileState.subscribe(value => isMobile = value);
+
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
     const fadeMultiplier = 1.3;
@@ -21,18 +24,18 @@
 
         const percentageScrolled = 1 / window.innerHeight.valueOf() * newY;
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
-        const opacity = 1 - (scrollValue * fadeMultiplier);
-        const blur = Math.max(scrollValue * 20, 0);
-        elem.style.opacity = opacity.toString(10);
-        elem.style.filter = `blur(${blur}px)`;
+
+        if (!isMobile) {
+            const opacity = 1 - (scrollValue * fadeMultiplier);
+            const blur = Math.max(scrollValue * 20, 0);
+            elem.style.opacity = opacity.toString(10);
+            elem.style.filter = `blur(${blur}px)`;
+        }
 
         isNavBarHiddenState.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     }
     $: updateSplash(y);
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <svelte:window bind:scrollY={y}/>
@@ -46,6 +49,7 @@
                  class:hidden={!isSpaceFighterVisible} alt="Space fighter"/>
         </div>
     {/if}
+
     <div id="logo-container">
         <img src={logoImage} id="logo" class:mobile={isMobile} alt="Space fighter"/>
     </div>

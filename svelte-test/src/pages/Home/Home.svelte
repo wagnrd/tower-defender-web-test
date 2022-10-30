@@ -13,7 +13,7 @@
 </script>
 
 <Splash/>
-<Page>
+<Page topGap>
     <Section title="LATEST NEWS" right>
         <div id="news-carousel" class:mobile={isMobile}>
             <NewsCarousel/>
