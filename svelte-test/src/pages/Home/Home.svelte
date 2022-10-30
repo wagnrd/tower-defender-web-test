@@ -52,7 +52,7 @@
                 through a
                 jungle of walls, turrets and mines to keep them from your base as long as possible!
             </KeyFeature>
-            <KeyFeature title="MAP EDITOR & SHARING PLATFORM" last>
+            <KeyFeature title="MAP EDITOR & SHARING PLATFORM">
                 Tired of the standard campaign maps? Just create your own and share it with others!<br/>
                 Or download some awesome custom maps from other players on the game internal sharing platform.
             </KeyFeature>
@@ -78,6 +78,9 @@
     #key-features {
         max-width: 43rem;
         margin: 13rem 0 0 3rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 4rem;
     }
 
     #key-features.mobile {

@@ -191,7 +191,7 @@
         width: 100%;
         font: 2.2rem var(--sub-brand-font-family);
         text-align: center;
-        margin-bottom: 5rem;
+        margin-bottom: 6rem;
         animation-name: sub-title-appear;
         animation-duration: 3000ms;
         animation-delay: 2100ms;
@@ -201,7 +201,6 @@
     .mobile #sub-title {
         font-size: clamp(1.5rem, 5vw, 2.2rem);
         animation-delay: 800ms;
-        margin-bottom: 8rem;
     }
 
     @keyframes sub-title-appear {

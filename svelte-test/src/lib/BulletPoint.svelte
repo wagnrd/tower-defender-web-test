@@ -15,7 +15,7 @@
     }
 
     #triangle {
-        width: var(--body-font-size);
+        min-width: var(--body-font-size);
         height: var(--body-font-size);
         background-color: var(--contrast-color);
         clip-path: polygon(
@@ -26,7 +26,7 @@
     }
 
     #triangle.headline {
-        width: var(--subheadline-font-size);
+        min-width: var(--subheadline-font-size);
         height: var(--subheadline-font-size);
     }
 
