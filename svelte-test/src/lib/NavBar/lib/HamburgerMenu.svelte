@@ -116,6 +116,7 @@
         z-index: -1;
         pointer-events: none;
         transition: all 300ms;
+        color: inherit;
     }
 
     #overlay.active {

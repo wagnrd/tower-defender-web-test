@@ -61,7 +61,6 @@
     isMobileState.subscribe(value => isMobile = value);
 
     const onCarouselSwipe = (event: any) => {
-        console.log("lol");
         if (event.detail.direction === "right")
             showPreviousArticle();
         else if (event.detail.direction === "left")
