@@ -1,15 +1,16 @@
 <script lang="ts">
-    import {Link} from "svelte-routing";
-    import {swipe} from "svelte-gestures";
-    import type {ArticlePreview} from "../../../lib/news-articles";
-    import {fetchArticlePreviews} from "../../../lib/news-articles";
+    import { Link } from "svelte-routing";
+    import { swipe } from "svelte-gestures";
+    import type { ArticlePreview } from "../../../lib/news-articles";
+    import { fetchArticlePreviews } from "../../../lib/news-articles";
     import logoDarkImage from "../../../assets/images/logo-dark.svg";
-    import {isMobileState} from "../../../lib/screen-store";
+    import { isMobileState } from "../../../lib/screen-store";
+    import type { LoadingState } from "../../../lib/laoding-state";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;
     let articles: ArticlePreview[] = [];
-    let loadingState: "loading" | "error" | "done" = "loading";
+    let loadingState: LoadingState = "loading";
 
     fetchArticlePreviews(maxArticles).then(result => {
         loadingState = "done";
@@ -70,7 +71,7 @@
 
 <div id="carousel" class:mobile={isMobile} use:swipe={{timeframe: 300, minSwipeDistance: 60, touchAction: "pan-y"}}
      on:swipe={onCarouselSwipe}>
-    {#if articles.length > 0}
+    {#if loadingState === "done" && articles.length > 0}
         <div id="content">
             <div class="pagination-button left clickable {showPreviousButtonClass}" on:click={showPreviousArticle}>
                 <div class="arrow"></div>
@@ -150,10 +151,6 @@
     .date {
         margin: 0.2rem 0 1rem;
         grid-row: 2;
-        grid-column: 2 / 4;
-    }
-
-    .mobile .date {
         grid-column: 2;
     }
 
