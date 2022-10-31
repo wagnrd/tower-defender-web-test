@@ -29,7 +29,7 @@
         <div class="bar"></div>
     </div>
 </div>
-<div id="overlay" class:active={isActive && !hidden}
+<div id="overlay" class="clickable" class:active={isActive && !hidden}
      on:click={onOverlayClick} use:swipe on:swipe={onOverlaySwipe}>
     <div id="menu" class:inactive={!isActive || hidden} on:click={onMenuItemClick}>
         <slot/>

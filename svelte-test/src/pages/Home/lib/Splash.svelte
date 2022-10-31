@@ -191,7 +191,7 @@
     }
 
     #sub-title {
-        width: 100%;
+        width: 80%;
         font: 2.2rem var(--sub-brand-font-family);
         text-align: center;
         margin-bottom: 6rem;

@@ -207,7 +207,7 @@
     }
 
     .mobile .pagination-button.left {
-        grid-row: 3 / 5;
+        grid-row: 3 / 4;
         margin: 0 1.4rem 0 1.1rem;
     }
 
@@ -219,7 +219,7 @@
     }
 
     .mobile .pagination-button.right {
-        grid-row: 3 / 5;
+        grid-row: 3 / 4;
         margin: 0 1.1rem 0 1.4rem;
     }
 
