@@ -1,3 +1,4 @@
 {
-  "newsApiBaseUrl": "https://yatd-news.cyclic.app"
+  "newsApiBaseUrl": "https://yatd-news.onrender.com",
+  "enableArticlePadding": true
 }

@@ -9,12 +9,16 @@ interface ArticlePreview {
 }
 
 async function fetchArticlePreviews(count: number, offset = 0): Promise<ArticlePreview[]> {
-    const url = `${config.newsApiBaseUrl}/article/preview?count=${count}&offset=${offset}`;
+    let url = `${config.newsApiBaseUrl}/article/preview?count=${count}&offset=${offset}`;
+
+    if (config.enableArticlePadding) url += "&padding=1";
+
     const response = await fetch(url);
     const result = await response.json();
 
     if (!response.ok) {
-        console.error(`[News Articles] Response not ok (${response.status}: ${response.statusText}) while fetching article previews:\n${result}`);
+        console.error(
+            `[News Articles] Response not ok (${response.status}: ${response.statusText}) while fetching article previews:\n${result}`);
         throw Error();
     }
 
