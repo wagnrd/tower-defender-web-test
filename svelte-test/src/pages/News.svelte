@@ -46,6 +46,7 @@
                             <Link to="/news/{article.id}">Read news</Link>
                         </div>
                     </div>
+                    <div class="article-separator"></div>
                 {/each}
             {:else if loadingState === "loading"}
                 <h2>News loading...</h2>
@@ -86,6 +87,13 @@
         display: grid;
         grid-column-gap: 1.6rem;
         align-items: center;
+    }
+
+    .article-separator:not(.article-separator:last-of-type) {
+        height: 0.05rem;
+        width: 70%;
+        background-color: var(--text-color);
+        margin: 0 auto 0 auto;
     }
 
     .headline {
