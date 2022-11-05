@@ -103,7 +103,9 @@
             <div id="pagination-indicators">
                 {#each articles as _, i}
                     <div class="pagination-indicator-button clickable {pageIndicatorButtonClass(i)}"
-                         on:click={() => showArticle(i)}></div>
+                         on:click={() => showArticle(i)}>
+                        <div class="inner"></div>
+                    </div>
                 {/each}
             </div>
         </div>
@@ -294,40 +296,45 @@
     }
 
     .pagination-indicator-button {
-        width: 1rem;
-        height: 1rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagination-indicator-button .inner {
         border-radius: 100%;
+        background-color: var(--text-color);
     }
 
-    .mobile .pagination-indicator-button {
-        width: 1.3rem;
-        height: 1.3rem;
-        border-radius: 100%;
+    .active.pagination-indicator-button .inner {
+        animation: activate-pagination-indicator-button 300ms 200ms both;
     }
 
-    .active.pagination-indicator-button {
-        animation: paint-activated 300ms 200ms both;
+    .inactive.pagination-indicator-button .inner {
+        animation: deactivate-pagination-indicator-button 300ms both;
     }
 
-    .inactive.pagination-indicator-button {
-        animation: paint-deactivated 300ms both;
-    }
-
-    @keyframes paint-activated {
+    @keyframes activate-pagination-indicator-button {
         from {
-            background-color: var(--text-color);
+            width: 0.4rem;
+            height: 0.4rem;
         }
         to {
-            background-color: var(--contrast-color);
+            width: 0.8rem;
+            height: 0.8rem;
         }
     }
 
-    @keyframes paint-deactivated {
+    @keyframes deactivate-pagination-indicator-button {
         from {
-            background-color: var(--contrast-color);
+            width: 0.8rem;
+            height: 0.8rem;
         }
         to {
-            background-color: var(--text-color);
+            width: 0.4rem;
+            height: 0.4rem;
         }
     }
 </style>
