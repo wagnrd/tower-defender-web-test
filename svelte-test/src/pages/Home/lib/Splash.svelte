@@ -2,7 +2,7 @@
     import bigGun1Image from "../../../assets/images/big-gun-1.png";
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
-    import { isNavBarHiddenState } from "../../../lib/NavBar/lib/nav-bar-store";
+    import { isNavBarHiddenState } from "../../../lib/NavBar/nav-bar-store";
     import { isMobileState } from "../../../lib/screen-store";
     import { onDestroy } from "svelte";
 
@@ -20,8 +20,9 @@
     const updateSplash = (newY: number) => {
         const elem = document.getElementById("splash");
 
-        if (!elem)
+        if (!elem) {
             return;
+        }
 
         const percentageScrolled = 1 / window.innerHeight.valueOf() * newY;
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
