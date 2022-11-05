@@ -11,7 +11,7 @@ interface ArticlePreview {
 async function fetchArticlePreviews(count: number, offset = 0): Promise<ArticlePreview[]> {
     let url = `${config.newsApiBaseUrl}/article/preview?count=${count}&offset=${offset}`;
 
-    if (config.enableArticlePadding) url += "&padding=1";
+    if (config.testing.enableArticlePadding) url += "&padding=1";
 
     const response = await fetch(url);
     const result = await response.json();

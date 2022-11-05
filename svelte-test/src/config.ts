@@ -1,13 +1,21 @@
-import configFile from "../src/config.json";
+import configJson from "../src/config.json";
+
+interface Testing {
+    enableArticlePadding?: boolean;
+}
 
 interface Config {
     newsApiBaseUrl: string;
-    enableArticlePadding: boolean;
+    testing?: Testing;
 }
 
+const configFile: Config = configJson;
+
 const config: Config = {
-    newsApiBaseUrl: configFile.newsApiBaseUrl,
-    enableArticlePadding: configFile.enableArticlePadding ?? false
+    ...configFile,
+    testing: {
+        enableArticlePadding: configFile?.testing?.enableArticlePadding ?? false
+    }
 };
 
 export { config };
