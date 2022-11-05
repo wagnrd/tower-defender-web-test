@@ -283,9 +283,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1.5rem;
+        gap: 0.8rem;
         width: 100%;
-        margin-top: 2rem;
+        margin-top: 1.7rem;
         grid-row: 4;
         grid-column: 2 / 4;
     }
@@ -296,8 +296,8 @@
     }
 
     .pagination-indicator-button {
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 1.5rem;
+        height: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -306,6 +306,11 @@
     .pagination-indicator-button .inner {
         border-radius: 100%;
         background-color: var(--text-color);
+        transition: background-color 300ms;
+    }
+
+    .pagination-indicator-button:hover .inner {
+        background-color: var(--contrast-color);
     }
 
     .active.pagination-indicator-button .inner {
