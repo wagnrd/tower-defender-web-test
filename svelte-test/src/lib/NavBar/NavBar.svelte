@@ -9,7 +9,9 @@
 
     let isAllowedToHide = true;
     let isRequestedToHide = false;
+    let isHamburgerMenuRequestedToHide = false;
     $: isNavBarHidden = isAllowedToHide && isRequestedToHide;
+    $: isHamburgerMenuHidden = isNavBarHidden || isHamburgerMenuRequestedToHide;
     isNavBarHiddenState.subscribe((shouldHide: boolean) => isRequestedToHide = shouldHide);
 
     let isMobile = false;
@@ -17,10 +19,16 @@
 
     const forbidToHide = () => isAllowedToHide = false;
     const allowToHide = () => isAllowedToHide = true;
+    const onHamburgerClick = () => isHamburgerMenuRequestedToHide = false;
+
+    const onHomeButtonClick = () => {
+        navigate(homeRoute);
+        isHamburgerMenuRequestedToHide = true;
+    };
 </script>
 
 <div id="nav-bar" class:hidden="{isNavBarHidden}" on:mouseenter={forbidToHide} on:mouseleave={allowToHide}>
-    <div id="brand" class="clickable" on:click={() => navigate(homeRoute)}>
+    <div id="brand" class="clickable" on:click={onHomeButtonClick}>
         <img src={logoDarkSmall} id="logo" alt="Brand logo"/>
         <div id="name">
             Y.A.T.D.
@@ -31,7 +39,7 @@
         <div id="mobile-spacer"></div>
         <!--suppress XmlDuplicatedId -->
         <div id="bar-ornament"></div>
-        <Hamburger hidden={isNavBarHidden}>
+        <Hamburger hidden={isHamburgerMenuRequestedToHide} onClick={onHamburgerClick}>
             <slot/>
         </Hamburger>
     {:else}

@@ -2,23 +2,32 @@
     import { swipe } from "svelte-gestures";
 
     export let hidden = false;
+    export let onClick: () => void;
 
-    let isActive = hidden;
-    const toggleMobileMenu = () => isActive = !isActive;
+
+    let isRequestedToShow = false;
+    $: isActive = !hidden && isRequestedToShow;
+    const toggleMobileMenu = () => {
+        isRequestedToShow = !isActive;
+        onClick();
+    };
 
     const onOverlaySwipe = (event: any) => {
-        if (event.detail.direction === "right")
-            isActive = false;
+        if (event.detail.direction === "right") {
+            isRequestedToShow = false;
+        }
     };
 
     const onOverlayClick = ({ target: { id: targetId } }: PointerEvent) => {
-        if (targetId === "overlay")
-            isActive = false;
+        if (targetId === "overlay") {
+            isRequestedToShow = false;
+        }
     };
 
     const onMenuItemClick = ({ target: { id: targetId } }: PointerEvent) => {
-        if (targetId != "menu")
-            isActive = false;
+        if (targetId != "menu") {
+            isRequestedToShow = false;
+        }
     };
 </script>
 
@@ -29,9 +38,9 @@
         <div class="bar"></div>
     </div>
 </div>
-<div id="overlay" class="clickable" class:active={isActive && !hidden}
+<div id="overlay" class="clickable" class:active={isActive}
      on:click={onOverlayClick} use:swipe on:swipe={onOverlaySwipe}>
-    <div id="menu" class:inactive={!isActive || hidden} on:click={onMenuItemClick}>
+    <div id="menu" class:inactive={!isActive} on:click={onMenuItemClick}>
         <slot/>
     </div>
 </div>
