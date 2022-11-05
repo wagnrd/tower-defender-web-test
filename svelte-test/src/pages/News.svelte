@@ -8,6 +8,7 @@
     import { Link } from "svelte-routing";
     import logoDarkImage from "../assets/images/logo-dark.svg";
     import armouredTruckImage from "../assets/images/armoured-truck.png";
+    import { formatDate } from "../lib/utils.js";
 
     const articleBatchSize = 10;
     let loadingState: LoadingState = "loading";
@@ -22,8 +23,6 @@
 
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
-
-    const formatDate = (timestamp: number): string => new Date(timestamp).toLocaleDateString();
 </script>
 
 <Page topGap>

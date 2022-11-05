@@ -6,6 +6,7 @@
     import logoDarkImage from "../../../assets/images/logo-dark.svg";
     import { isMobileState } from "../../../lib/screen-store";
     import type { LoadingState } from "../../../lib/laoding-state";
+    import { formatDate } from "../../../lib/utils.js";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;
@@ -35,8 +36,12 @@
         currentArticleIndex = index;
     };
 
-    $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ? "article-visible" : "article-hidden";
-    $: pageIndicatorButtonClass = (buttonIndex: number): string => buttonIndex == currentArticleIndex ? "active" : "inactive";
+    $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ?
+                                                        "article-visible" :
+                                                        "article-hidden";
+    $: pageIndicatorButtonClass = (buttonIndex: number): string => buttonIndex == currentArticleIndex ?
+                                                                   "active" :
+                                                                   "inactive";
     $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
     $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
 
@@ -56,16 +61,15 @@
         }, ms);
     };
 
-    const formatDate = (timestamp: number): string => new Date(timestamp).toLocaleDateString();
-
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
 
     const onCarouselSwipe = (event: any) => {
-        if (event.detail.direction === "right")
+        if (event.detail.direction === "right") {
             showPreviousArticle();
-        else if (event.detail.direction === "left")
+        } else if (event.detail.direction === "left") {
             showNextArticle();
+        }
     };
 </script>
 

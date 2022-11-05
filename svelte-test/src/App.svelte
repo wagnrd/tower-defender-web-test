@@ -5,6 +5,7 @@
     import NotFound from "./pages/NotFound.svelte";
     import Home from "./pages/Home/Home.svelte";
     import News from "./pages/News.svelte";
+    import NewsArticle from "./pages/NewsArticle.svelte";
     import Game from "./pages/Game.svelte";
     import Download from "./pages/Download.svelte";
     import Footer from "./lib/Footer/Footer.svelte";
@@ -13,6 +14,7 @@
 
     const homeRoute = "/";
     const newsRoute = "/news";
+    const newsArticleRoute = "/news/:id";
     const gameRoute = "/game";
     const downloadRoute = "/download";
     const aboutRoute = "https://wagnrd.de";
@@ -30,10 +32,11 @@
         const mobileThreshold = 1 - (0.4 / defaultPixelRatio * pixelRatio);
 
         if (pageSize <= screen.width * mobileThreshold ||
-            window.matchMedia("screen and (max-device-width: 1000px)").matches)
+            window.matchMedia("screen and (max-device-width: 1000px)").matches) {
             isMobileState.update(_ => true);
-        else
+        } else {
             isMobileState.update(_ => false);
+        }
     };
 
     $: setMobileState(innerWidth);
@@ -54,6 +57,7 @@
     <Router>
         <Route path={homeRoute} component={Home}/>
         <Route path={newsRoute} component={News}/>
+        <Route path={newsArticleRoute} component={NewsArticle}/>
         <Route path={gameRoute} component={Game}/>
         <Route path={downloadRoute} component={Download}/>
         <Route path="*" component={NotFound}/>
