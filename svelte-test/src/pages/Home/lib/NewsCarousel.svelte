@@ -5,8 +5,8 @@
     import { fetchArticlePreviews } from "../../../lib/news-articles";
     import logoDarkImage from "../../../assets/images/logo-dark.svg";
     import { isMobileState } from "../../../lib/screen-store";
-    import type { LoadingState } from "../../../lib/laoding-state";
-    import { formatDate } from "../../../lib/utils.js";
+    import type { LoadingState } from "../../../lib/utils";
+    import { formatDate } from "../../../lib/utils";
 
     const maxArticles = 4;
     let currentArticleIndex = 0;

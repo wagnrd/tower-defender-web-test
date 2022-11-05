@@ -3,12 +3,12 @@
     import Section from "../lib/Section.svelte";
     import type { ArticlePreview } from "../lib/news-articles";
     import { fetchArticlePreviews } from "../lib/news-articles";
-    import type { LoadingState } from "../lib/laoding-state";
     import { isMobileState } from "../lib/screen-store";
     import { Link } from "svelte-routing";
     import logoDarkImage from "../assets/images/logo-dark.svg";
     import armouredTruckImage from "../assets/images/armoured-truck.png";
-    import { formatDate } from "../lib/utils.js";
+    import type { LoadingState } from "../lib/utils";
+    import { formatDate } from "../lib/utils";
 
     const articleBatchSize = 10;
     let loadingState: LoadingState = "loading";
