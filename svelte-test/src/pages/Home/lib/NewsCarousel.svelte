@@ -103,9 +103,7 @@
             <div id="pagination-indicators">
                 {#each articles as _, i}
                     <div class="pagination-indicator-button clickable {pageIndicatorButtonClass(i)}"
-                         on:click={() => showArticle(i)}>
-                        <div class="triangle"></div>
-                    </div>
+                         on:click={() => showArticle(i)}></div>
                 {/each}
             </div>
         </div>
@@ -283,9 +281,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.4rem;
+        gap: 1.5rem;
         width: 100%;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         grid-row: 4;
         grid-column: 2 / 4;
     }
@@ -296,25 +294,22 @@
     }
 
     .pagination-indicator-button {
-        width: 1.8rem;
-        height: 0.9rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
     }
 
-    .triangle {
-        width: 100%;
-        height: 100%;
-        clip-path: polygon(
-                0% 0%,
-                100% 0%,
-                50% 100%
-        );
+    .mobile .pagination-indicator-button {
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 100%;
     }
 
-    .active .triangle {
+    .active.pagination-indicator-button {
         animation: paint-activated 300ms 200ms both;
     }
 
-    .inactive .triangle {
+    .inactive.pagination-indicator-button {
         animation: paint-deactivated 300ms both;
     }
 
