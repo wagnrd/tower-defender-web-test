@@ -39,7 +39,7 @@
         <div id="mobile-spacer"></div>
         <!--suppress XmlDuplicatedId -->
         <div id="bar-ornament"></div>
-        <Hamburger hidden={isHamburgerMenuRequestedToHide} onClick={onHamburgerClick}>
+        <Hamburger forbidToShow={isHamburgerMenuHidden} onClick={onHamburgerClick}>
             <slot/>
         </Hamburger>
     {:else}

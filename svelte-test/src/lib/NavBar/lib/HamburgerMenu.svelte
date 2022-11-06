@@ -1,12 +1,12 @@
 <script lang="ts">
     import { swipe } from "svelte-gestures";
 
-    export let hidden = false;
+    export let forbidToShow = false;
     export let onClick: () => void;
 
 
     let isRequestedToShow = false;
-    $: isActive = !hidden && isRequestedToShow;
+    $: isActive = !forbidToShow && isRequestedToShow;
     const toggleMobileMenu = () => {
         isRequestedToShow = !isActive;
         onClick();
