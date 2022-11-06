@@ -2,16 +2,13 @@
     import Page from "../lib/Page.svelte";
 </script>
 
-<Page>
-    <div class="heading">404: I wish there were such a page... but sadly there isn't :(</div>
+<Page topGap centerContent>
+    <h1>404</h1>
+    <h2>I've never heard of this page mate</h2>
 </Page>
 
 <style>
-    .heading {
-        height: 100vh;
-        font: var(--headline-font);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    h2 {
+        text-align: center;
     }
 </style>

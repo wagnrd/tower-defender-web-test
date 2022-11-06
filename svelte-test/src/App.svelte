@@ -54,25 +54,34 @@
         <NavBarButton route={downloadRoute}>DOWNLOAD</NavBarButton>
     </NavBar>
 
-    <Router>
-        <Route path={homeRoute} component={Home}/>
-        <Route path={newsRoute} component={News}/>
-        <Route path={newsArticleRoute} component={NewsArticle}/>
-        <Route path={gameRoute} component={Game}/>
-        <Route path={downloadRoute} component={Download}/>
-        <Route path="*" component={NotFound}/>
-    </Router>
+    <div id="flex-wrapper">
+        <Router>
+            <Route path={homeRoute} component={Home}/>
+            <Route path={newsRoute} component={News}/>
+            <Route path={newsArticleRoute} component={NewsArticle}/>
+            <Route path={gameRoute} component={Game}/>
+            <Route path={downloadRoute} component={Download}/>
+            <Route path="*" component={NotFound}/>
+        </Router>
 
-    <Footer>
-        <FooterButton route={aboutRoute}>ABOUT</FooterButton>
-        <FooterButton route={impressumRoute}>IMPRESSUM</FooterButton>
-        <FooterButton route={privacyPolicyRoute}>PRIVACY POLICY</FooterButton>
-        <FooterButton onClick={openEmail}>SUPPORT</FooterButton>
-    </Footer>
+        <Footer>
+            <FooterButton route={aboutRoute}>ABOUT</FooterButton>
+            <FooterButton route={impressumRoute}>IMPRESSUM</FooterButton>
+            <FooterButton route={privacyPolicyRoute}>PRIVACY POLICY</FooterButton>
+            <FooterButton onClick={openEmail}>SUPPORT</FooterButton>
+        </Footer>
+    </div>
 </main>
 
 <style>
     .mobile {
         overflow-x: hidden;
+    }
+
+    #flex-wrapper {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
     }
 </style>

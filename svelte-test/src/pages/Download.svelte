@@ -2,16 +2,9 @@
     import Page from "../lib/Page.svelte";
 </script>
 
-<Page>
-    <div class="heading">Download</div>
+<Page topGap>
+    <h1>Download</h1>
 </Page>
 
 <style>
-    .heading {
-        height: 100vh;
-        font: var(--headline-font);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 </style>

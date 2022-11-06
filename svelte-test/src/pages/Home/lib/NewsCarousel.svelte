@@ -78,10 +78,10 @@
     {#if loadingState === "done" && articles.length > 0}
         <div id="content">
             <div class="pagination-button left clickable {showPreviousButtonClass}" on:click={showPreviousArticle}>
-                <div class="arrow"></div>
+                <div class="inner"></div>
             </div>
             <div class="pagination-button right clickable {showNextButtonClass}" on:click={showNextArticle}>
-                <div class="arrow"></div>
+                <div class="inner"></div>
             </div>
 
             {#each articles as article, i}
@@ -185,7 +185,7 @@
         height: 2.6rem;
     }
 
-    .arrow {
+    .pagination-button .inner {
         width: 100%;
         height: 100%;
         background-color: var(--text-color);
@@ -200,7 +200,7 @@
         );
     }
 
-    .pagination-button:hover > .arrow {
+    .pagination-button:hover > .inner {
         background-color: var(--contrast-color);
     }
 
