@@ -17,16 +17,16 @@
         <Splash/>
     </div>
 
-    <Section title="LATEST NEWS" right>
+    <Section title="LATEST NEWS" ornament right>
         <div id="news-carousel" class:mobile={isMobile}>
             <NewsCarousel/>
         </div>
         {#if !isMobile}
-            <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
+            <img src={armouredTruckImage} id="latest-news-section-image" alt="big gun"/>
         {/if}
     </Section>
 
-    <Section title="KEY FEATURES">
+    <Section title="KEY FEATURES" ornament>
         {#if !isMobile}
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
         {/if}
@@ -65,11 +65,11 @@
 
 <style>
     #splash {
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
 
     #news-carousel {
-        margin: 6.5rem 7rem 0 3rem;
+        margin: 3rem 7rem 0 3rem;
     }
 
     #news-carousel.mobile {

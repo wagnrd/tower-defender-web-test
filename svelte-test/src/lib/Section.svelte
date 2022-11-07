@@ -1,8 +1,9 @@
 <script lang="ts">
     import { isMobileState } from "./screen-store";
 
-    export let right = false;
     export let title = "";
+    export let ornament = false;
+    export let right = false;
 
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
@@ -16,8 +17,13 @@
     <div class="content">{title}</div>
     <div class="right"></div>
 </div>
-<div id="section" class:mobile={isMobile}>
+<div id="section" class:right={right} class:mobile={isMobile}>
     <slot/>
+    {#if ornament && !isMobile}
+        <div class="ornament">
+            <div class="inner"></div>
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -30,6 +36,38 @@
 
     #section.mobile {
         margin-top: 4.5rem;
+    }
+
+    #section .ornament {
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
+    }
+
+    #section.right .ornament {
+        left: auto;
+        right: 0;
+        filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
+    }
+
+    #section .ornament .inner {
+        height: 30rem;
+        width: 30rem;
+        background-color: var(--base-color);
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                0% 100%
+        );
+    }
+
+    #section.right .ornament .inner {
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 100%
+        );
     }
 
     #title {
