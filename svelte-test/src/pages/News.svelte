@@ -6,7 +6,6 @@
     import { isMobileState } from "../lib/screen-store";
     import { Link } from "svelte-routing";
     import logoDarkImage from "../assets/images/logo-dark.svg";
-    import armouredTruckImage from "../assets/images/armoured-truck.png";
     import type { LoadingState } from "../lib/utils";
     import { formatDate } from "../lib/utils";
 
@@ -55,23 +54,13 @@
                 <h2>No news</h2>
             {/if}
         </div>
-
-        {#if !isMobile}
-            <img src={armouredTruckImage} id="latest-news-section-image" alt="Armoured truck"/>
-        {/if}
     </Section>
 </Page>
 
 <style>
-    #latest-news-section-image {
-        width: 33rem;
-        object-fit: contain;
-        margin-right: 3rem;
-    }
-
     #articles {
         width: 55rem;
-        margin: 10rem 5rem 0 3rem;
+        margin-top: 6rem;
         display: flex;
         flex-direction: column;
         row-gap: 5rem;
@@ -79,7 +68,7 @@
 
     #articles.mobile {
         width: 80%;
-        margin: 3rem 0 0 0;
+        margin: 4.5rem 0 0 0;
     }
 
     .article {

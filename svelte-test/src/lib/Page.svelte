@@ -12,6 +12,6 @@
 
 <style>
     .top-gap {
-        margin-top: 7rem;
+        margin-top: 8rem;
     }
 </style>
