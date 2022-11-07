@@ -9,11 +9,18 @@
 </script>
 
 <div id="section" class:right={right} class:mobile={isMobile}>
+    <!--
     <div id="background">
         <div id="ornament"></div>
     </div>
+    -->
     <div>
-        <h1>{title}</h1>
+        <div id="title">
+            <div class="ornament"></div>
+            <div class="left"></div>
+            <div class="content">{title}</div>
+            <div class="right"></div>
+        </div>
         <div id="content">
             <slot/>
         </div>
@@ -88,5 +95,58 @@
 
     .mobile #content {
         justify-content: center;
+    }
+
+    #title {
+        height: 4rem;
+        margin-left: -4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #title > * {
+        background-color: var(--contrast-color);
+    }
+
+    #title .content {
+        height: 100%;
+        font: var(--headline-font);
+        padding: 0 2rem 0 2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    #title .left {
+        min-width: 4rem;
+        min-height: 4rem;
+        margin-right: -1px;
+        clip-path: polygon(
+                100% 0%,
+                100% 100%,
+                0% 100%
+        );
+    }
+
+    #title .right {
+        min-width: 4rem;
+        min-height: 4rem;
+        margin-left: -1px;
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                0% 100%
+        );
+    }
+
+    #title .ornament {
+        min-width: 8rem;
+        min-height: 4rem;
+        margin-right: -3rem;
+        clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                50% 100%
+        );
     }
 </style>
