@@ -8,6 +8,14 @@
     isMobileState.subscribe(value => isMobile = value);
 </script>
 
+<div id="title" class:mobile={isMobile}>
+    {#if !isMobile}
+        <div class="ornament"></div>
+        <div class="left"></div>
+    {/if}
+    <div class="content">{title}</div>
+    <div class="right"></div>
+</div>
 <div id="section" class:right={right} class:mobile={isMobile}>
     <!--
     <div id="background">
@@ -15,12 +23,6 @@
     </div>
     -->
     <div>
-        <div id="title">
-            <div class="ornament"></div>
-            <div class="left"></div>
-            <div class="content">{title}</div>
-            <div class="right"></div>
-        </div>
         <div id="content">
             <slot/>
         </div>
@@ -103,10 +105,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
+    }
+
+    #title.mobile {
+        margin: 0;
+        justify-content: start;
     }
 
     #title > * {
-        background-color: var(--contrast-color);
+        background-color: var(--base-color);
     }
 
     #title .content {
@@ -117,10 +125,23 @@
         align-items: center;
     }
 
+    #title.mobile .content {
+        width: 50vw;
+        min-width: max-content;
+    }
+
     #title .left {
         min-width: 4rem;
         min-height: 4rem;
         margin-right: -1px;
+        clip-path: polygon(
+                100% 0%,
+                100% 100%,
+                0% 100%
+        );
+    }
+
+    .mobile #title .left {
         clip-path: polygon(
                 100% 0%,
                 100% 100%,
