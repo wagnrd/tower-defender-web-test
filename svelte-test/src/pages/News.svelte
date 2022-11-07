@@ -60,7 +60,6 @@
 <style>
     #articles {
         width: 55rem;
-        margin-top: 6rem;
         display: flex;
         flex-direction: column;
         row-gap: 5rem;
@@ -68,7 +67,6 @@
 
     #articles.mobile {
         width: 80%;
-        margin: 4.5rem 0 0 0;
     }
 
     .article {

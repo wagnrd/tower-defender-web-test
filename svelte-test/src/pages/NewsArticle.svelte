@@ -29,7 +29,6 @@
 <style>
     #content {
         max-width: 43rem;
-        margin: 13rem 3rem 0 50rem;
     }
 
     #content.mobile {

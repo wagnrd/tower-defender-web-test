@@ -16,16 +16,20 @@
     <div class="content">{title}</div>
     <div class="right"></div>
 </div>
-<div id="section">
+<div id="section" class:mobile={isMobile}>
     <slot/>
 </div>
 
 <style>
     #section {
         width: 100%;
-        margin-bottom: 11rem;
+        margin: 6rem 0 11rem 0;
         display: flex;
         justify-content: center;
+    }
+
+    #section.mobile {
+        margin-top: 4.5rem;
     }
 
     #title {
