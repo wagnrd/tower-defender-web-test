@@ -35,7 +35,6 @@
     #section {
         width: 100%;
         height: max-content;
-        margin: 6rem 0 11rem 0;
         display: flex;
         justify-content: center;
     }
@@ -101,6 +100,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 10rem 0 10rem 0;
     }
 
     .mobile #middle {
