@@ -1,6 +1,6 @@
 <script lang="ts">
     import Page from "../lib/Page.svelte";
-    import Section from "../lib/Section.svelte";
+    import Section from "../lib/Section/Section.svelte";
     import { fetchArticleById } from "../lib/news-articles";
     import { isMobileState } from "../lib/screen-store";
     import { formatDate } from "../lib/utils.js";

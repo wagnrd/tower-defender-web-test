@@ -1,7 +1,7 @@
 <script lang="ts">
     import armouredTruckImage from "../../assets/images/armoured-truck.png";
     import bigGun2Image from "../../assets/images/big-gun-2.png";
-    import Section from "../../lib/Section.svelte";
+    import Section from "../../lib/Section/Section.svelte";
     import NewsCarousel from "./lib/NewsCarousel.svelte";
     import KeyFeature from "./lib/KeyFeature.svelte";
     import Splash from "./lib/Splash.svelte";
@@ -21,13 +21,13 @@
         <div id="news-carousel" class:mobile={isMobile}>
             <NewsCarousel/>
         </div>
-        {#if !isMobile}
+        {#if false && !isMobile}
             <img src={armouredTruckImage} id="latest-news-section-image" alt="big gun"/>
         {/if}
     </Section>
 
     <Section title="KEY FEATURES" ornament>
-        {#if !isMobile}
+        {#if false && !isMobile}
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
         {/if}
         <div id="key-features" class:mobile={isMobile}>
@@ -68,14 +68,6 @@
         margin-bottom: 4rem;
     }
 
-    #news-carousel {
-        margin: 3rem 7rem 0 3rem;
-    }
-
-    #news-carousel.mobile {
-        margin: 3rem 0 0 0;
-    }
-
     #latest-news-section-image {
         width: 33rem;
         object-fit: contain;
@@ -84,14 +76,9 @@
 
     #key-features {
         max-width: 43rem;
-        margin: 13rem 3rem 0 3rem;
         display: flex;
         flex-direction: column;
         row-gap: 4rem;
-    }
-
-    #key-features.mobile {
-        margin: 3rem 3rem 0 3rem;
     }
 
     #key-features-section-image {

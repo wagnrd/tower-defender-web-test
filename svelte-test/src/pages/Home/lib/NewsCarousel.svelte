@@ -80,9 +80,6 @@
             <div class="pagination-button left clickable {showPreviousButtonClass}" on:click={showPreviousArticle}>
                 <div class="inner"></div>
             </div>
-            <div class="pagination-button right clickable {showNextButtonClass}" on:click={showNextArticle}>
-                <div class="inner"></div>
-            </div>
 
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
@@ -99,6 +96,10 @@
                     <Link to="/news/{article.id}">Read news</Link>
                 </div>
             {/each}
+
+            <div class="pagination-button right clickable {showNextButtonClass}" on:click={showNextArticle}>
+                <div class="inner"></div>
+            </div>
 
             <div id="pagination-indicators">
                 {#each articles as _, i}
@@ -120,8 +121,7 @@
 
 <style>
     #carousel {
-        width: 49rem;
-        max-width: 100vw;
+        width: 48rem;
         height: 17rem;
         display: flex;
         align-items: center;
@@ -130,6 +130,7 @@
 
     .mobile#carousel {
         height: min-content;
+        width: unset;
     }
 
     #content {
@@ -212,7 +213,6 @@
 
     .mobile .pagination-button.left {
         grid-row: 3 / 4;
-        margin: 0 1.4rem 0 1.1rem;
     }
 
     .pagination-button.right {
@@ -224,7 +224,6 @@
 
     .mobile .pagination-button.right {
         grid-row: 3 / 4;
-        margin: 0 1.1rem 0 1.4rem;
     }
 
     .pagination-button.hidden {
