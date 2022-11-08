@@ -60,6 +60,7 @@
     .alternative #left {
         justify-content: end;
         align-items: end;
+        filter: drop-shadow(0.45rem -0.45rem 0.2rem var(--shadow-color));
     }
 
     #right {
@@ -80,6 +81,7 @@
     .alternative #right {
         justify-content: start;
         align-items: start;
+        filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
     }
 
     .ornament {
