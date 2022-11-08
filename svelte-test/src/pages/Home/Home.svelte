@@ -17,7 +17,7 @@
         <Splash/>
     </div>
 
-    <Section title="LATEST NEWS" ornament right>
+    <Section title="LATEST NEWS" ornament>
         <div id="news-carousel" class:mobile={isMobile}>
             <NewsCarousel/>
         </div>
@@ -26,7 +26,7 @@
         {/if}
     </Section>
 
-    <Section title="KEY FEATURES" ornament>
+    <Section title="KEY FEATURES" ornament alternative>
         {#if false && !isMobile}
             <img src={bigGun2Image} id="key-features-section-image" alt="big gun"/>
         {/if}

@@ -4,13 +4,13 @@
 
     export let title = "";
     export let ornament = false;
-    export let right = false;
+    export let alternative = false;
 
     let isMobile = false;
     isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="section" class:right={right} class:mobile={isMobile}>
+<div id="section" class:alternative={alternative} class:mobile={isMobile}>
     {#if ornament && !isMobile}
         <div id="left">
             <div class="ornament"></div>
@@ -45,6 +45,7 @@
     }
 
     #left {
+        display: flex;
         filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
     }
 
@@ -54,6 +55,11 @@
                 100% 0%,
                 0% 100%
         );
+    }
+
+    .alternative #left {
+        justify-content: end;
+        align-items: end;
     }
 
     #right {
@@ -71,10 +77,19 @@
         );
     }
 
+    .alternative #right {
+        justify-content: start;
+        align-items: start;
+    }
+
     .ornament {
         height: 30rem;
         width: 30rem;
         background-color: var(--base-color);
+    }
+
+    .alternative .ornament {
+        transform: scaleY(-1);
     }
 
     #middle {
