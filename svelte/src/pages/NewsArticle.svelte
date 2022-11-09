@@ -11,7 +11,7 @@
     isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<Page topGap>
+<Page>
     {#await fetchArticleById(id)}
         <Section title="Loading..."/>
     {:then article}

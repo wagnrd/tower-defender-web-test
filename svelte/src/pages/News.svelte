@@ -25,7 +25,7 @@
 </script>
 
 <Page topGap>
-    <Section title="NEWS" right>
+    <Section title="NEWS">
         <div id="articles" class:mobile={isMobile}>
             {#if loadingState === "done" && articles.length > 0}
                 {#each articles as article}
