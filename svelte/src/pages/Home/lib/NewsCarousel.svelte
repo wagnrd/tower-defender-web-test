@@ -121,7 +121,7 @@
 
 <style>
     #carousel {
-        width: 48rem;
+        min-width: 48rem;
         height: 17rem;
         display: flex;
         align-items: center;
@@ -130,7 +130,7 @@
 
     .mobile#carousel {
         height: min-content;
-        width: unset;
+        min-width: unset;
     }
 
     #content {

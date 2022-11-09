@@ -59,14 +59,14 @@
 
 <style>
     #articles {
-        width: 55rem;
+        width: 53rem;
         display: flex;
         flex-direction: column;
         row-gap: 5rem;
     }
 
     #articles.mobile {
-        width: 80%;
+        width: unset;
     }
 
     .article {

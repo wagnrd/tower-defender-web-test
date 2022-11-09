@@ -116,6 +116,8 @@
     }
 
     .mobile #content {
-        margin: 5rem 1.5rem 0 1.5rem;
+        max-width: 43rem;
+        margin: 5rem auto 0 auto;
+        padding: 0 1.5rem 0 1.5rem;
     }
 </style>
