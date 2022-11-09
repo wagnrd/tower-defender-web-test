@@ -100,7 +100,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 10rem 0 10rem 0;
+        padding: 11rem 0 11rem 0;
     }
 
     .mobile #middle {
@@ -112,7 +112,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 7rem 0 7rem 0;
+        margin-top: 7rem;
     }
 
     .mobile #content {
