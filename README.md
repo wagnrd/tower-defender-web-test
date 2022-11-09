@@ -5,7 +5,7 @@ To do this I build the same website with all frameworks and see which one works 
 
 ## Frameworks
 
-- [Svelte](./svelte-test) 🚧
+- [Svelte](./svelte) 🚧
 - [SvelteKit](.) 🕓
 - [Astro with Svelte](.) 🕓
 - [React](.) 🕓

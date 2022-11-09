@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - '**/svelte-test/**'
+      - '**/svelte/**'
 
 name: Build and deploy Svelte
 jobs:
@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
 
       - name: Build
-        working-directory: svelte-test
+        working-directory: svelte
         run: |
           npm install
           npm run build
@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           protocol: ftps
-          local-dir: ./svelte-test/dist/
+          local-dir: ./svelte/dist/
           server-dir: ./yatd/
           exclude: '**/forums/**'
