@@ -65,14 +65,14 @@
                     </div>
                     <div class="article-separator"></div>
                 {/each}
-            {:else}
-                <h2>No news</h2>
             {/if}
 
             {#if loadingState === "loading"}
                 <h2>News loading...</h2>
             {:else if loadingState === "error"}
                 <h2>Error loading news :(</h2>
+            {:else if loadingState === "done" && articles.length === 0}
+                <h2>No news</h2>
             {/if}
         </div>
     </Section>
