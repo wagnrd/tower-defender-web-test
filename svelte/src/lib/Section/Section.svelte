@@ -40,7 +40,7 @@
     }
 
     #section.mobile {
-        margin-top: 4.5rem;
+        margin: 6.5rem 0 9rem 0;
     }
 
     #left {
@@ -96,7 +96,6 @@
     #middle {
         width: 100%;
         min-width: 35em;
-        margin: 0 3rem 0 3rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -106,6 +105,7 @@
     .mobile #middle {
         min-width: unset;
         margin: 0;
+        padding: 0;
     }
 
     #content {

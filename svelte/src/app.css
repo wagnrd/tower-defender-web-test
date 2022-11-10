@@ -138,6 +138,7 @@ p {
     font: var(--body-font);
     position: relative;
     margin: 0;
+    max-width: 47rem;
 }
 
 h3 {

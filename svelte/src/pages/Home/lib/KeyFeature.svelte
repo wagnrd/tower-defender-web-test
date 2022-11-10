@@ -6,9 +6,9 @@
 
 <div>
     <BulletPoint headline>{title}</BulletPoint>
-    <div id="body">
-        <slot></slot>
-    </div>
+    <p id="body">
+        <slot/>
+    </p>
 </div>
 
 <style>
