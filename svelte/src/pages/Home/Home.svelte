@@ -1,9 +1,9 @@
 <script lang="ts">
+    import Page from "../../lib/Page.svelte";
     import Section from "../../lib/Section/Section.svelte";
+    import Splash from "./lib/Splash.svelte";
     import NewsCarousel from "./lib/NewsCarousel.svelte";
     import KeyFeature from "./lib/KeyFeature.svelte";
-    import Splash from "./lib/Splash.svelte";
-    import Page from "../../lib/Page.svelte";
 </script>
 
 <Page>

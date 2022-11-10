@@ -2,9 +2,6 @@
     import Page from "../lib/Page.svelte";
 </script>
 
-<Page topGap>
+<Page>
     <h1>Download</h1>
 </Page>
-
-<style>
-</style>

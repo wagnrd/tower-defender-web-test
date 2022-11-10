@@ -1,40 +1,55 @@
 <script lang="ts">
     import { Link } from "svelte-routing";
     import { swipe } from "svelte-gestures";
-    import type { ArticlePreview } from "../../../lib/news-articles";
-    import { fetchArticlePreviews } from "../../../lib/news-articles";
     import logoDarkImage from "../../../assets/images/logo-dark.svg";
-    import { isMobile } from "../../../lib/screen-store";
     import type { LoadingState } from "../../../lib/utils";
     import { formatDate } from "../../../lib/utils";
+    import type { ArticlePreview } from "../../../lib/news-articles";
+    import { fetchArticlePreviews } from "../../../lib/news-articles";
+    import { isMobile } from "../../../lib/screen-store";
 
+    const defaultArticleAutoChangeDelayMs = 7000;
+    const interruptedPageAutoChangeDelayMs = 15000;
     const maxArticles = 4;
     let currentArticleIndex = 0;
     let articles: ArticlePreview[] = [];
     let loadingState: LoadingState = "loading";
+    let articleChangeTimer: NodeJS.Timeout;
 
-    fetchArticlePreviews(maxArticles).then(result => {
-        loadingState = "done";
-        articles = result;
-        startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
-    }).catch(error => {
-        loadingState = "error";
-    });
-
-    const showPreviousArticle = () => {
+    function showPreviousArticle() {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.max(currentArticleIndex - 1, 0);
-    };
+    }
 
-    const showNextArticle = () => {
+    function showNextArticle() {
         resetArticleAutoChangeTimer();
         currentArticleIndex = Math.min(currentArticleIndex + 1, articles.length - 1);
-    };
+    }
 
-    const showArticle = (index: number) => {
+    function showArticle(index: number) {
         resetArticleAutoChangeTimer();
         currentArticleIndex = index;
-    };
+    }
+
+    function resetArticleAutoChangeTimer() {
+        clearTimeout(articleChangeTimer);
+        startArticleAutoChangeTimer(interruptedPageAutoChangeDelayMs);
+    }
+
+    function startArticleAutoChangeTimer(ms: number) {
+        articleChangeTimer = setTimeout(() => {
+            currentArticleIndex = (currentArticleIndex + 1) % articles.length;
+            startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
+        }, ms);
+    }
+
+    function onCarouselSwipe(event: any) {
+        if (event.detail.direction === "right") {
+            showPreviousArticle();
+        } else if (event.detail.direction === "left") {
+            showNextArticle();
+        }
+    }
 
     $: articleClass = (articleIndex: number): string => articleIndex == currentArticleIndex ?
                                                         "article-visible" :
@@ -45,29 +60,13 @@
     $: showPreviousButtonClass = currentArticleIndex == 0 ? "hidden" : "visible";
     $: showNextButtonClass = currentArticleIndex == articles.length - 1 ? "hidden" : "visible";
 
-    const defaultArticleAutoChangeDelayMs = 7000;
-    const interruptedPageAutoChangeDelayMs = 15000;
-    let articleChangeTimer: NodeJS.Timeout;
-
-    const resetArticleAutoChangeTimer = () => {
-        clearTimeout(articleChangeTimer);
-        startArticleAutoChangeTimer(interruptedPageAutoChangeDelayMs);
-    };
-
-    const startArticleAutoChangeTimer = (ms: number) => {
-        articleChangeTimer = setTimeout(() => {
-            currentArticleIndex = (currentArticleIndex + 1) % articles.length;
-            startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
-        }, ms);
-    };
-
-    const onCarouselSwipe = (event: any) => {
-        if (event.detail.direction === "right") {
-            showPreviousArticle();
-        } else if (event.detail.direction === "left") {
-            showNextArticle();
-        }
-    };
+    fetchArticlePreviews(maxArticles).then(result => {
+        loadingState = "done";
+        articles = result;
+        startArticleAutoChangeTimer(defaultArticleAutoChangeDelayMs);
+    }).catch(error => {
+        loadingState = "error";
+    });
 </script>
 
 <div id="carousel" class:mobile={$isMobile} use:swipe={{timeframe: 300, minSwipeDistance: 60, touchAction: "pan-y"}}

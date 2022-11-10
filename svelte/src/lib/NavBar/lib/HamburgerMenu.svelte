@@ -4,31 +4,32 @@
     export let forbidToShow = false;
     export let onClick: () => void;
 
-
     let isRequestedToShow = false;
-    $: isActive = !forbidToShow && isRequestedToShow;
-    const toggleMobileMenu = () => {
+
+    function toggleMobileMenu() {
         isRequestedToShow = !isActive;
         onClick();
-    };
+    }
 
-    const onOverlaySwipe = (event: any) => {
+    function onOverlaySwipe(event: any) {
         if (event.detail.direction === "right") {
             isRequestedToShow = false;
         }
-    };
+    }
 
-    const onOverlayClick = ({ target: { id: targetId } }: PointerEvent) => {
+    function onOverlayClick({ target: { id: targetId } }: PointerEvent) {
         if (targetId === "overlay") {
             isRequestedToShow = false;
         }
-    };
+    }
 
-    const onMenuItemClick = ({ target: { id: targetId } }: PointerEvent) => {
+    function onMenuItemClick({ target: { id: targetId } }: PointerEvent) {
         if (targetId != "menu") {
             isRequestedToShow = false;
         }
-    };
+    }
+
+    $: isActive = !forbidToShow && isRequestedToShow;
 </script>
 
 <div id="hamburger" class="clickable" on:click={toggleMobileMenu}>

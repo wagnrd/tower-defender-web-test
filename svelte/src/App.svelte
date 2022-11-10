@@ -20,14 +20,18 @@
     const aboutRoute = "https://wagnrd.de";
     const impressumRoute = "/impressum";
     const privacyPolicyRoute = "/privacy";
-
-    const openForumsTab = () => window.open("https://" + window.location.host + "/forums/");
-    const openEmail = () => window.open("mailto:projects@wagnrd.de?subject=Y.A.T.D.%20support%20ticket");
-
     const defaultPixelRatio = 16 / 9;
     let innerWidth = Number.MAX_SAFE_INTEGER;
 
-    const setMobileState = (pageSize: number) => {
+    function openForumsTab() {
+        window.open("https://" + window.location.host + "/forums/");
+    }
+
+    function openEmail() {
+        window.open("mailto:projects@wagnrd.de?subject=Y.A.T.D.%20support%20ticket");
+    }
+
+    function setMobileState(pageSize: number) {
         const pixelRatio = screen.width / screen.height;
         const mobileThreshold = 1 - (0.4 / defaultPixelRatio * pixelRatio);
 
@@ -37,7 +41,7 @@
         } else {
             isMobile.update(_ => false);
         }
-    };
+    }
 
     $: setMobileState(innerWidth);
 </script>

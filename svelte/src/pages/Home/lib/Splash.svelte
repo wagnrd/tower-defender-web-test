@@ -1,12 +1,10 @@
 <script lang="ts">
+    import { onDestroy } from "svelte";
     import bigGun1Image from "../../../assets/images/big-gun-1.png";
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
     import { isNavBarRequestedToHide } from "../../../lib/NavBar/nav-bar-store";
     import { isMobile } from "../../../lib/screen-store";
-    import { onDestroy } from "svelte";
-
-    isNavBarRequestedToHide.update(() => true);
 
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
@@ -14,7 +12,7 @@
     let y = 0;
     let isSpaceFighterVisible = true;
 
-    const updateSplash = (newY: number) => {
+    function updateSplash(newY: number) {
         const elem = document.getElementById("splash");
 
         if (!elem) {
@@ -33,9 +31,11 @@
 
         isNavBarRequestedToHide.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
-    };
+    }
+
     $: updateSplash(y);
 
+    isNavBarRequestedToHide.update(() => true);
     onDestroy(() => isNavBarRequestedToHide.update(() => false));
 </script>
 

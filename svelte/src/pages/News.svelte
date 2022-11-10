@@ -1,32 +1,25 @@
 <script lang="ts">
+    import { Link } from "svelte-routing";
     import Page from "../lib/Page.svelte";
     import Section from "../lib/Section/Section.svelte";
-    import type { ArticlePreview } from "../lib/news-articles";
-    import { fetchArticlePreviews } from "../lib/news-articles";
-    import { isMobile } from "../lib/screen-store";
-    import { Link } from "svelte-routing";
     import logoDarkImage from "../assets/images/logo-dark.svg";
     import type { LoadingState } from "../lib/utils";
     import { formatDate } from "../lib/utils";
+    import type { ArticlePreview } from "../lib/news-articles";
+    import { fetchArticlePreviews } from "../lib/news-articles";
+    import { isMobile } from "../lib/screen-store";
 
     const articleBatchSize = 4;
     let loadingState: LoadingState = "loading";
     let articles: ArticlePreview[] = [];
-
-    fetchArticlePreviews(articleBatchSize, 0)
-        .then(articlePreviews => {
-            articles = articlePreviews;
-            loadingState = "done";
-        })
-        .catch(_ => loadingState = "error");
-
     let lastArticleNode: HTMLElement;
-
-    const setLastArticleElement = (node: HTMLElement) => lastArticleNode = node;
-
     let scrollY: number;
 
-    const checkIfLastArticleIsVisible = async (y: number): Promise<void> => {
+    function setLastArticleElement(node: HTMLElement) {
+        lastArticleNode = node;
+    }
+
+    async function checkIfLastArticleIsVisible(y: number): Promise<void> {
         if (loadingState != "done") return;
 
         const lastItemTriggerOffset = lastArticleNode?.offsetTop - screen.height;
@@ -37,13 +30,20 @@
             articles = [...articles, ...articlePreviews];
             loadingState = "done";
         }
-    };
+    }
 
     $: checkIfLastArticleIsVisible(scrollY);
+
+    fetchArticlePreviews(articleBatchSize, 0)
+        .then(articlePreviews => {
+            articles = articlePreviews;
+            loadingState = "done";
+        })
+        .catch(_ => loadingState = "error");
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
-<Page topGap>
+<Page>
     <Section title="NEWS">
         <div id="articles" class:mobile={$isMobile}>
             {#if articles.length > 0}

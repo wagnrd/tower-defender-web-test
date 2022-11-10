@@ -1,7 +1,7 @@
 <script lang="ts">
     import { navigate } from "svelte-routing";
-    import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
     import Hamburger from "./lib/HamburgerMenu.svelte";
+    import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
     import { isNavBarRequestedToHide } from "./nav-bar-store";
     import { isMobile } from "../screen-store";
 
@@ -9,17 +9,26 @@
 
     let isAllowedToHide = true;
     let isHamburgerMenuRequestedToHide = false;
-    $: isNavBarHidden = isAllowedToHide && $isNavBarRequestedToHide;
-    $: isHamburgerMenuHidden = isNavBarHidden || isHamburgerMenuRequestedToHide;
 
-    const forbidToHide = () => isAllowedToHide = false;
-    const allowToHide = () => isAllowedToHide = true;
-    const onHamburgerClick = () => isHamburgerMenuRequestedToHide = false;
+    function forbidToHide() {
+        isAllowedToHide = false;
+    }
 
-    const onHomeButtonClick = () => {
+    function allowToHide() {
+        isAllowedToHide = true;
+    }
+
+    function onHamburgerClick() {
+        isHamburgerMenuRequestedToHide = false;
+    }
+
+    function onHomeButtonClick() {
         navigate(homeRoute);
         isHamburgerMenuRequestedToHide = true;
-    };
+    }
+
+    $: isNavBarHidden = isAllowedToHide && $isNavBarRequestedToHide;
+    $: isHamburgerMenuHidden = isNavBarHidden || isHamburgerMenuRequestedToHide;
 </script>
 
 <div id="nav-bar" class:hidden="{isNavBarHidden}" on:mouseenter={forbidToHide} on:mouseleave={allowToHide}>
