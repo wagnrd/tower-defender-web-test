@@ -2,14 +2,11 @@
     import bigGun1Image from "../../../assets/images/big-gun-1.png";
     import spaceFighterImage from "../../../assets/images/space-fighter.png";
     import logoImage from "../../../assets/images/logo-dark.svg";
-    import { isNavBarHiddenState } from "../../../lib/NavBar/nav-bar-store";
-    import { isMobileState } from "../../../lib/screen-store";
+    import { isNavBarRequestedToHide } from "../../../lib/NavBar/nav-bar-store";
+    import { isMobile } from "../../../lib/screen-store";
     import { onDestroy } from "svelte";
 
-    isNavBarHiddenState.update(() => true);
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
+    isNavBarRequestedToHide.update(() => true);
 
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
@@ -27,24 +24,24 @@
         const percentageScrolled = 1 / window.innerHeight.valueOf() * newY;
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
 
-        if (!isMobile) {
+        if (!$isMobile) {
             const opacity = 1 - (scrollValue * fadeMultiplier);
             const blur = Math.max(scrollValue * 20, 0);
             elem.style.opacity = opacity.toString(10);
             elem.style.filter = `blur(${blur}px)`;
         }
 
-        isNavBarHiddenState.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
+        isNavBarRequestedToHide.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
         isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     };
     $: updateSplash(y);
 
-    onDestroy(() => isNavBarHiddenState.update(() => false));
+    onDestroy(() => isNavBarRequestedToHide.update(() => false));
 </script>
 
 <svelte:window bind:scrollY={y}/>
-<div id="splash" class:mobile={isMobile}>
-    {#if !isMobile}
+<div id="splash" class:mobile={$isMobile}>
+    {#if !$isMobile}
         <div id="big-gun-container">
             <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
         </div>

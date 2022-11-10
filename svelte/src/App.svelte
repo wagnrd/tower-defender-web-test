@@ -10,7 +10,7 @@
     import Download from "./pages/Download.svelte";
     import Footer from "./lib/Footer/Footer.svelte";
     import FooterButton from "./lib/Footer/FooterButton.svelte";
-    import { isMobileState } from "./lib/screen-store";
+    import { isMobile } from "./lib/screen-store";
 
     const homeRoute = "/";
     const newsRoute = "/news";
@@ -33,20 +33,17 @@
 
         if (pageSize <= screen.width * mobileThreshold ||
             window.matchMedia("screen and (max-device-width: 1000px)").matches) {
-            isMobileState.update(_ => true);
+            isMobile.update(_ => true);
         } else {
-            isMobileState.update(_ => false);
+            isMobile.update(_ => false);
         }
     };
 
     $: setMobileState(innerWidth);
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <svelte:window bind:innerWidth={innerWidth}/>
-<main class:mobile={isMobile}>
+<main class:mobile={$isMobile}>
     <NavBar homeRoute={homeRoute}>
         <NavBarButton route={newsRoute}>NEWS</NavBarButton>
         <NavBarButton route={gameRoute}>GAME</NavBarButton>

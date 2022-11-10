@@ -1,12 +1,9 @@
 <script lang="ts">
-    import { isMobileState } from "../../screen-store";
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
+    import { isMobile } from "../../screen-store";
 </script>
 
-<div id="title" class:mobile={isMobile}>
-    {#if !isMobile}
+<div id="title" class:mobile={$isMobile}>
+    {#if !$isMobile}
         <div id="ornament"></div>
         <div id="left"></div>
     {/if}

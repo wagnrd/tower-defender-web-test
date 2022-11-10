@@ -2,20 +2,15 @@
     import { navigate } from "svelte-routing";
     import logoDarkSmall from "../../assets/images/logo-dark-small.svg";
     import Hamburger from "./lib/HamburgerMenu.svelte";
-    import { isNavBarHiddenState } from "./nav-bar-store";
-    import { isMobileState } from "../screen-store";
+    import { isNavBarRequestedToHide } from "./nav-bar-store";
+    import { isMobile } from "../screen-store";
 
     export let homeRoute = "";
 
     let isAllowedToHide = true;
-    let isRequestedToHide = false;
     let isHamburgerMenuRequestedToHide = false;
-    $: isNavBarHidden = isAllowedToHide && isRequestedToHide;
+    $: isNavBarHidden = isAllowedToHide && $isNavBarRequestedToHide;
     $: isHamburgerMenuHidden = isNavBarHidden || isHamburgerMenuRequestedToHide;
-    isNavBarHiddenState.subscribe((shouldHide: boolean) => isRequestedToHide = shouldHide);
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 
     const forbidToHide = () => isAllowedToHide = false;
     const allowToHide = () => isAllowedToHide = true;
@@ -35,7 +30,7 @@
         </div>
     </div>
 
-    {#if isMobile}
+    {#if $isMobile}
         <div id="mobile-spacer"></div>
         <!--suppress XmlDuplicatedId -->
         <div id="bar-ornament"></div>

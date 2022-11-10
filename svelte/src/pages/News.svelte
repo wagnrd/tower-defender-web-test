@@ -3,13 +3,13 @@
     import Section from "../lib/Section/Section.svelte";
     import type { ArticlePreview } from "../lib/news-articles";
     import { fetchArticlePreviews } from "../lib/news-articles";
-    import { isMobileState } from "../lib/screen-store";
+    import { isMobile } from "../lib/screen-store";
     import { Link } from "svelte-routing";
     import logoDarkImage from "../assets/images/logo-dark.svg";
     import type { LoadingState } from "../lib/utils";
     import { formatDate } from "../lib/utils";
 
-    const articleBatchSize = 10;
+    const articleBatchSize = 3;
     let loadingState: LoadingState = "loading";
     let articles: ArticlePreview[] = [];
 
@@ -20,20 +20,18 @@
         })
         .catch(_ => loadingState = "error");
 
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <Page topGap>
     <Section title="NEWS">
-        <div id="articles" class:mobile={isMobile}>
+        <div id="articles" class:mobile={$isMobile}>
             {#if loadingState === "done" && articles.length > 0}
                 {#each articles as article}
                     <div class="article">
                         <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image"
                              alt="{article.headline} image"/>
                         <h2 class="headline">{article.headline}</h2>
-                        {#if isMobile}
+                        {#if $isMobile}
                             <p class="date">{formatDate(article.timestamp)}</p>
                         {:else}
                             <h3 class="date">{formatDate(article.timestamp)}</h3>

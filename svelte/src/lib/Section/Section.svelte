@@ -1,17 +1,14 @@
 <script lang="ts">
-    import { isMobileState } from "../screen-store";
+    import { isMobile } from "../screen-store";
     import Title from "./lib/Title.svelte";
 
     export let title = "";
     export let ornament = false;
     export let alternative = false;
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="section" class:alternative={alternative} class:mobile={isMobile}>
-    {#if ornament && !isMobile}
+<div id="section" class:alternative={alternative} class:mobile={$isMobile}>
+    {#if ornament && !$isMobile}
         <div id="left">
             <div class="ornament"></div>
         </div>
@@ -24,7 +21,7 @@
         </div>
     </div>
 
-    {#if ornament && !isMobile}
+    {#if ornament && !$isMobile}
         <div id="right">
             <div class="ornament"></div>
         </div>

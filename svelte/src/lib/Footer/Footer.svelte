@@ -1,12 +1,10 @@
 <script lang="ts">
-    import { isMobileState } from "../screen-store";
+    import { isMobile } from "../screen-store";
 
     const year = new Date().getUTCFullYear();
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
-<div id="footer" class:mobile={isMobile}>
+<div id="footer" class:mobile={$isMobile}>
     <div id="background">
         <div id="buttons">
             <slot></slot>

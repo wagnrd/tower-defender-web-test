@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
 
-let isMobileState = writable(false);
+let isMobile = writable(false);
 
-export { isMobileState };
+export { isMobile };

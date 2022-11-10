@@ -4,7 +4,7 @@
     import type { ArticlePreview } from "../../../lib/news-articles";
     import { fetchArticlePreviews } from "../../../lib/news-articles";
     import logoDarkImage from "../../../assets/images/logo-dark.svg";
-    import { isMobileState } from "../../../lib/screen-store";
+    import { isMobile } from "../../../lib/screen-store";
     import type { LoadingState } from "../../../lib/utils";
     import { formatDate } from "../../../lib/utils";
 
@@ -61,9 +61,6 @@
         }, ms);
     };
 
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
-
     const onCarouselSwipe = (event: any) => {
         if (event.detail.direction === "right") {
             showPreviousArticle();
@@ -73,7 +70,7 @@
     };
 </script>
 
-<div id="carousel" class:mobile={isMobile} use:swipe={{timeframe: 300, minSwipeDistance: 60, touchAction: "pan-y"}}
+<div id="carousel" class:mobile={$isMobile} use:swipe={{timeframe: 300, minSwipeDistance: 60, touchAction: "pan-y"}}
      on:swipe={onCarouselSwipe}>
     {#if loadingState === "done" && articles.length > 0}
         <div id="content">
@@ -83,7 +80,7 @@
 
             {#each articles as article, i}
                 <h2 class="headline {articleClass(i)}">{article.headline}</h2>
-                {#if isMobile}
+                {#if $isMobile}
                     <p class="date {articleClass(i)}">{formatDate(article.timestamp)}</p>
                 {:else}
                     <h3 class="date {articleClass(i)}">{formatDate(article.timestamp)}</h3>

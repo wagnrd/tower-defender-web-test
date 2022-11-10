@@ -3,11 +3,7 @@
     import NewsCarousel from "./lib/NewsCarousel.svelte";
     import KeyFeature from "./lib/KeyFeature.svelte";
     import Splash from "./lib/Splash.svelte";
-    import { isMobileState } from "../../lib/screen-store";
     import Page from "../../lib/Page.svelte";
-
-    let isMobile = false;
-    isMobileState.subscribe(value => isMobile = value);
 </script>
 
 <Page>
