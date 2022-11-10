@@ -100,6 +100,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 11rem 0 11rem 0;
+        z-index: 1;
     }
 
     .mobile #middle {
