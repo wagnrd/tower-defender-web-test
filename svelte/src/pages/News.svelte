@@ -9,7 +9,7 @@
     import type { LoadingState } from "../lib/utils";
     import { formatDate } from "../lib/utils";
 
-    const articleBatchSize = 3;
+    const articleBatchSize = 4;
     let loadingState: LoadingState = "loading";
     let articles: ArticlePreview[] = [];
 
@@ -20,14 +20,35 @@
         })
         .catch(_ => loadingState = "error");
 
+    let lastArticleNode: HTMLElement;
+
+    const setLastArticleElement = (node: HTMLElement) => lastArticleNode = node;
+
+    let scrollY: number;
+
+    const checkIfLastArticleIsVisible = async (y: number): Promise<void> => {
+        if (loadingState != "done") return;
+
+        const lastItemTriggerOffset = lastArticleNode?.offsetTop - screen.height;
+
+        if (lastItemTriggerOffset < y) {
+            loadingState = "loading";
+            const articlePreviews = await fetchArticlePreviews(articleBatchSize, articles.length);
+            articles = [...articles, ...articlePreviews];
+            loadingState = "done";
+        }
+    };
+
+    $: checkIfLastArticleIsVisible(scrollY);
 </script>
 
+<svelte:window bind:scrollY={scrollY}/>
 <Page topGap>
     <Section title="NEWS">
         <div id="articles" class:mobile={$isMobile}>
-            {#if loadingState === "done" && articles.length > 0}
+            {#if articles.length > 0}
                 {#each articles as article}
-                    <div class="article">
+                    <div class="article" use:setLastArticleElement>
                         <img src={article.thumbnailUrl ?? logoDarkImage} class="carousel-image"
                              alt="{article.headline} image"/>
                         <h2 class="headline">{article.headline}</h2>
@@ -44,12 +65,14 @@
                     </div>
                     <div class="article-separator"></div>
                 {/each}
-            {:else if loadingState === "loading"}
+            {:else}
+                <h2>No news</h2>
+            {/if}
+
+            {#if loadingState === "loading"}
                 <h2>News loading...</h2>
             {:else if loadingState === "error"}
                 <h2>Error loading news :(</h2>
-            {:else}
-                <h2>No news</h2>
             {/if}
         </div>
     </Section>
