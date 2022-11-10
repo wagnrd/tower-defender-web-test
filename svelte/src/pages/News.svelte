@@ -10,7 +10,7 @@
     import { isMobile } from "../lib/screen-store";
 
     const articleBatchSize = 4;
-    let loadingState: LoadingState = "loading";
+    let loadingState: LoadingState = "done";
     let articles: ArticlePreview[] = [];
     let lastArticleNode: HTMLElement;
     let scrollY: number;
@@ -19,27 +19,29 @@
         lastArticleNode = node;
     }
 
-    async function checkIfLastArticleIsVisible(y: number): Promise<void> {
-        if (loadingState != "done") return;
-
-        const lastItemTriggerOffset = lastArticleNode?.offsetTop - screen.height;
-
-        if (lastItemTriggerOffset < y) {
-            loadingState = "loading";
-            const articlePreviews = await fetchArticlePreviews(articleBatchSize, articles.length);
-            articles = [...articles, ...articlePreviews];
+    async function loadArticlePreviews() {
+        loadingState = "loading";
+        try {
+            articles = [
+                ...articles,
+                ...await fetchArticlePreviews(articleBatchSize, articles.length)
+            ];
             loadingState = "done";
+        } catch (_) {
+            loadingState = "error";
+        }
+        console.log("Articles:", articles.length);
+    }
+
+    async function checkIfLastArticleIsVisible(y: number): Promise<void> {
+        if (loadingState !== "done") return;
+
+        while ((lastArticleNode ? lastArticleNode.offsetTop - screen.height : 0) <= scrollY) {
+            await loadArticlePreviews();
         }
     }
 
     $: checkIfLastArticleIsVisible(scrollY);
-
-    fetchArticlePreviews(articleBatchSize, 0)
-        .then(articlePreviews => {
-            articles = articlePreviews;
-            loadingState = "done";
-        })
-        .catch(_ => loadingState = "error");
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
