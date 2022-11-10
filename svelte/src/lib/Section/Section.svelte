@@ -2,7 +2,7 @@
     import { isMobile } from "../screen-store";
     import Title from "./lib/Title.svelte";
 
-    export let title = "";
+    export let title;
     export let ornament = false;
     export let alternative = false;
 </script>
@@ -15,7 +15,10 @@
     {/if}
 
     <div id="middle">
-        <Title>{title}</Title>
+        {#if title}
+            <Title>{title}</Title>
+        {/if}
+
         <div id="content">
             <slot/>
         </div>
@@ -109,6 +112,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         margin-top: 7rem;
     }
 
