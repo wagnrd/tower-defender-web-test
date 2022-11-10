@@ -9,38 +9,42 @@
     const percentageScrolledFadeThreshold = 0.2;
     const percentageScrolledSpaceShipAnimationThreshold = 0.1;
     const fadeMultiplier = 1.3;
-    let y = 0;
+    let scrollY = 0;
     let isSpaceFighterVisible = true;
+    let splash: HTMLElement;
 
-    function updateSplash(newY: number) {
-        const elem = document.getElementById("splash");
+    function updateSplash(y: number, mobile: boolean) {
+        if (!splash) return;
 
-        if (!elem) {
-            return;
-        }
-
-        const percentageScrolled = 1 / window.innerHeight.valueOf() * newY;
+        const percentageScrolled = 1 / window.innerHeight.valueOf() * y;
         const scrollValue = percentageScrolled - percentageScrolledFadeThreshold;
 
-        if (!$isMobile) {
+        if (mobile) {
+            splash.style.opacity = "1";
+            splash.style.filter = "none";
+        } else {
             const opacity = 1 - (scrollValue * fadeMultiplier);
             const blur = Math.max(scrollValue * 20, 0);
-            elem.style.opacity = opacity.toString(10);
-            elem.style.filter = `blur(${blur}px)`;
+            splash.style.opacity = opacity.toString(10);
+            splash.style.filter = `blur(${blur}px)`;
+            isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
         }
 
         isNavBarRequestedToHide.update(() => percentageScrolled <= percentageScrolledFadeThreshold);
-        isSpaceFighterVisible = percentageScrolled <= percentageScrolledSpaceShipAnimationThreshold;
     }
 
-    $: updateSplash(y);
+    function getElement(node: HTMLElement) {
+        splash = node;
+    }
+
+    $: updateSplash(scrollY, $isMobile);
 
     isNavBarRequestedToHide.update(() => true);
     onDestroy(() => isNavBarRequestedToHide.update(() => false));
 </script>
 
-<svelte:window bind:scrollY={y}/>
-<div id="splash" class:mobile={$isMobile}>
+<svelte:window bind:scrollY={scrollY}/>
+<div id="splash" class:mobile={$isMobile} use:getElement>
     {#if !$isMobile}
         <div id="big-gun-container">
             <img src={bigGun1Image} id="big-gun" alt="Big gun"/>
