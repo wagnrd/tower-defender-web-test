@@ -14,7 +14,7 @@
     import { config } from "./config.js";
 
     const homeRoute = config.basePath + "/";
-    const newsRoute = config.basePath + "/svelte/news";
+    const newsRoute = config.basePath + "/news";
     const newsArticleRoute = config.basePath + "/news/:id";
     const gameRoute = config.basePath + "/game";
     const downloadRoute = config.basePath + "/download";
