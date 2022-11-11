@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           protocol: ftps
-          local-dir: ./svelte/dist/
+          local-dir: ./react/dist/
           server-dir: ./yatd/react/
           exclude: '**/forums/**'
