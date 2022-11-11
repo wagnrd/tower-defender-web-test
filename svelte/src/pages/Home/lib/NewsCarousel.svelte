@@ -7,6 +7,7 @@
     import type { ArticlePreview } from "../../../lib/news-articles";
     import { fetchArticlePreviews } from "../../../lib/news-articles";
     import { isMobile } from "../../../lib/screen-store";
+    import { config } from "../../../config.js";
 
     const defaultArticleAutoChangeDelayMs = 7000;
     const interruptedPageAutoChangeDelayMs = 15000;
@@ -89,7 +90,7 @@
                 <div class="description {articleClass(i)}">
                     {article.description}<br/>
                     <br/>
-                    <Link to="/news/{article.id}">Read news</Link>
+                    <Link to="{config.basePath}/news/{article.id}">Read news</Link>
                 </div>
             {/each}
 
