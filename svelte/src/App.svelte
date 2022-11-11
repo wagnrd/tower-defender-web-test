@@ -13,14 +13,14 @@
     import { isMobile } from "./lib/screen-store";
     import { config } from "./config.js";
 
-    const homeRoute = "/";
-    const newsRoute = "/news";
-    const newsArticleRoute = "/news/:id";
-    const gameRoute = "/game";
-    const downloadRoute = "/download";
+    const homeRoute = config.basePath + "/";
+    const newsRoute = config.basePath + "/svelte/news";
+    const newsArticleRoute = config.basePath + "/news/:id";
+    const gameRoute = config.basePath + "/game";
+    const downloadRoute = config.basePath + "/download";
     const aboutRoute = "https://wagnrd.de";
-    const impressumRoute = "/impressum";
-    const privacyPolicyRoute = "/privacy";
+    const impressumRoute = config.basePath + "/impressum";
+    const privacyPolicyRoute = config.basePath + "/privacy";
     const defaultPixelRatio = 16 / 9;
     let innerWidth = Number.MAX_SAFE_INTEGER;
 
@@ -57,7 +57,7 @@
     </NavBar>
 
     <div id="flex-wrapper">
-        <Router basepath={config.basePath}>
+        <Router>
             <Route path={homeRoute} component={Home}/>
             <Route path={newsRoute} component={News}/>
             <Route path={newsArticleRoute} component={NewsArticle}/>
