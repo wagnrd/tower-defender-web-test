@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/svelte/**'
+
+name: Deploy frontpage
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: wagnrd.de
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          protocol: ftps
+          local-dir: ./frontpage/
+          server-dir: ./yatd/
+          exclude: '**/forums/**'
