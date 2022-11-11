@@ -8,6 +8,7 @@
     import type { ArticlePreview } from "../lib/news-articles";
     import { fetchArticlePreviews } from "../lib/news-articles";
     import { isMobile } from "../lib/screen-store";
+    import { config } from "../config.js";
 
     const articleBatchSize = 4;
     let loadingState: LoadingState = "done";
@@ -62,7 +63,7 @@
                         <div class="description">
                             {article.description}<br/>
                             <br/>
-                            <Link to="/news/{article.id}">Read news</Link>
+                            <Link to="{config.basePath}/news/{article.id}">Read news</Link>
                         </div>
                     </div>
                     <div class="article-separator"></div>
