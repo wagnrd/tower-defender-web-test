@@ -11,6 +11,7 @@
     import Footer from "./lib/Footer/Footer.svelte";
     import FooterButton from "./lib/Footer/FooterButton.svelte";
     import { isMobile } from "./lib/screen-store";
+    import { config } from "./config.js";
 
     const homeRoute = "/";
     const newsRoute = "/news";
@@ -56,7 +57,7 @@
     </NavBar>
 
     <div id="flex-wrapper">
-        <Router>
+        <Router basepath={config.basePath}>
             <Route path={homeRoute} component={Home}/>
             <Route path={newsRoute} component={News}/>
             <Route path={newsArticleRoute} component={NewsArticle}/>

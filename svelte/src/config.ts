@@ -5,6 +5,7 @@ interface Testing {
 }
 
 interface Config {
+    basePath: string;
     newsApiBaseUrl: string;
     testing?: Testing;
 }
@@ -12,10 +13,11 @@ interface Config {
 const configFile: Config = configJson;
 
 const config: Config = {
-    ...configFile,
     testing: {
-        enableArticlePadding: configFile?.testing?.enableArticlePadding ?? false
-    }
+        enableArticlePadding: false
+    },
+    basePath: "/",
+    ...configFile
 };
 
 export { config };

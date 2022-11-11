@@ -1,4 +1,5 @@
 {
+  "basePath": "/svelte",
   "newsApiBaseUrl": "https://yatd-news.onrender.com",
   "testing": {
     "enableArticlePadding": true
