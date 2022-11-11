@@ -14,8 +14,3 @@
 .env
 npm-debug.log
 package-lock.json
-
-
-# editors
-.vscode
-.idea

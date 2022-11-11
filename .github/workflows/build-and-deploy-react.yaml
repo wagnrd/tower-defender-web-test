@@ -4,9 +4,9 @@ on:
     branches:
       - main
     paths:
-      - '**/svelte/**'
+      - '**/react/**'
 
-name: Build and deploy Svelte
+name: Build and deploy React
 jobs:
   build-deploy:
     name: Build and deploy
@@ -34,5 +34,5 @@ jobs:
           password: ${{ secrets.ftp_password }}
           protocol: ftps
           local-dir: ./svelte/dist/
-          server-dir: ./yatd/svelte
+          server-dir: ./yatd/react
           exclude: '**/forums/**'
