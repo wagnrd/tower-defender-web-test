@@ -1,4 +1,4 @@
-# Y.A.T.D. web + Sevelt
+# Y.A.T.D. web + Svelte
 
 This website is currently work in progress.
 
