@@ -4,16 +4,41 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, minimum-scale=1,
                                    maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="app.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <link rel="icon" type="image/x-icon" href="favicon.png"/>
     <title>Y.A.T.D. Framework Test</title>
 </head>
 <body>
-Welcome to the Y.A.T.D. web framework test page.<br/>
+
+<img src="assets/images/logo-dark.svg" id="logo" alt="Y.A.T.D. logo"/>
+
+<h1>Welcome</h1>
+<h2>to the web framework test page</h2>
+<p>With this project, I am building the same webpage with different web frameworks to see which one works best for
+    me.</p>
 <br/>
-Please select the website version developed in the respective framework:<br/>
+<p>Select a version:</p>
 <br/>
-<a href="https://yatd.wagnrd.de/svelte">Svelte</a><br/>
-<a href="https://yatd.wagnrd.de/react">React</a>
+
+<div id="buttons">
+    <a href="https://yatd.wagnrd.de/svelte" class="button">
+        <div>
+            <img src="./assets/images/svelte.png" alt="Svelte logo"/>
+            Svelte
+        </div>
+    </a>
+    <a href="https://yatd.wagnrd.de/react" class="button">
+        <div>
+            <img src="./assets/images/react.png" alt="Svelte logo"/>
+            React
+        </div>
+    </a>
+</div>
+
+<a href="https://github.com/wagnrd/tower-defender-web-test">
+    <img src="./assets/images/github.png" id="repo-link">
+</a>
+
 </body>
 </html>
