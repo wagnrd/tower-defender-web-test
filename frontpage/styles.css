@@ -22,21 +22,22 @@ body {
 }
 
 #repo-link {
-    width: 3rem;
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 2rem;
+    transition: color 300ms;
 }
 
-.button {
-    min-width: 14rem;
-    max-width: max-content;
-    height: 3rem;
-    color: var(--text-color);
-    margin: 0.7rem;
-    display: flex;
-    text-decoration: none;
+#repo-link:hover {
+    color: var(--contrast-color)
+}
 
+#repo-link > img {
+    margin-top: -0.3rem;
+    width: 1.5rem;
+}
+
+.button, a {
     /* prohibit browser-default-highlighting when elements being clicked */
     -webkit-tap-highlight-color: transparent;
     outline: none;
@@ -45,6 +46,17 @@ body {
     -webkit-user-select: none;
     user-select: none;
     cursor: pointer;
+
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.button {
+    min-width: 14rem;
+    max-width: max-content;
+    height: 3rem;
+    margin: 0.7rem;
+    display: flex;
 }
 
 .button:hover::before {
@@ -97,7 +109,7 @@ body {
     transition: background-color 300ms;
 }
 
-.button:hover > div {
+.button:hover > * {
     background-color: var(--highlight-color);
 }
 
