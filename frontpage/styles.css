@@ -1,20 +1,16 @@
 body {
-    height: 100vh;
     background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 4rem 2rem;
 }
 
 #logo {
     width: 30rem;
     max-width: 100%;
-}
-
-#content {
-    width: 30rem;
 }
 
 #buttons {
