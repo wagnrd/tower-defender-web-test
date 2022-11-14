@@ -6,7 +6,7 @@
 </script>
 
 <div on:click={onClick} class="button clickable">
-    <slot></slot>
+    <slot/>
 </div>
 
 <style>
