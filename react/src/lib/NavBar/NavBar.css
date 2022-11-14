@@ -1,0 +1,69 @@
+#nav-bar {
+    width: calc(100vw - (100vw - 100%));
+    height: 3.8rem;
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
+    transition: all 300ms;
+}
+
+#nav-bar.hidden {
+    top: -3.8rem;
+    filter: none;
+}
+
+#nav-bar > * {
+    background-color: var(--base-color);
+}
+
+#nav-bar #brand {
+    min-width: 11rem;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    overflow: clip;
+}
+
+#nav-bar #logo {
+    height: 4.9rem;
+    margin-left: -1.5rem;
+}
+
+#nav-bar #name {
+    margin: 0.4rem 0 0 -1.3rem;
+    font-family: var(--brand-font-family);
+    font-weight: bold;
+    font-size: 1.41rem;
+}
+
+#nav-bar #mobile-spacer {
+    width: 100%;
+}
+
+#nav-bar #buttons {
+    display: flex;
+    padding: 0 1.68rem 0 6.5rem;
+}
+
+#nav-bar #bar-ornament {
+    min-width: 3.8rem;
+    margin-left: -1px;
+    clip-path: polygon(
+            0% 0%,
+            100% 100%,
+            0% 100%
+    );
+}
+
+#nav-bar #contrast-ornament {
+    min-width: 7.4rem;
+    margin-left: -2.75rem;
+    background-color: var(--contrast-color);
+    clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            50% 100%
+    );
+}
