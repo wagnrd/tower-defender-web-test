@@ -16,6 +16,8 @@ const config: Config = {
     testing: {
         enableArticlePadding: false
     },
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
     basePath: "/",
     ...configFile
 };

@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import "./NavBar.css";
 import { useApp } from "../AppProvider";
 import logoDarkSmallImage from "../../assets/images/logo-dark-small.svg";

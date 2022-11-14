@@ -16,6 +16,7 @@ const appProps: AppContextProps = {
 
 const AppContext = React.createContext<AppContextProps>(appProps);
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 function stub(...args: any) {
 }
 
