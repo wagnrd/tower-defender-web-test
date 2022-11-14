@@ -2,14 +2,14 @@ import { ReactElement } from "react";
 import "./NavBarButton.css";
 
 interface NavBarButtonProps {
+    text: string;
     onClick: () => void;
-    children?: string;
 }
 
-function NavBarButton({ onClick, children }: NavBarButtonProps): ReactElement {
+function NavBarButton({ onClick, text }: NavBarButtonProps): ReactElement {
     return (
         <div onClick={onClick} className="button clickable">
-            {children}
+            {text}
         </div>
     );
 }

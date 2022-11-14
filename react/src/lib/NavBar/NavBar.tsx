@@ -4,17 +4,18 @@ import { useApp } from "../AppProvider";
 import logoDarkSmallImage from "../../assets/images/logo-dark-small.svg";
 
 interface NavBarProps {
+    onHomeClick: () => {};
     children: ReactElement | ReactElement[];
 }
 
-function NavBar({ children }: NavBarProps): ReactElement {
+function NavBar({ onHomeClick, children }: NavBarProps): ReactElement {
     const { isMobile } = useApp();
 
     console.log(isMobile);
 
     return (
         <div id="nav-bar">
-            <div id="brand" className="clickable">
+            <div id="brand" className="clickable" onClick={onHomeClick}>
                 <img src={logoDarkSmallImage} id="logo" alt="Brand logo"/>
                 <div id="name">Y.A.T.D.</div>
             </div>
