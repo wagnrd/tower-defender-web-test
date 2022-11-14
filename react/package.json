@@ -9,6 +9,11 @@
     "build": "tsc && vite build --base=./",
     "preview": "vite preview"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prebuild"
+    }
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,6 +28,7 @@
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.27.0",
     "eslint-plugin-react": "^7.31.10",
+    "husky": "^8.0.2",
     "typescript": "^4.8.4",
     "vite": "^3.2.3"
   }
