@@ -2,6 +2,7 @@ import "./App.css";
 import { ReactElement, useEffect } from "react";
 import NavBar from "./lib/NavBar/NavBar";
 import { useApp } from "./lib/AppProvider";
+import NavBarButton from "./lib/NavBar/NavBarButton";
 
 const defaultPixelRatio = 16 / 9;
 
@@ -23,7 +24,16 @@ function App(): ReactElement {
     }, []);
 
     return (
-        <NavBar/>
+        <NavBar>
+            <NavBarButton onClick={() => {
+            }}>NEWS</NavBarButton>
+            <NavBarButton onClick={() => {
+            }}>GAME</NavBarButton>
+            <NavBarButton onClick={() => {
+            }}>FORUMS</NavBarButton>
+            <NavBarButton onClick={() => {
+            }}>DOWNLOAD</NavBarButton>
+        </NavBar>
     );
 }
 

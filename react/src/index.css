@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: "Montserrat SemiBold";
+    src: url("./assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+}
+
+@font-face {
     font-family: "Montserrat Black";
     src: url("./assets/fonts/Montserrat/Montserrat-Black.ttf");
 }
@@ -27,25 +32,28 @@
     /* Colors */
     --base-color: #1F1930;
     --highlight-color: #28203D;
-    --text-color: #F2F2F2;
     --contrast-color: #69C6E8;
+    --text-color: #F2F2F2;
     --shadow-color: rgba(0, 0, 0, 0.3);
 
     /* Font sizes */
     --headline-font-size: 2.3rem;
     --subheadline-font-size: 1.4rem;
     --body-font-size: 1rem;
+    --hint-font-size: 0.8rem;
 
     /* Font families */
     --brand-font-family: Megrim, Montserrat, sans-serif;
     --headline-font-family: "Montserrat Black", sans-serif;
     --subheadline-font-family: "Montserrat Medium", sans-serif;
+    --sub-brand-font-family: "Montserrat SemiBold", sans-serif;
     --body-font-family: Montserrat, sans-serif;
 
     /* Fonts */
     --headline-font: var(--headline-font-size) var(--headline-font-family);
     --subheadline-font: var(--subheadline-font-size) var(--subheadline-font-family);
     --body-font: var(--body-font-size) var(--body-font-family);
+    --hint-font: var(--hint-font-size) var(--body-font-family);
 
     font-family: Montserrat, sans-serif;
     color: var(--text-color);
@@ -123,17 +131,47 @@ h2 {
     font: var(--subheadline-font);
     text-transform: uppercase;
     position: relative;
-    margin: 0.7rem;
+    margin: 0;
 }
 
 p {
     font: var(--body-font);
     position: relative;
-    max-width: 32rem;
-    margin: 0.5rem;
+    margin: 0;
+    max-width: 47rem;
+}
+
+h3 {
+    font: var(--hint-font);
+    position: relative;
+    margin: 0;
+}
+
+a {
+    font: var(--body-font-size) var(--subheadline-font-family);
+    color: var(--contrast-color);
+    text-decoration: none;
+    position: relative;
+    margin: 0;
+    transition: text-decoration;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 img {
     -webkit-user-select: none; /* Safari */
     user-select: none;
+}
+
+/* prohibit browser-default-highlighting when elements being clicked */
+.clickable {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
 }

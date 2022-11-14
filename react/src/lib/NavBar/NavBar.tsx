@@ -3,8 +3,11 @@ import "./NavBar.css";
 import { useApp } from "../AppProvider";
 import logoDarkSmallImage from "../../assets/images/logo-dark-small.svg";
 
+interface NavBarProps {
+    children: ReactElement | ReactElement[];
+}
 
-function NavBar(): ReactElement {
+function NavBar({ children }: NavBarProps): ReactElement {
     const { isMobile } = useApp();
 
     console.log(isMobile);
@@ -13,13 +16,11 @@ function NavBar(): ReactElement {
         <div id="nav-bar">
             <div id="brand" className="clickable">
                 <img src={logoDarkSmallImage} id="logo" alt="Brand logo"/>
-                <div id="name">
-                    Y.A.T.D.
-                </div>
+                <div id="name">Y.A.T.D.</div>
             </div>
 
             <div id="buttons">
-                <slot/>
+                {children}
             </div>
             <div id="bar-ornament"></div>
             <div id="contrast-ornament"></div>
