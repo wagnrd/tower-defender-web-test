@@ -4,7 +4,7 @@ import { useApp } from "../AppProvider";
 import logoDarkSmallImage from "../../assets/images/logo-dark-small.svg";
 
 interface NavBarProps {
-    onHomeClick: () => {};
+    onHomeClick: () => void;
     children: ReactElement | ReactElement[];
 }
 
