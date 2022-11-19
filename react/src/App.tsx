@@ -8,6 +8,7 @@ import Game from "./pages/Game";
 import Download from "./pages/Download";
 import NavBar from "./lib/NavBar/NavBar";
 import NavBarButton from "./lib/NavBar/NavBarButton";
+import classnames from "classnames";
 
 const defaultPixelRatio = 16 / 9;
 
@@ -40,11 +41,13 @@ function App(): ReactElement {
     const goToDownload = () => navigate(downloadRoute);
     const goToForums = () => window.open("https://" + window.location.host + "/forums/");
 
+    const mainClassName = classnames({ mobile: isMobile });
+
     return (
-        <>
+        <main className={mainClassName}>
             <NavBar onHomeClick={goToHome}>
                 <NavBarButton onClick={goToNews} text="NEWS"/>
-                <NavBarButton onClick={goToGame} text="Game"/>
+                <NavBarButton onClick={goToGame} text="GAME"/>
                 <NavBarButton onClick={goToForums} text="FORUMS"/>
                 <NavBarButton onClick={goToDownload} text="DOWNLOAD"/>
             </NavBar>
@@ -55,7 +58,7 @@ function App(): ReactElement {
                 <Route path={gameRoute} element={<Game/>}/>
                 <Route path={downloadRoute} element={<Download/>}/>
             </Routes>
-        </>
+        </main>
     );
 }
 

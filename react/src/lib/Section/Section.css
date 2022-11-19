@@ -1,0 +1,89 @@
+#section {
+    height: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+.mobile #section {
+    margin: 6.5rem 0 9rem 0;
+}
+
+#section .left {
+    display: flex;
+    filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
+}
+
+#section .left .ornament {
+    clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            0% 100%
+    );
+}
+
+#section.alternative .left {
+    justify-content: end;
+    align-items: end;
+    filter: drop-shadow(0.45rem -0.45rem 0.2rem var(--shadow-color));
+}
+
+#section .right {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    filter: drop-shadow(-0.45rem -0.45rem 0.2rem var(--shadow-color));
+}
+
+#section .right .ornament {
+    clip-path: polygon(
+            100% 0%,
+            100% 100%,
+            0% 100%
+    );
+}
+
+#section.alternative .right {
+    justify-content: start;
+    align-items: start;
+    filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
+}
+
+#section .ornament {
+    height: 30rem;
+    width: 30rem;
+    background-color: var(--base-color);
+}
+
+#section.alternative .ornament {
+    transform: scaleY(-1);
+}
+
+#section .middle {
+    width: 100%;
+    min-width: 35em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 11rem 0 11rem 0;
+    z-index: 1;
+}
+
+.mobile #section .middle {
+    min-width: unset;
+    margin: 0;
+    padding: 0;
+}
+
+#section .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7rem;
+}
+
+.mobile #section .content {
+    max-width: 43rem;
+    margin: 5rem auto 0 auto;
+    padding: 0 1.5rem 0 1.5rem;
+}

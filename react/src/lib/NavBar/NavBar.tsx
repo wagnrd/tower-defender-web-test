@@ -11,8 +11,6 @@ interface NavBarProps {
 function NavBar({ onHomeClick, children }: NavBarProps): ReactElement {
     const { isMobile } = useApp();
 
-    console.log(isMobile);
-
     return (
         <div id="nav-bar">
             <div id="brand" className="clickable" onClick={onHomeClick}>

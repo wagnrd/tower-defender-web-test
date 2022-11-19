@@ -1,8 +1,11 @@
 import React, { ReactElement } from "react";
+import Section from "../lib/Section/Section";
 
 function News(): ReactElement {
     return (
-        <h1>News</h1>
+        <Section>
+            <h1>NEWS</h1>
+        </Section>
     );
 }
 

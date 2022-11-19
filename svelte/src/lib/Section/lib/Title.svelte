@@ -35,8 +35,8 @@
 
     #title #content {
         height: 100%;
-        min-width: max-content;
-        width: 13%;
+        min-width: 10rem;
+        width: max-content;
         font: var(--headline-font);
         padding: 0 2rem 0 2rem;
         display: flex;

@@ -1,8 +1,12 @@
 import React, { ReactElement } from "react";
+import Section from "../lib/Section/Section";
 
 function Home(): ReactElement {
     return (
-        <h1>Home</h1>
+        <>
+            <Section title="LATEST NEWS" ornament/>
+            <Section title="KEY FEATURES" ornament alternative/>
+        </>
     );
 }
 

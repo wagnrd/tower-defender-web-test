@@ -1,8 +1,11 @@
 import React, { ReactElement } from "react";
+import Section from "../lib/Section/Section";
 
 function Game(): ReactElement {
     return (
-        <h1>Game</h1>
+        <Section>
+            <h1>GAME</h1>
+        </Section>
     );
 }
 
