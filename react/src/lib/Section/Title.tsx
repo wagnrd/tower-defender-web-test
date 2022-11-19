@@ -1,5 +1,5 @@
 import "./Title.css";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { useApp } from "../AppProvider";
 
 interface TitleProps {
