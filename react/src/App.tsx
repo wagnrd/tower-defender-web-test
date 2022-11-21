@@ -16,21 +16,6 @@ function App(): ReactElement {
     const { isMobile, setMobile } = useApp();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        window.onresize = () => {
-            const pixelRatio = screen.width / screen.height;
-            const mobileThreshold = 1 - (
-                0.4 / defaultPixelRatio * pixelRatio);
-
-            if (window.innerWidth <= screen.width * mobileThreshold ||
-                window.matchMedia("screen and (max-device-width: 1000px)").matches) {
-                setMobile(true);
-            } else {
-                setMobile(false);
-            }
-        };
-    }, []);
-
     const homeRoute = "/";
     const newsRoute = "/news";
     const gameRoute = "/game";
@@ -43,6 +28,24 @@ function App(): ReactElement {
     const goToForums = () => window.open("https://" + window.location.host + "/forums/");
 
     const mainClassName = classnames({ mobile: isMobile });
+
+    useEffect(() => {
+        const detectMobile = () => {
+            const pixelRatio = screen.width / screen.height;
+            const mobileThreshold = 1 - (
+                0.4 / defaultPixelRatio * pixelRatio);
+
+            if (window.innerWidth <= screen.width * mobileThreshold ||
+                window.matchMedia("screen and (max-device-width: 1000px)").matches) {
+                setMobile(true);
+            } else {
+                setMobile(false);
+            }
+        };
+
+        window.onresize = detectMobile;
+        detectMobile();
+    }, []);
 
     return (
         <main className={mainClassName}>
