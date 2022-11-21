@@ -11,7 +11,7 @@ interface AppProviderProps {
 
 const appProps: AppContextProps = {
     isMobile: false,
-    setMobile: stub
+    setMobile: stub,
 };
 
 const AppContext = React.createContext<AppContextProps>(appProps);
@@ -30,7 +30,7 @@ function AppProvider({ children }: AppProviderProps): ReactElement {
     const contextValue = useMemo(() => {
         return {
             isMobile,
-            setMobile
+            setMobile,
         };
     }, [isMobile, setMobile]);
 

@@ -19,6 +19,9 @@
     "react",
     "@typescript-eslint"
   ],
+  "ignorePatterns": [
+    "dist"
+  ],
   "rules": {
     "indent": [
       "error",

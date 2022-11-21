@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import "./NavBarButton.css";
+import styles from "./NavBarButton.module.css";
 
 interface NavBarButtonProps {
     text: string;
@@ -8,7 +8,7 @@ interface NavBarButtonProps {
 
 function NavBarButton({ onClick, text }: NavBarButtonProps): ReactElement {
     return (
-        <div onClick={onClick} className="button clickable">
+        <div onClick={onClick} className={`${styles.button} clickable`}>
             {text}
         </div>
     );

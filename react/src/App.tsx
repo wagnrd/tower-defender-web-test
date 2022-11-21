@@ -19,7 +19,8 @@ function App(): ReactElement {
     useEffect(() => {
         window.onresize = () => {
             const pixelRatio = screen.width / screen.height;
-            const mobileThreshold = 1 - (0.4 / defaultPixelRatio * pixelRatio);
+            const mobileThreshold = 1 - (
+                0.4 / defaultPixelRatio * pixelRatio);
 
             if (window.innerWidth <= screen.width * mobileThreshold ||
                 window.matchMedia("screen and (max-device-width: 1000px)").matches) {
