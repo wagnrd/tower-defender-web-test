@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host --base=/react/",
-    "prebuild": "eslint . --fix && tsc",
+    "prebuild": "eslint . --fix && tsc && npm test",
     "build": "vite build --base=./",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -16,6 +17,10 @@
     "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.2.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/react-router-dom": "^5.3.3",
@@ -24,6 +29,9 @@
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.27.0",
     "eslint-plugin-react": "^7.31.10",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4",
     "vite": "^3.2.3"
   }

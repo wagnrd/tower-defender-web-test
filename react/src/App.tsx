@@ -44,7 +44,7 @@ function App(): ReactElement {
     }, []);
 
     return (
-        <main>
+        <main data-testid="app">
             <NavBar onHomeClick={goToHome}>
                 <NavBarButton onClick={goToNews} text="NEWS"/>
                 <NavBarButton onClick={goToGame} text="GAME"/>

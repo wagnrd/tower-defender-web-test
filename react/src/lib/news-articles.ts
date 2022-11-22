@@ -18,6 +18,7 @@ interface Article {
 async function fetchArticlePreviews(count: number, offset = 0): Promise<ArticlePreview[]> {
     let url = `${config.newsApiBaseUrl}/article/preview?count=${count}&offset=${offset}`;
 
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore // can't be undefined... duh..
     if (config.testing.enableArticlePadding) url += "&padding=1";
 
@@ -36,6 +37,7 @@ async function fetchArticlePreviews(count: number, offset = 0): Promise<ArticleP
 async function fetchArticleById(id: number): Promise<ArticlePreview[]> {
     let url = `${config.newsApiBaseUrl}/article/${id}`;
 
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore // can't be undefined... duh..
     if (config.testing.enableArticlePadding) url += "?padding=1";
 

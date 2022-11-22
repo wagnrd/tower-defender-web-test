@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useMemo, useState } from "react";
+import React, { createContext, ReactElement, useContext, useMemo, useState } from "react";
 
 interface AppContextProps {
     isMobile: boolean;
@@ -14,7 +14,7 @@ const appProps: AppContextProps = {
     setMobile: stub,
 };
 
-const AppContext = React.createContext<AppContextProps>(appProps);
+const AppContext = createContext<AppContextProps>(appProps);
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 function stub(...args: any) {
