@@ -1,25 +1,26 @@
-import "./Title.css";
+import styles from "./Title.module.css";
 import React, { ReactElement } from "react";
 import { useApp } from "../AppProvider";
+import classnames from "classnames";
 
 interface TitleProps {
-    children?: string;
+    children: string;
 }
 
 function Title({ children }: TitleProps): ReactElement {
     const { isMobile } = useApp();
 
     return (
-        <div id="title">
+        <div className={classnames(styles.title, isMobile && styles.mobile)}>
             {!isMobile && <>
-                <div id="title-ornament"></div>
-                <div id="title-left"></div>
+                <div className={styles.ornament}></div>
+                <div className={styles.left}></div>
             </>}
 
-            <div id="title-content">
+            <div className={styles.content}>
                 {children}
             </div>
-            <div id="title-right"></div>
+            <div className={styles.right}></div>
         </div>
     );
 }

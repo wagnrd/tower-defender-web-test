@@ -12,7 +12,6 @@ interface NavBarProps {
 
 function NavBar({ onHomeClick, children }: NavBarProps): ReactElement {
     const { isMobile } = useApp();
-
     const [isMobileMenuActive, setMobileMenuActive] = useState(false);
 
     const toggleMobileMenu = () => setMobileMenuActive(value => !value);

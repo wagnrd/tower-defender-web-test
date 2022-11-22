@@ -1,4 +1,4 @@
-import "./Section.css";
+import styles from "./Section.module.css";
 import React, { ReactElement } from "react";
 import classnames from "classnames";
 import Title from "./Title";
@@ -13,26 +13,25 @@ interface SectionProps {
 
 function Section({ title, ornament = false, alternative, children }: SectionProps): ReactElement {
     const { isMobile } = useApp();
-    const sectionClassName = classnames({ alternative });
 
     return (
-        <div id="section" className={sectionClassName}>
+        <div className={classnames(styles.section, isMobile && styles.mobile, alternative && styles.alternative)}>
             {ornament && !isMobile && <>
-                <div className="left">
-                    <div className="ornament"></div>
+                <div className={styles.left}>
+                    <div className={styles.ornament}></div>
                 </div>
             </>}
 
-            <div className="middle">
+            <div className={styles.middle}>
                 {title && <Title>{title}</Title>}
-                <div className="content">
+                <div className={styles.content}>
                     {children}
                 </div>
             </div>
 
             {ornament && !isMobile && <>
-                <div className="right">
-                    <div className="ornament"></div>
+                <div className={styles.right}>
+                    <div className={styles.ornament}></div>
                 </div>
             </>}
         </div>

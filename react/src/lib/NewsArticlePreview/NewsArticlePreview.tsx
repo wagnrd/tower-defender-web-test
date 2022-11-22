@@ -1,10 +1,11 @@
 import React, { ReactElement } from "react";
-import styles from "./NewsArticlePreview.module.css";
 import { Link } from "react-router-dom";
+import styles from "./NewsArticlePreview.module.css";
 import { formatDate } from "../utils";
 import { ArticlePreview } from "../news-articles";
 import logoDarkImage from "../../assets/images/logo-dark.svg";
 import { useApp } from "../AppProvider";
+import classnames from "classnames";
 
 interface NewsArticlePreviewProps {
     articlePreview: ArticlePreview;
@@ -14,13 +15,13 @@ function NewsArticlePreview({ articlePreview }: NewsArticlePreviewProps): ReactE
     const { isMobile } = useApp();
 
     return (
-        <div className={styles.articlePreview}>
+        <div className={classnames(isMobile && styles.mobile, styles.articlePreview)}>
             <h2 className={styles.headline}>{articlePreview.headline}</h2>
             {isMobile
              ? <p className={styles.date}>{formatDate(articlePreview.timestamp)}</p>
              : <h3 className={styles.date}>{formatDate(articlePreview.timestamp)}</h3>
             }
-            <img src={articlePreview.thumbnailUrl ?? logoDarkImage} className={styles.carouselImage} alt=""/>
+            <img src={articlePreview.thumbnailUrl ?? logoDarkImage} className={styles.thumbnail} alt=""/>
             <div className={styles.description}>
                 {articlePreview.description}<br/>
                 <br/>

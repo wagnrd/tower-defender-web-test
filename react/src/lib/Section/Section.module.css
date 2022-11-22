@@ -1,19 +1,19 @@
-#section {
+.section {
     height: max-content;
     display: flex;
     justify-content: center;
 }
 
-.mobile #section {
+.section.mobile {
     margin: 6.5rem 0 9rem 0;
 }
 
-#section .left {
+.left {
     display: flex;
     filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
 }
 
-#section .left .ornament {
+.left .ornament {
     clip-path: polygon(
             0% 0%,
             100% 0%,
@@ -21,20 +21,20 @@
     );
 }
 
-#section.alternative .left {
+.alternative .left {
     justify-content: end;
     align-items: end;
     filter: drop-shadow(0.45rem -0.45rem 0.2rem var(--shadow-color));
 }
 
-#section .right {
+.right {
     display: flex;
     justify-content: end;
     align-items: end;
     filter: drop-shadow(-0.45rem -0.45rem 0.2rem var(--shadow-color));
 }
 
-#section .right .ornament {
+.right .ornament {
     clip-path: polygon(
             100% 0%,
             100% 100%,
@@ -42,23 +42,23 @@
     );
 }
 
-#section.alternative .right {
+.alternative .right {
     justify-content: start;
     align-items: start;
     filter: drop-shadow(-0.45rem 0.45rem 0.2rem var(--shadow-color));
 }
 
-#section .ornament {
+.ornament {
     height: 30rem;
     width: 30rem;
     background-color: var(--base-color);
 }
 
-#section.alternative .ornament {
+.alternative .ornament {
     transform: scaleY(-1);
 }
 
-#section .middle {
+.middle {
     width: 100%;
     min-width: 35em;
     display: flex;
@@ -68,13 +68,13 @@
     z-index: 1;
 }
 
-.mobile #section .middle {
+.mobile .middle {
     min-width: unset;
     margin: 0;
     padding: 0;
 }
 
-#section .content {
+.content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,7 @@
     margin-top: 7rem;
 }
 
-.mobile #section .content {
+.mobile .content {
     max-width: 43rem;
     margin: 5rem auto 0 auto;
     padding: 0 1.5rem 0 1.5rem;

@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { ReactElement, useEffect } from "react";
 import { useApp } from "./lib/AppProvider";
 import { Route, Routes, useNavigate } from "react-router-dom";
@@ -8,12 +7,11 @@ import Game from "./pages/Game";
 import Download from "./pages/Download";
 import NavBar from "./lib/NavBar/NavBar";
 import NavBarButton from "./lib/NavBar/NavBarButton";
-import classnames from "classnames";
 
 const defaultPixelRatio = 16 / 9;
 
 function App(): ReactElement {
-    const { isMobile, setMobile } = useApp();
+    const { setMobile } = useApp();
     const navigate = useNavigate();
 
     const homeRoute = "/";
@@ -26,8 +24,6 @@ function App(): ReactElement {
     const goToGame = () => navigate(gameRoute);
     const goToDownload = () => navigate(downloadRoute);
     const goToForums = () => window.open("https://" + window.location.host + "/forums/");
-
-    const mainClassName = classnames({ mobile: isMobile });
 
     useEffect(() => {
         const detectMobile = () => {
@@ -48,7 +44,7 @@ function App(): ReactElement {
     }, []);
 
     return (
-        <main className={mainClassName}>
+        <main>
             <NavBar onHomeClick={goToHome}>
                 <NavBarButton onClick={goToNews} text="NEWS"/>
                 <NavBarButton onClick={goToGame} text="GAME"/>

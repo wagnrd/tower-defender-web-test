@@ -1,4 +1,4 @@
-#title {
+.title {
     height: 4rem;
     width: 100%;
     margin-left: -2.4rem;
@@ -8,16 +8,16 @@
     filter: drop-shadow(0.45rem 0.45rem 0.2rem var(--shadow-color));
 }
 
-.mobile #title {
+.title.mobile {
     margin: 0;
     justify-content: start;
 }
 
-#title > * {
+.title > * {
     background-color: var(--base-color);
 }
 
-#title-content {
+.content {
     height: 100%;
     min-width: max-content;
     width: 10rem;
@@ -28,12 +28,12 @@
     justify-content: center;
 }
 
-.mobile #title-content {
+.mobile .content {
     width: 50vw;
     min-width: max-content;
 }
 
-#title-left {
+.left {
     min-width: 4rem;
     min-height: 4rem;
     margin-right: -1px;
@@ -44,7 +44,7 @@
     );
 }
 
-.mobile #title-left {
+.mobile .left {
     clip-path: polygon(
             100% 0%,
             100% 100%,
@@ -52,7 +52,7 @@
     );
 }
 
-#title-right {
+.right {
     min-width: 4rem;
     min-height: 4rem;
     margin-left: -1px;
@@ -63,7 +63,7 @@
     );
 }
 
-#title-ornament {
+.ornament {
     min-width: 8rem;
     min-height: 4rem;
     margin-right: -3rem;
