@@ -1,4 +1,4 @@
-import configJson from "../config.json";
+import configJson from "./config.json";
 
 interface Testing {
     enableArticlePadding?: boolean;
@@ -14,12 +14,12 @@ const configFile: Config = configJson;
 
 const config: Config = {
     testing: {
-        enableArticlePadding: false
+        enableArticlePadding: false,
     },
     /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore
     basePath: "/",
-    ...configFile
+    ...configFile,
 };
 
 export { config };

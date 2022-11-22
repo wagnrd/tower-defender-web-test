@@ -2,7 +2,7 @@ import "./App.css";
 import React, { ReactElement, useEffect } from "react";
 import { useApp } from "./lib/AppProvider";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import News from "./pages/News";
 import Game from "./pages/Game";
 import Download from "./pages/Download";

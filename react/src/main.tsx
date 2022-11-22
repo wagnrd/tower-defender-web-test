@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import AppProvider from "./lib/AppProvider";
-import { config } from "./lib/config";
+import { config } from "./config";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
         .render(

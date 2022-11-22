@@ -27,7 +27,7 @@ function setMobile(value: boolean) {
 function AppProvider({ children }: AppProviderProps): ReactElement {
     const [isMobile, setMobile] = useState(false);
 
-    const contextValue = useMemo(() => {
+    const context = useMemo(() => {
         return {
             isMobile,
             setMobile,
@@ -35,7 +35,7 @@ function AppProvider({ children }: AppProviderProps): ReactElement {
     }, [isMobile, setMobile]);
 
     return (
-        <AppContext.Provider value={contextValue}>
+        <AppContext.Provider value={context}>
             {children}
         </AppContext.Provider>
     );
